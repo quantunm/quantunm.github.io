@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="Exercise 3.12 Give an equation for $v_\pi$ in terms of $q_\pi$ and $\pi$.  \begin{aligned} v_\pi(s) &amp;= \mathbb E_\pi(G_t|S_t=s) \\ &amp;=\sum_{g_t}\bigl [ g_t \cdot p(g_t|s) \bigr ] \\ &amp;=\sum_{g_t}\bigl [">
+<meta name="description" content="Exercise 3.17 What is the Bellman equation for action values, that is, for $q_\pi$? It must give the action value $q_\pi(s, a)$ in terms of the action values, $q_\pi(s’, a’)$, of possible successors t">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 3.12">
-<meta property="og:url" content="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-12/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 3.17">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-17/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 3.12 Give an equation for $v_\pi$ in terms of $q_\pi$ and $\pi$.  \begin{aligned} v_\pi(s) &amp;= \mathbb E_\pi(G_t|S_t=s) \\ &amp;=\sum_{g_t}\bigl [ g_t \cdot p(g_t|s) \bigr ] \\ &amp;=\sum_{g_t}\bigl [">
+<meta property="og:description" content="Exercise 3.17 What is the Bellman equation for action values, that is, for $q_\pi$? It must give the action value $q_\pi(s, a)$ in terms of the action values, $q_\pi(s’, a’)$, of possible successors t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T15:23:27.046Z">
+<meta property="og:image" content="http://yoursite.com/.com//3.17.png#pic_center">
+<meta property="og:updated_time" content="2019-06-21T16:03:19.987Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 3.12">
-<meta name="twitter:description" content="Exercise 3.12 Give an equation for $v_\pi$ in terms of $q_\pi$ and $\pi$.  \begin{aligned} v_\pi(s) &amp;= \mathbb E_\pi(G_t|S_t=s) \\ &amp;=\sum_{g_t}\bigl [ g_t \cdot p(g_t|s) \bigr ] \\ &amp;=\sum_{g_t}\bigl [">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 3.17">
+<meta name="twitter:description" content="Exercise 3.17 What is the Bellman equation for action values, that is, for $q_\pi$? It must give the action value $q_\pi(s, a)$ in terms of the action values, $q_\pi(s’, a’)$, of possible successors t">
+<meta name="twitter:image" content="http://yoursite.com/.com//3.17.png#pic_center">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-12/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-17/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 3.12 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 3.17 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-12/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-17/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -250,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 3.12</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 3.17</h1>
         
 
         <div class="post-meta">
@@ -262,7 +264,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T23:15:20+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T23:37:33+08:00">
                 2019-06-21
               </time>
             
@@ -300,20 +302,30 @@
       
 
       
-        <p><strong>Exercise 3.12</strong> Give an equation for $v_\pi$ in terms of $q_\pi$ and $\pi$.</p>
+        <p>Exercise 3.17 What is the Bellman equation for action values, that is, for $q_\pi$? It must give the action value $q_\pi(s, a)$ in terms of the action values, $q_\pi(s’, a’)$, of possible successors to the state–action pair (s, a). Hint: the backup diagram to the right corresponds to this equation. Show the sequence of equations analogous to (3.14), but for action values.<br><img src="/.com//3.17.png#pic_center" alt="在这里插入图片描述"></p>
+<p>According to definition：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
-&=\sum_{g_t}\bigl [ g_t \cdot p(g_t|s) \bigr ] \\
-&=\sum_{g_t}\bigl [ g_t \cdot \frac {p(g_t, s)}{p(s)} \bigr ] \\
-&=\sum_{g_t}\bigl [ g_t \cdot \frac{ \sum_{a \in \mathcal A} p(g_t, s, a)}{p(s)} \bigr ] \\
-&=\sum_{g_t}\Bigl \{ g_t \cdot \frac{ \sum_{a \in \mathcal A} \bigl [p(g_t| s, a) \cdot p(s, a) \bigr ] }{p(s)} \Bigr \} \\
-&=\sum_{g_t}\Bigl \{ g_t \cdot \frac{ \sum_{a \in \mathcal A} \bigl [p(g_t| s, a) \cdot p(a | s) \cdot p(s) \bigr ]}{p(s) \bigr ] } \Bigr \} \\
-&=\sum_{g_t}\Bigl \{ g_t \cdot \sum_{a \in \mathcal A} \bigl [p(g_t| s, a) \cdot p(a | s) \bigr ] \Bigr \} \\
-&=\sum_{a \in \mathcal A} \Bigl \{ p(a|s) \sum_{g_t} \bigl [ g_t \cdot p(g_t | s, a) \bigr ] \Bigr \}
-\end{aligned}</script><p>According to definition, $p(a|s) = \pi(a|s)$, $\sum_{g_t} \bigl [ g_t \cdot p(g_t | s, a) \bigr ] = q_\pi(s,a)$, so there is:</p>
+Q_\pi(s,a) &= \mathbb E_\pi(G_t|S_t=s,A_t=a) \\
+&= \mathbb E_\pi (\sum_{k=0}^\infty \gamma^k R_t+k+1 | S_t=s, A_t=a) \\
+&= \sum_{s'} \bigl[ \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+1} | S_t=s, A_t=a, S_{t+1}=s' ) P( S_{t+1} =s' | A_t = a, S_t = s ) \bigr] \\
+&= \sum_{s'} \Bigl\{  \bigl[  \mathbb E_\pi ( R_{t+1} | S_t = s , A_t = a , S_{t+1} = s ) + \mathbb E_\pi ( \sum_{k=1}^\infty \gamma^k R_{t+1+k} ) \bigr] P( S_{t+1} = s' | A_t = a , S_t = s ) \Bigr\}
+\end{aligned}</script><p>Denote</p>
+<script type="math/tex; mode=display">P(S_{t+1} = s' | A_t = a , S_t = s ) = P_{s,s'}^a</script><script type="math/tex; mode=display">\mathbb E_\pi (R_{t+1} | S_t = s , A_t = a , S_{t+1} = s' ) = R_{s,s'}^a</script><p>then：</p>
 <script type="math/tex; mode=display">
-v_\pi(s) = \sum_{a \in \mathcal A} \bigl [ \pi(a|s) \cdot q_\pi(s,a) \bigr ]</script>
+\begin{aligned}
+Q_\pi(s,a) &= \sum_{s'} R_{s,s'}^a  P_{ss'}^a + \sum_{s'} \bigl[ \mathbb E(\sum_{k=1}^\infty  \gamma^k R_{t+1+k} | S_t = s, A_t = a, S_{t+1} = s' ) P_{s,s'}^a \bigr] \\
+&= \sum_{s'} R_{s,s'}^a  P_{ss'}^a + \gamma \sum_{s'} \bigl[ \mathbb E ( \sum_{k=1}^\infty \gamma^{k-1} R_{t+1+k} | S_t=s,A_t=a,S_{t+1}=s' )  P_{s,s'}^a  \bigr] \\
+&= \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \mathbb E ( \sum_{k=0}^\infty \gamma^k R_{t+2+k} | S_t = s , A_t = a , S_{t+1} = s' )  P_{s,s'}^a  \bigr] \\
+&= \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \mathbb E ( \sum_{k=0}^\infty \gamma^k R_{t+2+k} | S_{t+1} = s' ) P_{s,s'}^a \bigr] \\
+&= \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \Bigl\{ \sum_{a'} \bigl[ \mathbb E( \sum_{k=0}^\infty \gamma^k  R_{t+2+k} | S_{t+1} = s' , A_{t+1} = a' ) P( A_{t+1} = a' | S_{t+1} =s' ) \bigr] P_{s,s'}^a \Bigr\} \\
+\end{aligned}</script><p>According to definition</p>
+<script type="math/tex; mode=display">
+\mathbb E( \sum_{k=0}^\infty \gamma^k R_{t+2+k} | S_{t+1} = s' , A_{t+1} = a') = Q_\pi(s',a') \\
+P( A_{t+1} = a' | S_{t+1} = s' ) = \pi(s',a')</script><p>so</p>
+<script type="math/tex; mode=display">
+Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script><p>This is the Bellman equation of action-value.</p>
+
       
     </div>
     
@@ -343,8 +355,8 @@ v_\pi(s) = \sum_{a \in \mathcal A} \bigl [ \pi(a|s) \cdot q_\pi(s,a) \bigr ]</sc
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/08/Reinforcement-Learning-Exercise-3-11/" rel="next" title="Reinforcement Learning Exercise 3.11">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 3.11
+              <a href="/2019/06/21/Reinforcement-Learning-Exercise-3-15/" rel="next" title="Reinforcement Learning Exercise 3.15">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 3.15
               </a>
             
           </div>
@@ -352,10 +364,6 @@ v_\pi(s) = \sum_{a \in \mathcal A} \bigl [ \pi(a|s) \cdot q_\pi(s,a) \bigr ]</sc
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/21/Reinforcement-Learning-Exercise-3-13/" rel="prev" title="Reinforcement Learning Exercise 3.13">
-                Reinforcement Learning Exercise 3.13 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

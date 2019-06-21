@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Exercise 3.12 Give an equation for $v_\pi$ in terms of $q_\pi$ and $\pi$.  \begin{aligned} v_\pi(s) &amp;= \mathbb E_\pi(G_t|S_t=s) \\ &amp;=\sum_{g_t}\bigl [ g_t \cdot p(g_t|s) \bigr ] \\ &amp;=\sum_{g_t}\bigl [">
+<meta name="description" content="Exercise 3.15 In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or onl">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 3.12">
-<meta property="og:url" content="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-12/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 3.15">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-15/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 3.12 Give an equation for $v_\pi$ in terms of $q_\pi$ and $\pi$.  \begin{aligned} v_\pi(s) &amp;= \mathbb E_\pi(G_t|S_t=s) \\ &amp;=\sum_{g_t}\bigl [ g_t \cdot p(g_t|s) \bigr ] \\ &amp;=\sum_{g_t}\bigl [">
+<meta property="og:description" content="Exercise 3.15 In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or onl">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T15:23:27.046Z">
+<meta property="og:updated_time" content="2019-06-21T15:36:42.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 3.12">
-<meta name="twitter:description" content="Exercise 3.12 Give an equation for $v_\pi$ in terms of $q_\pi$ and $\pi$.  \begin{aligned} v_\pi(s) &amp;= \mathbb E_\pi(G_t|S_t=s) \\ &amp;=\sum_{g_t}\bigl [ g_t \cdot p(g_t|s) \bigr ] \\ &amp;=\sum_{g_t}\bigl [">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 3.15">
+<meta name="twitter:description" content="Exercise 3.15 In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or onl">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-12/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-15/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 3.12 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 3.15 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-12/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-15/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 3.12</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 3.15</h1>
         
 
         <div class="post-meta">
@@ -262,7 +262,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T23:15:20+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T23:36:07+08:00">
                 2019-06-21
               </time>
             
@@ -300,20 +300,23 @@
       
 
       
-        <p><strong>Exercise 3.12</strong> Give an equation for $v_\pi$ in terms of $q_\pi$ and $\pi$.</p>
+        <p><strong>Exercise 3.15</strong> In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or only the intervals between them? Prove, using (3.8), that adding a constant $c$ to all the rewards adds a constant, $v_c$, to the values of all states, and thus does not affect the relative values of any states under any policies. What is $v_c$ in terms of $c$ and $\gamma$?</p>
+<p>First, for $v_\pi$, according to definition:</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
-&=\sum_{g_t}\bigl [ g_t \cdot p(g_t|s) \bigr ] \\
-&=\sum_{g_t}\bigl [ g_t \cdot \frac {p(g_t, s)}{p(s)} \bigr ] \\
-&=\sum_{g_t}\bigl [ g_t \cdot \frac{ \sum_{a \in \mathcal A} p(g_t, s, a)}{p(s)} \bigr ] \\
-&=\sum_{g_t}\Bigl \{ g_t \cdot \frac{ \sum_{a \in \mathcal A} \bigl [p(g_t| s, a) \cdot p(s, a) \bigr ] }{p(s)} \Bigr \} \\
-&=\sum_{g_t}\Bigl \{ g_t \cdot \frac{ \sum_{a \in \mathcal A} \bigl [p(g_t| s, a) \cdot p(a | s) \cdot p(s) \bigr ]}{p(s) \bigr ] } \Bigr \} \\
-&=\sum_{g_t}\Bigl \{ g_t \cdot \sum_{a \in \mathcal A} \bigl [p(g_t| s, a) \cdot p(a | s) \bigr ] \Bigr \} \\
-&=\sum_{a \in \mathcal A} \Bigl \{ p(a|s) \sum_{g_t} \bigl [ g_t \cdot p(g_t | s, a) \bigr ] \Bigr \}
-\end{aligned}</script><p>According to definition, $p(a|s) = \pi(a|s)$, $\sum_{g_t} \bigl [ g_t \cdot p(g_t | s, a) \bigr ] = q_\pi(s,a)$, so there is:</p>
+&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s)
+\end{aligned}</script><p>Denote $\hat R = R + c$, for $\hat R$, there is:</p>
 <script type="math/tex; mode=display">
-v_\pi(s) = \sum_{a \in \mathcal A} \bigl [ \pi(a|s) \cdot q_\pi(s,a) \bigr ]</script>
+\begin{aligned}
+\hat {v}_\pi(s) &= \mathbb E_\pi(\hat G_t|S_t=s) \\
+&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot \hat R_{t+k+1} | S_t = s) \\
+&= \mathbb E_\pi  \bigl [ \sum_{k=0}^{\infty} \gamma^k \cdot (R_{t+k+1} + c ) | S_t = s \bigr ] \\
+&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s) + \mathbb E_\pi(\sum_{k=0}^{\infty} \gamma^k \cdot c | S_t = s)\\
+&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s) + \sum_{k=0}^{\infty} \gamma^k \cdot c \\
+&= v_\pi(s) + \frac {c}{1 - \gamma} \\
+\end{aligned}</script><script type="math/tex; mode=display">
+\therefore v_c = \frac {c}{1-\gamma}</script>
       
     </div>
     
@@ -343,8 +346,8 @@ v_\pi(s) = \sum_{a \in \mathcal A} \bigl [ \pi(a|s) \cdot q_\pi(s,a) \bigr ]</sc
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/08/Reinforcement-Learning-Exercise-3-11/" rel="next" title="Reinforcement Learning Exercise 3.11">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 3.11
+              <a href="/2019/06/21/Reinforcement-Learning-Exercise-3-13/" rel="next" title="Reinforcement Learning Exercise 3.13">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 3.13
               </a>
             
           </div>
@@ -353,8 +356,8 @@ v_\pi(s) = \sum_{a \in \mathcal A} \bigl [ \pi(a|s) \cdot q_\pi(s,a) \bigr ]</sc
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/21/Reinforcement-Learning-Exercise-3-13/" rel="prev" title="Reinforcement Learning Exercise 3.13">
-                Reinforcement Learning Exercise 3.13 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/21/Reinforcement-Learning-Exercise-3-17/" rel="prev" title="Reinforcement Learning Exercise 3.17">
+                Reinforcement Learning Exercise 3.17 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
