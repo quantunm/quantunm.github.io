@@ -229,6 +229,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Reinforcement-Learning-Exercise-3-19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/07/Reinforcement-Learning-Exercise-3-19/" itemprop="url">Reinforcement Learning Exercise 3.19</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-07T21:01:08+08:00">
+                2019-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Exercise 3.19 The value of an action, $q_\pi(s, a)$, depends on the expected next reward and the expected sum of the remaining rewards. Again we can think of this in terms of a small backup diagram, this one rooted at an action (state–action pair) and branching to the possible next states:<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-19/3-19.png#pic_center" alt><br>Give the equation corresponding to this intuition and diagram for the action value, $q_\pi(s, a)$, in terms of the expected next reward, $R_{t+1}$, and the expected next state value, $v_\pi(S_t+1)$, given that $S_t =s$ and $A_t =a$. This equation should include an expectation but not one conditioned on following the policy. Then give a second equation, writing out the expected value explicitly in terms of $p(s’, r|s, a)$ defined by (3.2), such that no expected value notation appears in the equation. </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_\pi(s,a) &= \mathbb E_\pi(G_t | S_t = s, A_t = a) \\
+&= \mathbb E_\pi ( R_{t+1} + \gamma G_{t+1} | S_t = s, A_t = a) \\
+&= \mathbb E_\pi ( R_{t+1} | S_t= s, A_t = a) + \gamma \mathbb E_\pi ( G_{t+1} | S_t = s, A_t = a) \\
+&= \mathbb E_\pi ( R_{t+1} | S_t= s, A_t = a) + \gamma \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_t = s, A_t = a) \\
+&= R_{t+1}(s,a) + \gamma \sum_{s'} \bigl[ \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_t = s, A_t = a, S_{t+1} = s') Pr(S_{t+1} = s'| S_t = s, A_t = a) \bigr] \\
+\end{aligned}</script><p>denote <script type="math/tex">Pr(S_{t+1} = s'| S_t = s, A_t = a) = P_{s,s'}^a</script><br>and $\because S_t$ and $A_t$ give no information to $R_{t+2+k}$</p>
+<script type="math/tex; mode=display">\therefore \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_t = s, A_t = a, S_{t+1} = s') Pr(S_{t+1} = s'| S_t = s, A_t = a)\\
+\begin{aligned}
+&= \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_{t+1} = s') P_{s,s'}^a \\
+&= \upsilon_\pi(S_{t+1}) P_{s,s'}^a \\
+\end{aligned}</script><script type="math/tex; mode=display">
+\therefore
+\begin{aligned}
+q_\pi(s,a) = R_{t+1}(s,a) + \gamma \sum_{s'} \upsilon_\pi(S_{t+1}) P_{s,s'}^a \tag{1}
+\end{aligned}</script><p>Above is the first equantion.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\because
+R_{t+1}(s,a) &= \mathbb E_\pi (R_{t+1} | S_t = s, A_t = a) \\
+&= \sum_{s'} \bigl[ \mathbb E_\pi (R_{t+1}|S_t = s, A_t = a, S_{t+1} = s') Pr(S_{t+1} = s' | S_t = s, A_t = a) \bigr] \\
+&= \sum_r \sum_{s'} \bigl[ \mathbb E_\pi (R_{t+1}|S_t = s, A_t = a, S_{t+1} = s') Pr(S_{t+1} = s', R_{t+1} = r | S_t = s, A_t = a) \bigr] \\
+\end{aligned}</script><p>denote $$<br>\mathbb E_\pi (R_{t+1}|S_t = s, A_t = a, S_{t+1} = s’) = R_{s,s’}^a \\<br>Pr(S_{t+1} = s’, R_{t+1} = r | S_t = s, A_t = a) = p(s’, r | s, a)</p>
+<script type="math/tex; mode=display">
+</script><p>\therefore R_{t+1}(s, a) = \sum_r \sum_{s’} R_{s,s’}^a p(s’, r | s, a)</p>
+<script type="math/tex; mode=display">
+</script><p>\begin{aligned}<br>\because<br>\gamma \sum_{s’} \upsilon_\pi(S_{t+1}) P_{s,s’}^a<br>&amp;= \gamma \sum_r \sum_{s’} \upsilon_\pi(S_{t+1}) Pr(S_{t+1} = s’, R_{t+1} = r | S_t = s, A_t = a) \\<br>&amp;=  \gamma \sum_r \sum_{s’} \upsilon_\pi(S_{t+1})  p(s’, r | s, a)<br>\end{aligned}</p>
+<script type="math/tex; mode=display">
+</script><p>\begin{aligned}<br>\therefore<br>q_\pi(s,a) &amp;= \sum_r \sum_{s’} R_{s,s’}^a p(s’, r | s, a) + \gamma \sum_r \sum_{s’} \upsilon_\pi(S_{t+1})  p(s’, r | s, a) \\<br>&amp;= \sum_r \sum_{s’} \bigl[ R_{s, s’}^a + \gamma \upsilon_\pi( S_{t+1} ) \bigr ] p(s’, r | s, a) \tag{2}<br>\end{aligned}</p>
+<p>$$<br>This is the second equation.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/22/Reinforcement-Learning-Exercise-3-18/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1096,7 +1247,7 @@ Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
