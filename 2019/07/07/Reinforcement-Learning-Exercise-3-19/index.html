@@ -88,7 +88,7 @@
 <meta property="og:description" content="Exercise 3.19 The value of an action, $q_\pi(s, a)$, depends on the expected next reward and the expected sum of the remaining rewards. Again we can think of this in terms of a small backup diagram, t">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-19/3-19.png#pic_center">
-<meta property="og:updated_time" content="2019-07-07T13:31:44.807Z">
+<meta property="og:updated_time" content="2019-07-07T14:10:17.693Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reinforcement Learning Exercise 3.19">
 <meta name="twitter:description" content="Exercise 3.19 The value of an action, $q_\pi(s, a)$, depends on the expected next reward and the expected sum of the remaining rewards. Again we can think of this in terms of a small backup diagram, t">
@@ -316,12 +316,10 @@ q_\pi(s,a) &= \mathbb E_\pi(G_t | S_t = s, A_t = a) \\
 &= \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_{t+1} = s') P_{s,s'}^a \\
 &= \upsilon_\pi(S_{t+1}) P_{s,s'}^a \\
 \end{aligned}</script><script type="math/tex; mode=display">
-\therefore
 \begin{equation}
-\begin{aligned}
-q_\pi(s,a) &= R_{t+1}(s,a) + \gamma \sum_{s'} \upsilon_\pi(S_{t+1}) P_{s,s'}^a\\
-\end{aligned}
-\end{equation} \tag{1} \label{eq1}</script><p>Above is the first equantion.</p>
+\therefore
+q_\pi(s,a) = R_{t+1}(s,a) + \gamma \sum_{s'} \upsilon_\pi(S_{t+1}) P_{s,s'}^a
+\end{equation} \tag{1}</script><p>Above is the first equantion.</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \because
@@ -385,6 +383,10 @@ q_\pi(s,a) &= \sum_r \sum_{s'} R_{s,s'}^a p(s', r | s, a) + \gamma \sum_r \sum_{
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/07/Reinforcement-Learning-Exercise-3-22/" rel="prev" title="Reinforcement Learning Exercise 3.22">
+                Reinforcement Learning Exercise 3.22 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -452,7 +454,7 @@ q_\pi(s,a) &= \sum_r \sum_{s'} R_{s,s'}^a p(s', r | s, a) + \gamma \sum_r \sum_{
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

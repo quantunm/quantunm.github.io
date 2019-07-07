@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Reinforcement Learning Exercise,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Exercise 3.22 Consider the continuing MDP shown on to the right. The only decision to be made is that in the top state, where two actions are available, left and right. The numbers show the rewards th">
+<meta name="keywords" content="Reinforcement Learning Exercise">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reinforcement Learning Exercise 3.22">
+<meta property="og:url" content="http://yoursite.com/2019/07/07/Reinforcement-Learning-Exercise-3-22/index.html">
+<meta property="og:site_name" content="Keep going">
+<meta property="og:description" content="Exercise 3.22 Consider the continuing MDP shown on to the right. The only decision to be made is that in the top state, where two actions are available, left and right. The numbers show the rewards th">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-22/3-22-1.png#pic_center">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-22/3-22-2.png#pic_center">
+<meta property="og:updated_time" content="2019-07-07T14:05:00.454Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 3.22">
+<meta name="twitter:description" content="Exercise 3.22 Consider the continuing MDP shown on to the right. The only decision to be made is that in the top state, where two actions are available, left and right. The numbers show the rewards th">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-22/3-22-1.png#pic_center">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/07/Reinforcement-Learning-Exercise-3-22/">
+
+
+
+
+
+  <title>Reinforcement Learning Exercise 3.22 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Keep going</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Reinforcement-Learning-Exercise-3-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 3.22</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-07T21:41:59+08:00">
+                2019-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Exercise 3.22 Consider the continuing MDP shown on to the right. The only decision to be made is that in the top state, where two actions are available, left and right. The numbers show the rewards that are received deterministically after each action. There are exactly two deterministic policies, $\pi_{left}$ and $\pi_{right}$. What policy is optimal if $\gamma = 0$? If $\gamma = 0.9$? If $\gamma = 0.5$?<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-22/3-22-1.png#pic_center" alt><br>Before to solve this problem, we have to deduce the expression of $q_*(s,a)$ in terms of $R_{s,s’}^a$ and $P_{s,s’}^a$.<br>First, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s,a) &= \mathbb E[R_{t+1} + \gamma \max_{a'} q_*(S_{t+1}, a')|S_t=s,A_t=a] \\
+&= \sum_{s',r}\Bigl \{p(s',r|s,a) \bigl [ r + \gamma \max_{a'}q_*(s',a) \bigr ] \Bigr \} \\
+&= \sum_{s', r} \bigl [ rp(s',r|s,a) \bigr ] + \sum_{s',r} \bigl [ p(s',r|s,a) \gamma \max_{a'}q_*(s',a') \bigr ] \\
+&= \sum_r \bigl [ rp(r|s,a) \bigr ] + \sum_{s'} \bigl [ p(s'|s,a) \gamma \max_{a'} q_*(s', a') \bigr ] \\
+&= \mathbb E(r|s,a) + \sum_{s'} \bigl [ p(s'|s,a) \gamma \max_{a'} q_*(s', a') \bigr ] \\
+&= \sum_{s'} \bigl [ \mathbb E(r|s', s, a)p(s'|s,a) \bigr ] + \sum_{s'} \bigl [ p(s'|s,a) \gamma \max_{a'} q_*(s', a') \bigr ] \\
+&= \sum_{s'} \Bigl \{ \bigl [ \mathbb E(r|s',s,a) + \gamma \max_{a'} q_*(s',a') \bigr ] p(s'|s,a) \Bigr \}
+\end{aligned}</script><p>denote $\mathbb E(r|s’,s,a) = R_{s,s’}^a$ and $p(s’|s,a)=P_{s,s’}^a$, we get the expression we wanted</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+q_*(s,a)=\sum_{s'} \Bigl \{ \bigl [ R_{s,s'}^a + \gamma \max_{a'} q_*(s',a') \bigr ] P_{s,s'}^a \Bigr \}
+\end{equation} \tag{1} \label{eq1}</script><p>Next, we name the three status in circles as $s_A$, $s_B$, $s_C$, and denote the action to left as $a_l$, the action to right as $a_r$.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-22/3-22-2.png#pic_center" alt><br>According to equation (1) we can get Bellman optimality equation for $q_*$ of the three status.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_{*, \pi_{left}}(s_A, a_l)&=\Bigl \{R_{s_A, s_B}^{a_l}+\gamma \max_{a'} \bigl [ q_*(s_B, a)\bigr ] \Bigr \} P_{s_A, s_B}^{a_l} + \Bigl \{R_{s_A, s_C}^{a_l}+\gamma \max_{a'} \bigl [ q_*(s_C, a) \bigr ] \Bigr \} P_{s_A, s_C}^{a_l}\\
+&= \bigl [ R_{s_A, s_B}^{a_l} + \gamma q_*(s_B, a) \bigr ] P_{s_A, s_B}^{a_l} +  \bigl [ R_{s_A, s_C}^{a_r} + \gamma q_*(s_C, a) \bigr ] P_{s_A, s_C}^{a_l} \\
+q_{*, \pi_{right}}(s_A, a_r)&=\Bigl \{R_{s_A, s_B}^{a_r}+\gamma \max_{a'} \bigl [ q_*(s_B, a) \bigr ] \Bigr \} P_{s_A, s_B}^{a_r} + \Bigl \{R_{s_A, s_C}^{a_r}+\gamma \max_{a'} \bigl [ q_*(s_C, a)\bigr ] \Bigr \} P_{s_A, s_C}^{a_r}\\
+&= \bigl [ R_{s_A, s_B}^{a_r} + \gamma q_*(s_B, a) \bigr ] P_{s_A, s_B}^{a_r} +  \bigl [ R_{s_A, s_C}^{a_r} + \gamma q_*(s_C, a) \bigr ] P_{s_A, s_C}^{a_r} \\
+q_*(s_B, a)&=\Bigl \{R_{s_B, s_A}^{a}+\gamma \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} P_{s_B, s_A}^{a} \\
+q_*(s_C, a)&=\Bigl \{R_{s_C, s_A}^{a}+\gamma \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} P_{s_C, s_A}^{a} \\
+\end{aligned}</script><script type="math/tex; mode=display">
+\because P_{s_A, s_B}^{a_r} = 0, P_{s_A, s_C}^{a_l} = 0\\
+\begin{aligned}
+\therefore q_{*, \pi_{left}}(s_A, a_l)&=\bigl [ R_{s_A, s_B}^{a_l} + \gamma q_*(s_B, a) \bigr ] P_{s_A, s_B}^{a_l} \\
+q_{*, \pi_{right}}(s_A, a_r)&= \bigl [ R_{s_A, s_C}^{a_r} + \gamma q_*(s_C, a) \bigr ] P_{s_A, s_C}^{a_r} \\
+\end{aligned}</script><p>Now, let’s discuss the cases in different $\gamma$.<br>For $\gamma = 0$:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_{*,\pi_{left}}(s_A, a_l) &= \bigl [ 1 + 0 \cdot q_*(s_B, a) \bigr ] \cdot 1 = 1\\
+q_{*,\pi_{right}}(s_A, a_r) &= \bigl [ 0 + 0 \cdot q_*(s_C,a) \bigr ] \cdot 1 = 0
+\end{aligned}</script><p>So, $\pi_{left}$ is the optimal policy when $\gamma = 0$.</p>
+<p>For $\gamma = 0.5$:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_B, a)&=\Bigl \{0+0.5 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} \cdot 1 \\
+&=0.5 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ]\\
+q_*(s_C, a)&=\Bigl \{2+0.5 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} \cdot1 \\
+&= 2+0.5 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ]\\
+q_{*,\pi_{left}}(s_A, a_l) &= \bigl [ 1 + 0.5 \cdot q_*(s_B, a) \bigr ] \cdot 1 \\
+&= 1 + 0.5 \cdot q_*(s_B, a)\\
+q_{*,\pi_{right}}(s_A, a_r) &= \bigl [ 0 + 0.5 \cdot q_*(s_C,a) \bigr ] \cdot 1 \\
+&= 0.5 \cdot q_*(s_C,a)
+\end{aligned}</script><p>Assume <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \geq q_{*,\pi_{left}}(s_C, a_l)</script> then we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_B, a) &= 0.5 \cdot q_{*,\pi_{left}}(s_A, a_l)\\
+q_*(s_C, a) &= 2+0.5 \cdot q_{*,\pi_{left}}(s_A, a_l)
+\end{aligned}</script><p>therefore,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_{*,\pi_{left}}(s_A, a_l) &= 1 + 0.5 \cdot 0.5 \cdot q_{*,\pi_{left}}(s_A, a_l)\\
+q_{*,\pi_{left}}(s_A, a_l) &= \frac {4}{3}\\
+q_{*,\pi_{right}}(s_A, a_r) &= 0.5 \cdot \bigl [ 2+0.5 \cdot q_{*,\pi_{left}}(s_A, a_l) \bigr ] \\
+q_{*,\pi_{right}}(s_A, a_r) &= \frac {5}{3}
+\end{aligned}</script><p>Here, <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \lt q_{*,\pi_{right}}(s_C, a_l)</script>,  conflict with the assumption, so the assumption fails.<br>Assume <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \le q_{*,\pi_{right}}(s_C, a_l)</script>then we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_B, a) &= 0.5 \cdot q_{*,\pi_{right}}(s_A, a_r)\\
+q_*(s_C, a) &= 2+0.5 \cdot q_{*,\pi_{right}}(s_A, a_r)
+\end{aligned}</script><p>therefore,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_{*,\pi_{right}}(s_A, a_r) &= 0.5 \cdot \bigl [ 2+0.5 \cdot q_{*,\pi_{right}}(s_A, a_r) \bigr ] \\
+q_{*,\pi_{right}}(s_A, a_r) &= \frac {4}{3}\\
+q_{*,\pi_{left}}(s_A, a_l) &= 1 + 0.5 \cdot 0.5 \cdot q_{*,\pi_{right}}(s_A, a_r)\\
+q_{*,\pi_{left}}(s_A, a_l) &= \frac {4}{3}\\
+\end{aligned}</script><p>Here <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) = q_{*,\pi_{right}}(s_A, a_r)</script>, assumption is correct. So, both <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l)</script> and <script type="math/tex">q_{*,\pi_{right}}(s_A, a_r)</script> are optimal policies for $\gamma = 0.5$.</p>
+<p>For $\gamma = 0.9$:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_B, a)&=\Bigl \{0+0.9 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} \cdot 1 \\
+&=0.9 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ]\\
+q_*(s_C, a)&=\Bigl \{2+0.9 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} \cdot1 \\
+&= 2+0.9 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ]\\
+q_{*,\pi_{left}}(s_A, a_l) &= \bigl [ 1 + 0.9 \cdot q_*(s_B, a) \bigr ] \cdot 1 \\
+&= 1 + 0.9 \cdot q_*(s_B, a)\\
+q_{*,\pi_{right}}(s_A, a_r) &= \bigl [ 0 + 0.9 \cdot q_*(s_C,a) \bigr ] \cdot 1 \\
+&= 0.9 \cdot q_*(s_C,a)
+\end{aligned}</script><p>Assume <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \geq q_{*,\pi_{left}}(s_C, a_l)</script> then we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_B, a) &= 0.9 \cdot q_{*,\pi_{left}}(s_A, a_l)\\
+q_*(s_C, a) &= 2+0.9 \cdot q_{*,\pi_{left}}(s_A, a_l)
+\end{aligned}</script><p>therefore,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_{*,\pi_{left}}(s_A, a_l) &= 1 + 0.9 \cdot 0.9 \cdot q_{*,\pi_{left}}(s_A, a_l)\\
+q_{*,\pi_{left}}(s_A, a_l) &= \frac {100}{19} = \frac {500}{95}\\
+q_{*,\pi_{right}}(s_A, a_r) &= 0.9 \cdot \bigl [ 2+0.9 \cdot q_{*,\pi_{left}}(s_A, a_l) \bigr ] \\
+q_{*,\pi_{right}}(s_A, a_r) &= \frac {729}{95}
+\end{aligned}</script><p>Here, <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \lt q_{*,\pi_{right}}(s_C, a_l)</script>,  conflict with the assumption, so the assumption fails.<br>Assume <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \le q_{*,\pi_{right}}(s_C, a_l)</script> then we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_B, a) &= 0.9 \cdot q_{*,\pi_{right}}(s_A, a_r)\\
+q_*(s_C, a) &= 2+0.9 \cdot q_{*,\pi_{right}}(s_A, a_r)
+\end{aligned}</script><p>therefore,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_{*,\pi_{right}}(s_A, a_r) &= 0.9 \cdot \bigl [ 2+0.9 \cdot q_{*,\pi_{right}}(s_A, a_r) \bigr ] \\
+q_{*,\pi_{right}}(s_A, a_r) &= \frac {180}{19}\\
+q_{*,\pi_{left}}(s_A, a_l) &= 1 + 0.9 \cdot 0.9 \cdot q_{*,\pi_{right}}(s_A, a_r)\\
+q_{*,\pi_{left}}(s_A, a_l) &= \frac {1648}{190}\\
+\end{aligned}</script><p>Here, <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \lt q_{*,\pi_{right}}(s_C, a_l)</script>, assumption is correct. So, $\pi_{right}$ is the optimal policy for $\gamma = 0.9$</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Reinforcement-Learning-Exercise/" rel="tag"># Reinforcement Learning Exercise</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/07/Reinforcement-Learning-Exercise-3-19/" rel="next" title="Reinforcement Learning Exercise 3.19">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 3.19
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Ye Xiang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ye Xiang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
