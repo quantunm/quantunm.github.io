@@ -229,6 +229,297 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-4-1/" itemprop="url">Reinforcement Learning Exercise 4.1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T12:03:47+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Example 4.1</strong> Consider the $4 \times 4$ gridworld shown below.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-1/4-1-1.png#pic_center" alt><br>The nonterminal states are $\mathcal S = \{1, 2, . . . , 14\}$. There are four actions possible in each state, $\mathcal A = \{up, down, right, left\}$, which deterministically cause the corresponding state transitions, except that actions that would take the agent off the grid in fact leave the state unchanged. Thus, for instance, $p(6,.1\mid 5, right) = 1$, $p(7,.1\mid 7, right) = 1$, and $p(10, r \mid 5, right) = 0$ for all $r \in \mathcal R$. This is an undiscounted, episodic task. The reward is $-1$ on all transitions until the terminal state is reached. The terminal state is shaded in the figure (although it is shown in two places, it is formally one state). The expected reward function is thus $r(s, a, s0) = -1$ for all states $s$, $s’$ and actions $a$. Suppose the agent follows the equiprobable random policy (all actions equally likely). The left side of Figure 4.1 shows the sequence of value functions ${v_k}$ computed by iterative policy evaluation. The final estimate is in fact $v_\pi$, which in this case gives for each state the negation of the expected number of steps from that state until termination.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-1/4-1-2.png#pic_center" alt="Figure4.1"></p>
+<p><strong>Exercise 4.1</strong> In Example 4.1, if $\pi$ is the equiprobable random policy, what is $q_\pi(11, down)$? What is $q_\pi(7, down)$?<br>Here, we can use the result of exercise 3.13 for calculation. The result of exercise 3.13 is :</p>
+<script type="math/tex; mode=display">
+q_\pi(s,a) = \sum_{s'} \biggl \{ P_{s,s'}^a \cdot \Bigl [ R_{s,s'}^a + \gamma \cdot v_\pi(s')  \Bigr ] \biggr \}</script><p>where $P_{s, s’}^a =  p(s’ \mid s,a)$ and $R_{s,s’}^a =  \mathbb E_\pi(r \mid s,a,s’)$.<br>So, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_\pi(11,down) &= P_{11, 7}^{down} \cdot \Bigl [ R_{11, 7}^{down} + \gamma \cdot v_\pi(7)\Bigr ] + P_{11, 10}^{down} \cdot \Bigl [ R_{11, 10}^{down} + \gamma \cdot v_\pi(10)\Bigr ] \\
+& \quad + P_{11, 11}^{down} \cdot \Bigl [ R_{11, 11}^{down} + \gamma \cdot v_\pi(11)\Bigr ] + P_{11, terminal}^{down} \cdot \Bigl [ R_{11, terminal}^{down} + \gamma \cdot v_\pi(terminal)\Bigr ] \\
+&= 0+0+0+p(terminal \mid 11, down) \cdot \biggl \{ \sum_{s'} \Bigl [r\cdot p(r \mid 11, down, s') \Bigr ] + \gamma \cdot v_\pi(terminal)\biggr \} \\
+&=1 \cdot \biggl \{ \Bigl [ (-1)\cdot p(-1 \mid 11, down, 7) + (-1) \cdot p(-1 \mid 11, down, 10) \\
+&\quad +   (-1) \cdot p(-1 \mid 11, down, 11) +  0 \cdot p(0 \mid 11, down, terminal)\Bigr ] + \gamma \cdot 0\biggr \} \\
+&=1 \cdot \biggl \{ \Bigl [ (-1)\cdot 0 + (-1) \cdot 0 +   (-1) \cdot 0 +  0 \cdot 1\Bigr ] + \gamma \cdot 0\biggr \} \\
+&= 0
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}
+q_\pi(7,down) &= P_{7, 3}^{down} \cdot \Bigl [ R_{7, 3}^{down} + \gamma \cdot v_\pi(3)\Bigr ] + P_{7, 6}^{down} \cdot \Bigl [ R_{7, 6}^{down} + \gamma \cdot v_\pi(6)\Bigr ] \\
+& \quad + P_{7, 11}^{down} \cdot \Bigl [ R_{7, 11}^{down} + \gamma \cdot v_\pi(11)\Bigr ] + P_{7, 7}^{down} \cdot \Bigl [ R_{7, 7}^{down} + \gamma \cdot v_\pi(7)\Bigr ] \\
+&= 0+0+p(7 \mid 11, down) \cdot \biggl \{ \sum_{s'} \Bigl [r\cdot p(r \mid 7, down, s') \Bigr ] + \gamma \cdot v_\pi(11)\biggr \} + 0 \\
+&=1 \cdot \biggl \{ \Bigl [ (-1)\cdot p(-1 \mid 7, down, 7) + (-1) \cdot p(-1 \mid 7, down, 3) \\
+&\quad +   (-1) \cdot p(-1 \mid 7, down, 6) +  (-1) \cdot p(-1 \mid 7, down, 11)\Bigr ] + \gamma \cdot (-14)\biggr \} \\
+&=1 \cdot \biggl \{ \Bigl [ (-1)\cdot 0 + (-1) \cdot 0 +   (-1) \cdot 0 +  (-1) \cdot 1\Bigr ] - \gamma \cdot 14\biggr \} \\
+&= -1 -\gamma \cdot 14
+\end{aligned}</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/The-derivation-of-Bellman-equation-for-value-of-a-policy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/The-derivation-of-Bellman-equation-for-value-of-a-policy/" itemprop="url">The derivation of Bellman equation for value of a policy</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T11:59:07+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>In book ‘Reinforcement Learning - An Introduction’, Chapter 3, the author gives out the Bellman equation for $v_\pi$ as equation (3.14), but without detailed derivation. That makes me feel confused and uncomfortable, so I try to derive the Bellman equation by myself. The details of derivation are gave out as below:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(s) &= \mathbb E_\pi (G_t \mid S_t = s) \\
+&= \mathbb E_\pi(R_{t+1} + \gamma \cdot G_{t+1} \mid S_t = s) \\
+&= \mathbb E_\pi(R_{t+1} \mid S_t = s) + \gamma \cdot \mathbb E_\pi(G_{t+1} \mid S_t = s) \\
+&= \sum_a \bigl [ \mathbb E_\pi (R_{t+1} \mid S_t = s, A_t = a) \cdot Pr(A_t = a \mid S_t =s) \\
+&\quad + \gamma \cdot \mathbb E_\pi(G_{t+1} \mid S_t = s, A_t = a)\cdot Pr(A_t= a \mid S_t =s) \bigr ] \\
+&= \sum_a Pr(A_t = a\mid S_t = s) \bigl [ \mathbb E_\pi(R_{t+1} \mid S_t = s, A_t =a) + \gamma \cdot \mathbb E_\pi (G_{t+1} \mid S_t =s, A_t = a) \bigr] \\
+&= \sum_a \pi(a\mid s) \Bigl [ \sum_r r \cdot Pr(R_{t+1} = r \mid S_t = s, A_t = a) + \gamma \sum_g g \cdot Pr(G_{t+1} = g \mid S_t = s, A_t = a) \Bigr ] \\
+&= \sum_a \pi(a \mid s) \Bigl [ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} Pr(G_{t+1} = g, R_{t+1} = r, S_{t+1} = s' \mid S_t = s, A_t = a) \Bigr ] \\
+&= \sum_a \pi(a \mid s) \Bigl [ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} \frac {Pr(G_{t+1} = g, R_{t+1} = r, S_{t+1} = s' , S_t = s, A_t = a)} {Pr(S_t = s, A_t = a)} \Bigr ] \\
+&= \sum_a \pi(a \mid s) \biggl \{ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} \Bigl [ Pr(G_{t+1} = g \mid R_{t+1} = r, S_{t+1} = s' , S_t = s, A_t = a) \\
+&\quad \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t = s, A_t = a) Pr(S_t = s, A_t = a) /Pr(S_t = s, A_t = a) \Bigr ] \biggr \} \\
+&= \sum_a \pi(a \mid s) \biggl \{ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} \Bigl [ Pr(G_{t+1} = g \mid R_{t+1} = r, S_{t+1} = s' , S_t = s, A_t = a) \\
+&\quad \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t = s, A_t = a) \Bigr ] \biggr \} \\
+&= \sum_a \pi(a \mid s) \biggl \{ \sum_r \sum_{s'} Pr(R_{t+1} = r, S_{t+1} = s' |S_t = s, A_t = a) \\
+&\quad \cdot \Bigl [ r + \gamma \sum_g g \cdot Pr(G_{t+1} = g| R_{t+1} =r, S_{t+1} = s', S_t =s, A_t = a) \Bigr ] \biggr \}
+\end{aligned}</script><p>$\because$ In Markov Process, $G_{t+1}$ only relate to $S_{t+1}$, $S_t$ and $A_t$ give no contribution to $G_{t+1}$,<br>$\therefore Pr(G_{t+1} = g \mid R_{t=1}= r, S_{t+1} = s’, S_t = s, A_t = a) = Pr(G_{t+1} = g \mid S_{t+1} =s’)$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\therefore v_\pi(s) &= \sum_a \pi ( a \mid s) \biggl \{ \sum_r \sum_{s'}Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t = a) \\
+&\quad \cdot \Bigl [ r + \gamma \sum_g g \cdot Pr(G_{t+1} = g \mid S_{t+1} = s') \Bigr ] \biggr \} \\
+&= \sum_a \pi ( a \mid s) \biggl \{ \sum_r \sum_{s'}Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t = a) \\
+&\quad \cdot \Bigl [ r + \gamma \mathbb E_\pi(G_{t+1} \mid S_{t+1} = s') \Bigr ] \biggr \} \\
+&= \sum_a \pi ( a \mid s) \biggl \{ \sum_r \sum_{s'}p( r,  s' \mid s, a) \cdot \Bigl [ r + \gamma v_\pi(s') \Bigr ] \biggr \} \\
+\end{aligned}</script><p>That’s the Bellman equation for $v_\pi$. We get it.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Reinfocement-Learning-Exercise-3-23/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1451,147 +1742,13 @@ v_\pi(s) = \sum_{a \in \mathcal A} \bigl [ \pi(a|s) \cdot q_\pi(s,a) \bigr ]</sc
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/08/Reinforcement-Learning-Exercise-3-11/" itemprop="url">Reinforcement Learning Exercise 3.11</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T21:04:08+08:00">
-                2019-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Exercise 3.11</strong> If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $p$(3.2)?</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
-&= \pi(a|s) \cdot Pr(S_t = s) \qquad{(1)}
-\end{aligned}</script><script type="math/tex; mode=display">
-\begin{aligned}
-\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot Pr(R_{t+1} = r|S_t = s) \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s) \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{Pr (R_{t+1} = r, S_{t+1} = s', S_t = s)}{Pr(S_t = s)} \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s', S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot Pr(S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ]  \qquad{(2)} \\
-\end{aligned}</script><p>Substitute equation (1) into (2), there is :</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s)\cdot Pr(S_t=s)}{Pr(S_t = s)} \bigr ] \\
-&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s) \bigr ] \Bigr \} \\
-&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ p(r, s' | s, a) \cdot \pi(a|s) \bigr ] \Bigr \} \qquad{(3)} \\
-\end{aligned}</script><p>Equation (3) is the result.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1635,7 +1792,7 @@ Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

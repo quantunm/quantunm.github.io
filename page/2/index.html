@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Reinforcement Learning Exercise,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,13 @@
 
 
 
-<meta name="description" content="Exercise 3.15 In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or onl">
-<meta name="keywords" content="Reinforcement Learning Exercise">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 3.15">
-<meta property="og:url" content="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-15/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Keep going">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 3.15 In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or onl">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T15:36:42.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 3.15">
-<meta name="twitter:description" content="Exercise 3.15 In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or onl">
+<meta name="twitter:title" content="Keep going">
 
 
 
@@ -120,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-15/">
+  <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 3.15 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +140,8 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -218,9 +214,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -233,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-15/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -250,7 +246,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 3.15</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/08/Reinforcement-Learning-Exercise-3-11/" itemprop="url">Reinforcement Learning Exercise 3.11</a></h1>
         
 
         <div class="post-meta">
@@ -262,8 +260,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T23:36:07+08:00">
-                2019-06-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T21:04:08+08:00">
+                2019-06-08
               </time>
             
 
@@ -300,23 +298,30 @@
       
 
       
-        <p><strong>Exercise 3.15</strong> In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or only the intervals between them? Prove, using (3.8), that adding a constant $c$ to all the rewards adds a constant, $v_c$, to the values of all states, and thus does not affect the relative values of any states under any policies. What is $v_c$ in terms of $c$ and $\gamma$?</p>
-<p>First, for $v_\pi$, according to definition:</p>
+        
+          
+            <p><strong>Exercise 3.11</strong> If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $p$(3.2)?</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
-&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s)
-\end{aligned}</script><p>Denote $\hat R = R + c$, for $\hat R$, there is:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\hat {v}_\pi(s) &= \mathbb E_\pi(\hat G_t|S_t=s) \\
-&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot \hat R_{t+k+1} | S_t = s) \\
-&= \mathbb E_\pi  \bigl [ \sum_{k=0}^{\infty} \gamma^k \cdot (R_{t+k+1} + c ) | S_t = s \bigr ] \\
-&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s) + \mathbb E_\pi(\sum_{k=0}^{\infty} \gamma^k \cdot c | S_t = s)\\
-&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s) + \sum_{k=0}^{\infty} \gamma^k \cdot c \\
-&= v_\pi(s) + \frac {c}{1 - \gamma} \\
+Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
+&= \pi(a|s) \cdot Pr(S_t = s) \qquad{(1)}
 \end{aligned}</script><script type="math/tex; mode=display">
-\therefore v_c = \frac {c}{1-\gamma}</script>
+\begin{aligned}
+\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot Pr(R_{t+1} = r|S_t = s) \bigr ] \\
+&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s) \bigr ] \\
+&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{Pr (R_{t+1} = r, S_{t+1} = s', S_t = s)}{Pr(S_t = s)} \bigr ] \\
+&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s', S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ] \\
+&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot Pr(S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ]  \qquad{(2)} \\
+\end{aligned}</script><p>Substitute equation (1) into (2), there is :</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s)\cdot Pr(S_t=s)}{Pr(S_t = s)} \bigr ] \\
+&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s) \bigr ] \Bigr \} \\
+&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ p(r, s' | s, a) \cdot \pi(a|s) \bigr ] \Bigr \} \qquad{(3)} \\
+\end{aligned}</script><p>Equation (3) is the result.</p>
+
+          
+        
       
     </div>
     
@@ -331,40 +336,14 @@ v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Reinforcement-Learning-Exercise/" rel="tag"># Reinforcement Learning Exercise</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/06/21/Reinforcement-Learning-Exercise-3-13/" rel="next" title="Reinforcement Learning Exercise 3.13">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 3.13
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/22/Reinforcement-Learning-Exercise-3-17/" rel="prev" title="Reinforcement Learning Exercise 3.17">
-                Reinforcement Learning Exercise 3.17 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -374,11 +353,14 @@ v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -386,10 +368,6 @@ v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
 
 
           
-
-  
-
-
 
         </div>
         
@@ -602,10 +580,6 @@ v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

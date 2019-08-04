@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Exercise 3.15 In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or onl">
+<meta name="description" content="In book ‘Reinforcement Learning - An Introduction’, Chapter 3, the author gives out the Bellman equation for $v_\pi$ as equation (3.14), but without detailed derivation. That makes me feel confused an">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 3.15">
-<meta property="og:url" content="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-15/index.html">
+<meta property="og:title" content="The derivation of Bellman equation for value of a policy">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/The-derivation-of-Bellman-equation-for-value-of-a-policy/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 3.15 In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or onl">
+<meta property="og:description" content="In book ‘Reinforcement Learning - An Introduction’, Chapter 3, the author gives out the Bellman equation for $v_\pi$ as equation (3.14), but without detailed derivation. That makes me feel confused an">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T15:36:42.249Z">
+<meta property="og:updated_time" content="2019-08-04T04:00:43.660Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 3.15">
-<meta name="twitter:description" content="Exercise 3.15 In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or onl">
+<meta name="twitter:title" content="The derivation of Bellman equation for value of a policy">
+<meta name="twitter:description" content="In book ‘Reinforcement Learning - An Introduction’, Chapter 3, the author gives out the Bellman equation for $v_\pi$ as equation (3.14), but without detailed derivation. That makes me feel confused an">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-15/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/04/The-derivation-of-Bellman-equation-for-value-of-a-policy/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 3.15 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>The derivation of Bellman equation for value of a policy | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-15/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/The-derivation-of-Bellman-equation-for-value-of-a-policy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 3.15</h1>
+          <h1 class="post-title" itemprop="name headline">The derivation of Bellman equation for value of a policy</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T23:36:07+08:00">
-                2019-06-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T11:59:07+08:00">
+                2019-08-04
               </time>
             
 
@@ -300,23 +300,38 @@
       
 
       
-        <p><strong>Exercise 3.15</strong> In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or only the intervals between them? Prove, using (3.8), that adding a constant $c$ to all the rewards adds a constant, $v_c$, to the values of all states, and thus does not affect the relative values of any states under any policies. What is $v_c$ in terms of $c$ and $\gamma$?</p>
-<p>First, for $v_\pi$, according to definition:</p>
+        <p>In book ‘Reinforcement Learning - An Introduction’, Chapter 3, the author gives out the Bellman equation for $v_\pi$ as equation (3.14), but without detailed derivation. That makes me feel confused and uncomfortable, so I try to derive the Bellman equation by myself. The details of derivation are gave out as below:</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
-&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s)
-\end{aligned}</script><p>Denote $\hat R = R + c$, for $\hat R$, there is:</p>
+v_\pi(s) &= \mathbb E_\pi (G_t \mid S_t = s) \\
+&= \mathbb E_\pi(R_{t+1} + \gamma \cdot G_{t+1} \mid S_t = s) \\
+&= \mathbb E_\pi(R_{t+1} \mid S_t = s) + \gamma \cdot \mathbb E_\pi(G_{t+1} \mid S_t = s) \\
+&= \sum_a \bigl [ \mathbb E_\pi (R_{t+1} \mid S_t = s, A_t = a) \cdot Pr(A_t = a \mid S_t =s) \\
+&\quad + \gamma \cdot \mathbb E_\pi(G_{t+1} \mid S_t = s, A_t = a)\cdot Pr(A_t= a \mid S_t =s) \bigr ] \\
+&= \sum_a Pr(A_t = a\mid S_t = s) \bigl [ \mathbb E_\pi(R_{t+1} \mid S_t = s, A_t =a) + \gamma \cdot \mathbb E_\pi (G_{t+1} \mid S_t =s, A_t = a) \bigr] \\
+&= \sum_a \pi(a\mid s) \Bigl [ \sum_r r \cdot Pr(R_{t+1} = r \mid S_t = s, A_t = a) + \gamma \sum_g g \cdot Pr(G_{t+1} = g \mid S_t = s, A_t = a) \Bigr ] \\
+&= \sum_a \pi(a \mid s) \Bigl [ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} Pr(G_{t+1} = g, R_{t+1} = r, S_{t+1} = s' \mid S_t = s, A_t = a) \Bigr ] \\
+&= \sum_a \pi(a \mid s) \Bigl [ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} \frac {Pr(G_{t+1} = g, R_{t+1} = r, S_{t+1} = s' , S_t = s, A_t = a)} {Pr(S_t = s, A_t = a)} \Bigr ] \\
+&= \sum_a \pi(a \mid s) \biggl \{ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} \Bigl [ Pr(G_{t+1} = g \mid R_{t+1} = r, S_{t+1} = s' , S_t = s, A_t = a) \\
+&\quad \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t = s, A_t = a) Pr(S_t = s, A_t = a) /Pr(S_t = s, A_t = a) \Bigr ] \biggr \} \\
+&= \sum_a \pi(a \mid s) \biggl \{ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} \Bigl [ Pr(G_{t+1} = g \mid R_{t+1} = r, S_{t+1} = s' , S_t = s, A_t = a) \\
+&\quad \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t = s, A_t = a) \Bigr ] \biggr \} \\
+&= \sum_a \pi(a \mid s) \biggl \{ \sum_r \sum_{s'} Pr(R_{t+1} = r, S_{t+1} = s' |S_t = s, A_t = a) \\
+&\quad \cdot \Bigl [ r + \gamma \sum_g g \cdot Pr(G_{t+1} = g| R_{t+1} =r, S_{t+1} = s', S_t =s, A_t = a) \Bigr ] \biggr \}
+\end{aligned}</script><p>$\because$ In Markov Process, $G_{t+1}$ only relate to $S_{t+1}$, $S_t$ and $A_t$ give no contribution to $G_{t+1}$,<br>$\therefore Pr(G_{t+1} = g \mid R_{t=1}= r, S_{t+1} = s’, S_t = s, A_t = a) = Pr(G_{t+1} = g \mid S_{t+1} =s’)$</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-\hat {v}_\pi(s) &= \mathbb E_\pi(\hat G_t|S_t=s) \\
-&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot \hat R_{t+k+1} | S_t = s) \\
-&= \mathbb E_\pi  \bigl [ \sum_{k=0}^{\infty} \gamma^k \cdot (R_{t+k+1} + c ) | S_t = s \bigr ] \\
-&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s) + \mathbb E_\pi(\sum_{k=0}^{\infty} \gamma^k \cdot c | S_t = s)\\
-&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s) + \sum_{k=0}^{\infty} \gamma^k \cdot c \\
-&= v_\pi(s) + \frac {c}{1 - \gamma} \\
-\end{aligned}</script><script type="math/tex; mode=display">
-\therefore v_c = \frac {c}{1-\gamma}</script>
+\therefore v_\pi(s) &= \sum_a \pi ( a \mid s) \biggl \{ \sum_r \sum_{s'}Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t = a) \\
+&\quad \cdot \Bigl [ r + \gamma \sum_g g \cdot Pr(G_{t+1} = g \mid S_{t+1} = s') \Bigr ] \biggr \} \\
+&= \sum_a \pi ( a \mid s) \biggl \{ \sum_r \sum_{s'}Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t = a) \\
+&\quad \cdot \Bigl [ r + \gamma \mathbb E_\pi(G_{t+1} \mid S_{t+1} = s') \Bigr ] \biggr \} \\
+&= \sum_a \pi ( a \mid s) \biggl \{ \sum_r \sum_{s'}p( r,  s' \mid s, a) \cdot \Bigl [ r + \gamma v_\pi(s') \Bigr ] \biggr \} \\
+\end{aligned}</script><p>That’s the Bellman equation for $v_\pi$. We get it.</p>
+
       
     </div>
     
@@ -346,8 +361,8 @@ v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/21/Reinforcement-Learning-Exercise-3-13/" rel="next" title="Reinforcement Learning Exercise 3.13">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 3.13
+              <a href="/2019/07/07/Reinfocement-Learning-Exercise-3-23/" rel="next" title="Reinfocement Learning Exercise 3.23">
+                <i class="fa fa-chevron-left"></i> Reinfocement Learning Exercise 3.23
               </a>
             
           </div>
@@ -356,8 +371,8 @@ v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/22/Reinforcement-Learning-Exercise-3-17/" rel="prev" title="Reinforcement Learning Exercise 3.17">
-                Reinforcement Learning Exercise 3.17 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-1/" rel="prev" title="Reinforcement Learning Exercise 4.1">
+                Reinforcement Learning Exercise 4.1 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
