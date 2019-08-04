@@ -229,6 +229,138 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/21/Reinforcement-Learning-Exercise-3-12/" itemprop="url">Reinforcement Learning Exercise 3.12</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T23:15:20+08:00">
+                2019-06-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Exercise 3.12</strong> Give an equation for $v_\pi$ in terms of $q_\pi$ and $\pi$.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
+&=\sum_{g_t}\bigl [ g_t \cdot p(g_t|s) \bigr ] \\
+&=\sum_{g_t}\bigl [ g_t \cdot \frac {p(g_t, s)}{p(s)} \bigr ] \\
+&=\sum_{g_t}\bigl [ g_t \cdot \frac{ \sum_{a \in \mathcal A} p(g_t, s, a)}{p(s)} \bigr ] \\
+&=\sum_{g_t}\Bigl \{ g_t \cdot \frac{ \sum_{a \in \mathcal A} \bigl [p(g_t| s, a) \cdot p(s, a) \bigr ] }{p(s)} \Bigr \} \\
+&=\sum_{g_t}\Bigl \{ g_t \cdot \frac{ \sum_{a \in \mathcal A} \bigl [p(g_t| s, a) \cdot p(a | s) \cdot p(s) \bigr ]}{p(s) \bigr ] } \Bigr \} \\
+&=\sum_{g_t}\Bigl \{ g_t \cdot \sum_{a \in \mathcal A} \bigl [p(g_t| s, a) \cdot p(a | s) \bigr ] \Bigr \} \\
+&=\sum_{a \in \mathcal A} \Bigl \{ p(a|s) \sum_{g_t} \bigl [ g_t \cdot p(g_t | s, a) \bigr ] \Bigr \}
+\end{aligned}</script><p>According to definition, $p(a|s) = \pi(a|s)$, $\sum_{g_t} \bigl [ g_t \cdot p(g_t | s, a) \bigr ] = q_\pi(s,a)$, so there is:</p>
+<script type="math/tex; mode=display">
+v_\pi(s) = \sum_{a \in \mathcal A} \bigl [ \pi(a|s) \cdot q_\pi(s,a) \bigr ]</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -404,7 +536,7 @@ Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
