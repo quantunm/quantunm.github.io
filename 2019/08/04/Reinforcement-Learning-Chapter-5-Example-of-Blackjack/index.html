@@ -79,18 +79,24 @@
 
 
 
-<meta name="description" content="Exercise 5.5 Consider an MDP with a single nonterminal state and a single action that transitions back to the nonterminal state with probability $p$ and transitions to the terminal state with probabil">
+<meta name="description" content="This article exhibits a source code and experiment result for the blackjack example in the book. Both on-policy and off-policy are implemented in this source code. The off-policy includes ordinary imp">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 5.5">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-5/index.html">
+<meta property="og:title" content="Reinforcement Learning Chapter 5, Example of Blackjack">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Chapter-5-Example-of-Blackjack/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 5.5 Consider an MDP with a single nonterminal state and a single action that transitions back to the nonterminal state with probability $p$ and transitions to the terminal state with probabil">
+<meta property="og:description" content="This article exhibits a source code and experiment result for the blackjack example in the book. Both on-policy and off-policy are implemented in this source code. The off-policy includes ordinary imp">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-04T13:12:01.379Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_on_policy_first_visit.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_on_policy_every_visit.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_off_policy_first_visit.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_off_policy_every_visit.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/MSE_for_sampling.png">
+<meta property="og:updated_time" content="2019-08-04T13:28:06.010Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 5.5">
-<meta name="twitter:description" content="Exercise 5.5 Consider an MDP with a single nonterminal state and a single action that transitions back to the nonterminal state with probability $p$ and transitions to the terminal state with probabil">
+<meta name="twitter:title" content="Reinforcement Learning Chapter 5, Example of Blackjack">
+<meta name="twitter:description" content="This article exhibits a source code and experiment result for the blackjack example in the book. Both on-policy and off-policy are implemented in this source code. The off-policy includes ordinary imp">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_on_policy_first_visit.png">
 
 
 
@@ -120,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-5/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Chapter-5-Example-of-Blackjack/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 5.5 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Chapter 5, Example of Blackjack | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-5/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Chapter-5-Example-of-Blackjack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -250,7 +256,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 5.5</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Chapter 5, Example of Blackjack</h1>
         
 
         <div class="post-meta">
@@ -262,7 +268,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T21:11:17+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T21:16:54+08:00">
                 2019-08-04
               </time>
             
@@ -300,21 +306,16 @@
       
 
       
-        <p><strong>Exercise 5.5</strong> Consider an MDP with a single nonterminal state and a single action that transitions back to the nonterminal state with probability $p$ and transitions to the terminal state with probability $1-p$. Let the reward be $+1$ on all transitions, and let $\gamma=1$. Suppose you observe one episode that lasts 10 steps, with a return of 10. What are the first-visit and every-visit estimators of the value of the nonterminal state?</p>
-<p>For the first-visit estimator, only the first visit of a state is considered. So:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-V(S_{nonterminal}) &= G(S_0) \\
-&= 1 \cdot p + 0 \cdot (1-p) \\
-&= p
-\end{aligned}</script><p>For the every-visit estimator, every state is considered:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-V(S_{noterminal}) &= G(S_0) + G(S_1) + \cdots + G_(S_{10})\\
-&= [1 \cdot p + 0 \cdot (1-p)] + \gamma[1 \cdot p^2 + 0 \cdot (1 - p)] +\cdots+\gamma^9[1\cdot p^{10}+0\cdot(1-p)] \\
-&=p + p^2 + \cdots + p^{10} \\
-&= \frac{p}{1-p}(p^{10} - 1)
-\end{aligned}</script>
+        <p>This article exhibits a source code and experiment result for the blackjack example in the book. Both on-policy and off-policy are implemented in this source code. The off-policy includes ordinary importance sampling and weighted importance sampling.The first-visit and every-visit methods are implemented in on_policy, although they lead to a same result (in blackjack example, the return of each state is zero except the terminal state).<br>The address of the code is:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_5/Blackjack.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_5/Blackjack.py</a><br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_on_policy_first_visit.png" width="100%" height="100%"></p>
+<center>Figure 1. state value estimation in MC on policy, first-visit</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_on_policy_every_visit.png" width="100%" height="100%">
+<center> Figure 2. state value estimation in MC on policy, every-visit</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_off_policy_first_visit.png" width="100%" height="100%">
+<center>Figure 3. Monte Carlo ES on policy, first-visit for estimating $\pi \approx \pi_*$</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_off_policy_every_visit.png" width="100%" height="100%">
+<center>Figure 4. Monte Carlo ES on policy, every-visit for estimating $\pi \approx \pi_*$</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/MSE_for_sampling.png" width="100%" height="100%">
+<center>Figure 5. Mean square error of ordinary and weighted importance sampling</center>
       
     </div>
     
@@ -344,8 +345,8 @@ V(S_{noterminal}) &= G(S_0) + G(S_1) + \cdots + G_(S_{10})\\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-5-4/" rel="next" title="Reinforcement Learning Exercise 5.4">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 5.4
+              <a href="/2019/08/04/Reinforcement-Learning-Exercise-5-6/" rel="next" title="Reinforcement Learning Exercise 5.6">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 5.6
               </a>
             
           </div>
@@ -353,10 +354,6 @@ V(S_{noterminal}) &= G(S_0) + G(S_1) + \cdots + G_(S_{10})\\
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-5-6/" rel="prev" title="Reinforcement Learning Exercise 5.6">
-                Reinforcement Learning Exercise 5.6 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
