@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Keep going">
 <meta property="og:description" content="The book doesn’t explain the formula (5.2) clearly, and the second and third lines of the formula (5.2) in page 101 made me confused. So, here, I make it clear to be understood.First,   q_\pi(s, \pi&apos;(">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-04T12:45:43.032Z">
+<meta property="og:updated_time" content="2019-08-04T12:55:00.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reinforcement Learning--Explanation to Formula (5.2)">
 <meta name="twitter:description" content="The book doesn’t explain the formula (5.2) clearly, and the second and third lines of the formula (5.2) in page 101 made me confused. So, here, I make it clear to be understood.First,   q_\pi(s, \pi&apos;(">
@@ -306,8 +306,8 @@ q_\pi(s, \pi'(s)) = \sum_a \pi'(a \mid s) q_\pi(s,a) \\
 \because \text{for all }\pi(a \mid s), \text{there is } \pi(a \mid s) = 
 \begin{cases}
 1 - \epsilon + \epsilon / | \mathcal A(s)| & \text{if } a = A^* \\
-\epsilon / | \mathcal A(s) |& \text{if } a = \not A^* \\
-\end{cases} \\
+\epsilon / | \mathcal A(s) |& \text{if } a \not = A^* \\
+\end{cases} \\</script><script type="math/tex; mode=display">
 \begin{aligned}
 \therefore  q_\pi(s, \pi'(s)) &= \sum_{a(a = \not A^*)} \frac {\epsilon} {| \mathcal A(s) |}q_\pi(s,a) + (1 - \epsilon + \frac{\epsilon}{|\mathcal A(s)|})q_\pi(s,a = A^*) \\
 &=\frac {\epsilon} {| \mathcal A(s) |} \sum_{a(a = \not A^*)} q_\pi(s,a) + \frac {\epsilon} {| \mathcal A(s) |}q_\pi(s,a = A^*) + (1-\epsilon)q_\pi(s,a = A^*) \\
