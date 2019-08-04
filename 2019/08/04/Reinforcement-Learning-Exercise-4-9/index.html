@@ -79,18 +79,23 @@
 
 
 
-<meta name="description" content="Exercise 4.4 The policy iteration algorithm on page 80 has a subtle bug in that it may never terminate if the policy continually switches between two or more policies that are equally good. This is OK">
+<meta name="description" content="Exercise 4.9 (programming) Implement value iteration for the gambler’s problem and solve it for $p_h$ = 0.25 and $p_h$ = 0.55. In programming, you may find it convenient to introduce two dummy states">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 4.4">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-4/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 4.9">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-9/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 4.4 The policy iteration algorithm on page 80 has a subtle bug in that it may never terminate if the policy continually switches between two or more policies that are equally good. This is OK">
+<meta property="og:description" content="Exercise 4.9 (programming) Implement value iteration for the gambler’s problem and solve it for $p_h$ = 0.25 and $p_h$ = 0.55. In programming, you may find it convenient to introduce two dummy states">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-04T05:04:01.065Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.4_theta1e-9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.25_theta1e-9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.55_theta1e-9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_ph0.4.png">
+<meta property="og:updated_time" content="2019-08-04T12:39:28.174Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 4.4">
-<meta name="twitter:description" content="Exercise 4.4 The policy iteration algorithm on page 80 has a subtle bug in that it may never terminate if the policy continually switches between two or more policies that are equally good. This is OK">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 4.9">
+<meta name="twitter:description" content="Exercise 4.9 (programming) Implement value iteration for the gambler’s problem and solve it for $p_h$ = 0.25 and $p_h$ = 0.55. In programming, you may find it convenient to introduce two dummy states">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.4_theta1e-9.png">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-4/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-9/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 4.4 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 4.9 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +238,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-4/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -250,7 +255,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 4.4</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 4.9</h1>
         
 
         <div class="post-meta">
@@ -262,7 +267,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T12:27:53+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T20:28:21+08:00">
                 2019-08-04
               </time>
             
@@ -300,30 +305,21 @@
       
 
       
-        <p><strong>Exercise 4.4</strong> The policy iteration algorithm on page 80 has a subtle bug in that it may never terminate if the policy continually switches between two or more policies that are equally good. This is OK for pedagogy, but not for actual use. Modify the pseudocode so that convergence is guaranteed.</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-&\text{1 Initialization} \\
-    &\qquad V(s) \in \mathbb R \text{ and } \pi (s) \in \mathcal A(s) \text{ arbitrarily } s \in \mathcal S \\
-&\text{2 Policy Evaluation} \\
-    &\qquad \text{Loop:} \\
-        &\qquad \qquad \Delta \leftarrow 0 \\
-        &\qquad \qquad \text{Loop for each } s \in \mathcal S: \\
-         &\qquad \qquad \qquad v \leftarrow V(s) \\
-        &\qquad \qquad \qquad V(s) \leftarrow \sum_{s',r}p(s',r \mid s,\pi(s)) \Bigl [ r + \gamma V(s')\Bigr ] \\
-        &\qquad \qquad \qquad \Delta \leftarrow \max (\Delta , |v-V(s)|) \\
-     &\qquad \text{until } \Delta \lt \theta \text{ (a small positive number determining the accuracy of estimation) } \\
-&\text{3 Policy Improvement} \\
-     &\qquad policy\text-stable \leftarrow true \\
-    &\qquad \text{For each }s \in \mathcal S: \\
-    &\qquad \qquad old \text-V(s) \leftarrow V(s) \\
-    &\qquad \qquad a \leftarrow \text{argmax}_a \sum_{s',r}p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \\ 
-     &\qquad \qquad V(s) \leftarrow \sum_{s',r}p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \\
-     &\qquad \qquad old \text- action \leftarrow \pi(s) \\
-     &\qquad \qquad \pi(s) \leftarrow a \\
-     &\qquad \qquad \text{If } old\text-action =\not \pi(s) \text{ and } |V(s) - old\text-V(s)| > \theta \text{ then } policy\text-stable \leftarrow false \\
-    &\qquad \text{If } policy\text-stable =true \text{ then stop and return } V \approx v_* \text{ and }\pi \approx \pi_* \text{ else go to 2.} \\
-\end{aligned}</script>
+        <p><strong>Exercise 4.9 (programming)</strong> Implement value iteration for the gambler’s problem and solve it for $p_h$ = 0.25 and $p_h$ = 0.55. In programming, you may find it convenient to introduce two dummy states corresponding to termination with capital of 0 and 100, giving them values of 0 and 1 respectively. Show your results graphically, as in Figure 4.3.Are your results stable as $\theta \rightarrow 0$?</p>
+<p>According to the pseudocode of value iteration for estimating $\pi \approx \pi_*$, we can easily write the code for this exercise.<br>The code’s address is here:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/gamblers_problem.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/gamblers_problem.py</a></p>
+<p>When $p_h = 0.4$ and $\theta = 10^{-9}$, the result is same as Figure 4.3 in the book.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.4_theta1e-9.png" width="100%" height="100%"></p>
+<center>Figure 1. $p_h = 0.4$ and $\theta = 10^{-9}$</center>
+
+<p>Change $p_h$ to the 0.25 and 0.55, the result to this exercise is:<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.25_theta1e-9.png" width="100%" height="100%"></p>
+<center>Figure 2. $p_h = 0.25$ and $\theta = 10^{-9}$</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.55_theta1e-9.png" width="100%" height="100%">
+<center>Figure 3. $p_h = 0.55$ and $\theta = 10^{-9}$</center>
+Take $p_h=0.4$ as an example, change the $\theta$ from $0.1$ to $10^{-11}$, we can find that the result is stable.
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_ph0.4.png" width="100%" height="100%">
+<center>Figure 4. $p_h = 0.4$</center>
+
+<p>One important thing is although the results are stable, the results are not unique. Because actions in different states may result in an identical maximum state value. In the program, we select the first action which lead to the maximum state value, we can also choose the other actions those lead to the maximum state value, that makes the results to be not unique.</p>
+
       
     </div>
     
@@ -353,8 +349,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-3/" rel="next" title="Reinforcement Learning Exercise 4.3">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 4.3
+              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-7/" rel="next" title="Reinforcement Learning Exercise 4.7">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 4.7
               </a>
             
           </div>
@@ -362,10 +358,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-5/" rel="prev" title="Reinforcement Learning Exercise 4.5">
-                Reinforcement Learning Exercise 4.5 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
