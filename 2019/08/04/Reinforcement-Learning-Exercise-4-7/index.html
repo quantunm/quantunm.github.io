@@ -79,20 +79,21 @@
 
 
 
-<meta name="description" content="Exercise 3.23 Give the Bellman equation for $q_*$ for the recycling robot.This picture shows the mechanism of the recycling robot. To give the Bellman equation for q_* for the recycling robot, we have">
+<meta name="description" content="Exercise 4.7 (programming) Write a program for policy iteration and re-solve Jack’s car rental problem with the following changes. One of Jack’s employees at the first location rides a bus home each n">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinfocement Learning Exercise 3.23">
-<meta property="og:url" content="http://yoursite.com/2019/07/07/Reinfocement-Learning-Exercise-3-23/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 4.7">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-7/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 3.23 Give the Bellman equation for $q_*$ for the recycling robot.This picture shows the mechanism of the recycling robot. To give the Bellman equation for q_* for the recycling robot, we have">
+<meta property="og:description" content="Exercise 4.7 (programming) Write a program for policy iteration and re-solve Jack’s car rental problem with the following changes. One of Jack’s employees at the first location rides a bus home each n">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-23/3-23.png#pic_center">
-<meta property="og:updated_time" content="2019-07-07T14:32:29.491Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/car_rental.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/exercise_4.7.png">
+<meta property="og:updated_time" content="2019-08-04T12:25:28.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinfocement Learning Exercise 3.23">
-<meta name="twitter:description" content="Exercise 3.23 Give the Bellman equation for $q_*$ for the recycling robot.This picture shows the mechanism of the recycling robot. To give the Bellman equation for q_* for the recycling robot, we have">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-23/3-23.png#pic_center">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 4.7">
+<meta name="twitter:description" content="Exercise 4.7 (programming) Write a program for policy iteration and re-solve Jack’s car rental problem with the following changes. One of Jack’s employees at the first location rides a bus home each n">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/car_rental.png">
 
 
 
@@ -122,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/07/Reinfocement-Learning-Exercise-3-23/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-7/">
 
 
 
 
 
-  <title>Reinfocement Learning Exercise 3.23 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 4.7 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -235,7 +236,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Reinfocement-Learning-Exercise-3-23/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -252,7 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinfocement Learning Exercise 3.23</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 4.7</h1>
         
 
         <div class="post-meta">
@@ -264,8 +265,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-07T22:19:21+08:00">
-                2019-07-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T16:07:59+08:00">
+                2019-08-04
               </time>
             
 
@@ -302,41 +303,16 @@
       
 
       
-        <p><strong>Exercise 3.23</strong> Give the Bellman equation for $q_*$ for the recycling robot.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-23/3-23.png#pic_center" alt><br>This picture shows the mechanism of the recycling robot.</p>
-<p>To give the Bellman equation for <script type="math/tex">q_*</script> for the recycling robot, we have to enumerate equations for <script type="math/tex">q_*(s_h, a_s)</script>, <script type="math/tex">q_*(s_h, a_w)</script>, <script type="math/tex">q_*(s_h, a_r)</script>, <script type="math/tex">q_*(s_l, a_s)</script>,<script type="math/tex">q_*(s_l, a_w)</script> and <script type="math/tex">q_*(s_l, a_r)</script>. Here, the subscripts h, l, s, w, r respectively denotes ‘high’, ‘low’, ‘search’, ‘wait’, ‘recharge’. For ‘high’ status, the available actions are ‘search’ and ‘wait’, so $q_*(s_h, a_r)$ is excluded.<br>First, we have to introduce the equation (1) from exercise 3.22:</p>
-<script type="math/tex; mode=display">
-q_*(s,a)=\sum_{s'} \Bigl \{ \bigl [ R_{s,s'}^a + \gamma \max_{a'} q_*(s',a') \bigr ] P_{s,s'}^a \Bigr \} \qquad{(1)}</script><p>For status ‘high’, we have:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_h, a_s) &= \bigl [ R_{s_h, s_h}^{a_s} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_h,s_h}^{a_s} + \bigl [ R_{s_h, s_l}^{a_s} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_h,s_l}^{a_s} \qquad{(2)}\\
-q_*(s_h, a_w) &= \bigl [ R_{s_h, s_h}^{a_w} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_h,s_h}^{a_w} + \bigl [ R_{s_h, s_l}^{a_w} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_h,s_l}^{a_w} \qquad{(3)}
-\end{aligned}</script><p>For status ‘low’, there are:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_l, a_s) &= \bigl [ R_{s_l, s_h}^{a_s} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_l,s_h}^{a_s} + \bigl [ R_{s_l, s_l}^{a_s} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_l,s_l}^{a_s} \qquad{(4)} \\
-q_*(s_l, a_w) &= \bigl [ R_{s_l, s_h}^{a_w} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_l,s_h}^{a_w} + \bigl [ R_{s_l, s_l}^{a_w} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_l,s_l}^{a_w} \qquad{(5)} \\
-q_*(s_l, a_r) &= \bigl [ R_{s_l, s_h}^{a_r} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_l,s_h}^{a_r} + \bigl [ R_{s_l, s_l}^{a_r} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_l,s_l}^{a_r} \qquad{(6)}
-\end{aligned}</script><p>Then according to the table in the above picture, $R_{s_h,s_h}^{a_s}=r_{search}$, $P_{s_h,s_h}^{a_s}=\alpha$, $R_{s_h,s_l}^{a_s}=r_{search}$, $P_{s_h,s_l}^{a_s}=1-\alpha$, … and  so on. Plug these values into equations (2), (3), (4), (5), (6), we get:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_h, a_s) &= \bigl [ r_{search} + \gamma \max_{a'} q_*(s_h,a') \bigr ] \alpha + \bigl [ r_{search} + \gamma \max_{a'} q_*(s_l,a') \bigr ] (1-\alpha)\\ &= r_{search} + \gamma \bigl [\alpha \max_{a'} q_*(s_h,a') +(1-\alpha) \max_{a'} q_*(s_l,a')\bigr ]\qquad{(7)}\\
-q_*(s_h, a_w) &= \bigl [ r_{wait} + \gamma \max_{a'} q_*(s_h,a') \bigr ] \cdot 1 + \bigl [ R_{s_h, s_l}^{a_w} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \cdot 0 \\
-&= r_{wait} + \gamma \max_{a'} q_*(s_h,a')\qquad{(8)}\\
-q_*(s_l, a_s) &= \bigl [ -3 + \gamma \max_{a'} q_*(s_h,a') \bigr ] (1-\beta) + \bigl [ r_{search} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \beta \\
-&= (r_{search} - 3) + \gamma \bigl [ (1-\beta)\max_{a'} q_*(s_h,a') + \beta \max_{a'} q_*(s_l,a') \bigr ] \qquad{(9)} \\
-q_*(s_l, a_w) &= \bigl [ R_{s_l, s_h}^{a_w} + \gamma \max_{a'} q_*(s_h,a') \bigr ] \cdot 0 + \bigl [ r_{wait} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \cdot 1 \\ &= r_{wait} + \gamma \max_{a'} q_*(s_l,a') \qquad{(10)} \\
-q_*(s_l, a_r) &= \bigl [ 0 + \gamma \max_{a'} q_*(s_h,a') \bigr ] \cdot 1 + \bigl [ R_{s_l, s_l}^{a_r} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \cdot 0 \\
-&= \gamma \max_{a'} q_*(s_h,a')\qquad{(11)}
-\end{aligned}</script><p>For ‘high’ status, $a’$ can only be ‘search’ and ‘wait’ while for ‘low’ status, $a’$ can be ‘search’, ‘wait’ and ‘recharge’. So, equations (7) to (11) can be rearranged as below:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_h, a_s) &= r_{search} + \gamma \Bigl \{\alpha \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ]+(1-\alpha) \max_{a'} \bigl [ q_*(s_l,a_s), q_*(s_l,a_w), q_*(s_l,a_r) \bigr ] \Bigr \} \qquad{(12)} \\
-q_*(s_h, a_w) &= r_{wait} + \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qquad {(13)}\\
-q_*(s_l, a_s) &= (r_{search} - 3) + \gamma \Bigl \{ (1-\beta)\max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] + \beta \max_{a'} \bigl [ q_*(s_l,a_s), q_*(s_l,a_w), q_*(s_l,a_r) \bigr ] \Bigr \} \qquad{(14)} \\
-q_*(s_l, a_w) &= r_{wait} + \gamma \max_{a'} \bigl [ q_*(s_l,a_s), q_*(s_l,a_w), q_*(s_l,a_r) \bigr ] \qquad{(15)} \\
-q_*(s_l, a_r) &= \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qquad{(16)}
-\end{aligned}</script><p>These equations from (12) to (16) are the Bellman equations for the recycling robot and can be solved in a similar way like exercise 3.22.</p>
+        <p><strong>Exercise 4.7</strong> (programming) Write a program for policy iteration and re-solve Jack’s car rental problem with the following changes. One of Jack’s employees at the first location rides a bus home each night and lives near the second location. She is happy to shuttle one car to the second location for free. Each additional car still costs \$2, as do all cars moved in the other direction. In addition, Jack has limited parking space at each location.If more than 10 cars are kept overnight at a location (after any moving of cars), then an additional cost of \$4 must be incurred to use a second parking lot (independent of how many cars are kept there). These sorts of nonlinearities and arbitrary dynamics often occur in real problems and cannot easily be handled by optimization methods other than dynamic programming. To check your program, first replicate the results given for the original problem.</p>
+<p>First we can give out the code of Jack’s car rental problem, then just a few modification is needed to solve this problem.<br>I put the source code on my github repository:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/car_rental.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/car_rental.py</a></p>
+<p>Run car_rental.py, we can get the result as that in book.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/car_rental.png" width="100%" height="100%"></p>
+<center>Figure 1. car rental policy improvement</center>
+Now, go back to this exercise 4.7, we just use a child class to overwrite the cost function of car rental class to comply with the rule in exercise 4.7.
+The code is here: https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/exercise_4.7.py
 
+The result is shown as below:
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/exercise_4.7.png" width="100%" height="100%">
+<center>Figure 1. car rental policy improvement</center>
       
     </div>
     
@@ -366,8 +342,8 @@ q_*(s_l, a_r) &= \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qq
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/07/Reinforcement-Learning-Exercise-3-22/" rel="next" title="Reinforcement Learning Exercise 3.22">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 3.22
+              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-6/" rel="next" title="Reinforcement Learning Exercise 4.6">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 4.6
               </a>
             
           </div>
@@ -375,10 +351,6 @@ q_*(s_l, a_r) &= \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qq
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/The-derivation-of-Bellman-equation-for-value-of-a-policy/" rel="prev" title="The derivation of Bellman equation for value of a policy">
-                The derivation of Bellman equation for value of a policy <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
