@@ -229,6 +229,141 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/21/Reinforcement-Learning-Exercise-3-15/" itemprop="url">Reinforcement Learning Exercise 3.15</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T23:36:07+08:00">
+                2019-06-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Exercise 3.15</strong> In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or only the intervals between them? Prove, using (3.8), that adding a constant $c$ to all the rewards adds a constant, $v_c$, to the values of all states, and thus does not affect the relative values of any states under any policies. What is $v_c$ in terms of $c$ and $\gamma$?</p>
+<p>First, for $v_\pi$, according to definition:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
+&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s)
+\end{aligned}</script><p>Denote $\hat R = R + c$, for $\hat R$, there is:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\hat {v}_\pi(s) &= \mathbb E_\pi(\hat G_t|S_t=s) \\
+&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot \hat R_{t+k+1} | S_t = s) \\
+&= \mathbb E_\pi  \bigl [ \sum_{k=0}^{\infty} \gamma^k \cdot (R_{t+k+1} + c ) | S_t = s \bigr ] \\
+&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s) + \mathbb E_\pi(\sum_{k=0}^{\infty} \gamma^k \cdot c | S_t = s)\\
+&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s) + \sum_{k=0}^{\infty} \gamma^k \cdot c \\
+&= v_\pi(s) + \frac {c}{1 - \gamma} \\
+\end{aligned}</script><script type="math/tex; mode=display">
+\therefore v_c = \frac {c}{1-\gamma}</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-13/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -690,7 +825,7 @@ Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

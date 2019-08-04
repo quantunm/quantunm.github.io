@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Exercise 5.4 The pseudocode for Monte Carlo ES is inefficient because, for each state–action pair, it maintains a list of all returns and repeatedly calculates their mean. It would be more efficient t">
+<meta name="description" content="Exercise 5.6 What is the equation analogous to (5.6) for action values $Q(s, a)$ instead ofstate values $V(s)$, again given returns generated using $b$? Given a starting state $St$, starting action $A">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 5.4">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-4/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 5.6">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-6/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 5.4 The pseudocode for Monte Carlo ES is inefficient because, for each state–action pair, it maintains a list of all returns and repeatedly calculates their mean. It would be more efficient t">
+<meta property="og:description" content="Exercise 5.6 What is the equation analogous to (5.6) for action values $Q(s, a)$ instead ofstate values $V(s)$, again given returns generated using $b$? Given a starting state $St$, starting action $A">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-04T13:08:55.661Z">
+<meta property="og:updated_time" content="2019-08-04T13:14:41.950Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 5.4">
-<meta name="twitter:description" content="Exercise 5.4 The pseudocode for Monte Carlo ES is inefficient because, for each state–action pair, it maintains a list of all returns and repeatedly calculates their mean. It would be more efficient t">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 5.6">
+<meta name="twitter:description" content="Exercise 5.6 What is the equation analogous to (5.6) for action values $Q(s, a)$ instead ofstate values $V(s)$, again given returns generated using $b$? Given a starting state $St$, starting action $A">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-4/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-6/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 5.4 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 5.6 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-4/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 5.4</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 5.6</h1>
         
 
         <div class="post-meta">
@@ -262,7 +262,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T21:08:18+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T21:13:48+08:00">
                 2019-08-04
               </time>
             
@@ -300,25 +300,30 @@
       
 
       
-        <p>Exercise 5.4 The pseudocode for Monte Carlo ES is inefficient because, for each state–action pair, it maintains a list of all returns and repeatedly calculates their mean. It would be more efficient to use techniques similar to those explained in Section 2.4 to maintain just the mean and a count (for each state–action pair) and update them incrementally. Describe how the pseudocode would be altered to achieve this.</p>
-<p>The altered pseudocode is shown as below:</p>
+        <p>Exercise 5.6 What is the equation analogous to (5.6) for action values $Q(s, a)$ instead ofstate values $V(s)$, again given returns generated using $b$?</p>
+<p>Given a starting state $St$, starting action $At$, the probability of the subsequent state-action trajectory, $S_{t+1}, A_{t+1}, \cdots , S_T$ occurring under any policy $\pi$ is</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-&\text{Initialize:} \\
-&\qquad \pi(s) \in \mathcal A(s) \text{(arbitrarily), for all } s \in S \\
-&\qquad Q(s, a) \in \mathbb R \text{(arbitrarily), for all } s \in S, a \in \mathcal A(s) \\
-&\qquad counts(s, a) \leftarrow 0\text{, for all s } \in S, a \in \mathcal A(s) \\
-&\text{Loop forever (for each episode):} \\
-&\qquad \text{Choose }S_0 \in \mathcal S, A_0 \in  \mathcal A(S_0) \text{ randomly such that all pairs have probability} > 0 \\
-&\qquad \text{Generate an episode from }S_0, A_0, \text{following }\pi: S_0, A_0, R_1, . . . , S_{T -1}, A_{T-1}, R_T \\
-&\qquad G \leftarrow 0 \\
-&\qquad \text{Loop for each step of episode, } t = T -1, T -2, . . . , 0: \\
-&\qquad \qquad G \leftarrow \gamma G + R_{t+1} \\
-&\qquad \qquad \text{Unless the pair }S_t, A_t \text{ appears in }S_0, A_0, S_1, A_1 . . . , S_{t-1}, A_{t-1}: \\
-&\qquad \qquad \qquad counts(S_t,A_t) \leftarrow counts(S_t,A_t) + 1\\
-&\qquad \qquad \qquad Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \frac {(G - Q(S_t, A_t))}{count(S_t, A_t)} \\
-&\qquad \qquad \qquad \pi(S_t) \leftarrow \text{argmax}_a Q(S_t, a) \\
-\end{aligned}</script>
+&Pr(S_{t+1}, A_{t+1},\cdots, S_{T-1}, A_{T-1}, S_T \mid S_t, A_{t:T-1}\sim \pi)\\
+&\qquad = p(S_{t+1} \mid S_t, A_t) \pi(A_{t+1}|S_{t+1}) \cdots p(S_{T-1} \mid S_{T-2}, A_{T-2})\pi(A_{T-1} \mid S_{T-1})  p(S_T \mid S_{T-1}, A_{T-1})\\
+&\qquad =\frac {\prod_{k=t}^{T - 1} \pi(A_k \mid S_k)p(S_{k+1}\mid S_k, A_k)} {\pi(A_t \mid S_t)}
+\end{aligned}</script><p>The relative probability of the trajectory under the target and behavior policies is</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\sigma_{t:T-1} &= \frac {b(A_t \mid S_t)\prod_{k=t}^{T-1} \pi(A_k \mid S_k) p(S_{k+1} \mid S_k, A_k)} {\pi(A_t \mid S_t)\prod_{k=t}^{T-1} b(A_k \mid S_k) p(S_{k+1} \mid S_k, A_k)} \\
+&= \frac {b(A_t \mid S_t)\prod_{k=t}^{T-1} \pi(A_k \mid S_k) }{ \pi(A_t \mid S_t)\prod_{k=t}^{T-1} b(A_k \mid S_k) } \\
+&=  \frac {\prod_{k=t+1}^{T-1} \pi(A_k \mid S_k) }{\prod_{k=t+1}^{T-1} b(A_k \mid S_k) } \\
+&=\rho_{t+1:T-1}
+\end{aligned}</script><p>So,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Q_\pi(s, a) &= \mathbb E \bigl [ \sigma_{t:T-1}G_t \mid S_t = s, A_t = a \bigr ] \\
+&= \mathbb E \bigl [ \rho_{t+1:T-1}G_t \mid S_t = s, A_t = a\bigr ]
+\end{aligned}</script><p>In particular we can define the set of all time steps in which state s is visited and action a is taken, denoted $\mathcal K(s)$ for every-visit method. For first-visit method, $\mathcal K(s)$ would only include time steps that were first visits to s and first take action a within their episodes. Let $T(t)$ denote the first time of termination following time $t$, and $G_t$ denote the return after $t$ up through $T(t)$. Then $\{G_t\}_{t \in \mathcal K(s)}$ are the returns that pertain to state s and action a,  and $\{ \rho_{t:T(t) - 1}\}_{t \in \mathcal K(s)}$ are the corresponding importance-sampling ratios.<br>Thus, for ordinary importance sampling,</p>
+<script type="math/tex; mode=display">
+Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{| \mathcal K(s)|}</script><p>for weighted importance sampling,</p>
+<script type="math/tex; mode=display">
+Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}}</script>
       
     </div>
     
@@ -348,8 +353,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-5-1-5-2/" rel="next" title="Reinforcement Learning Exercise 5.1 & 5.2">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 5.1 & 5.2
+              <a href="/2019/08/04/Reinforcement-Learning-Exercise-5-5/" rel="next" title="Reinforcement Learning Exercise 5.5">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 5.5
               </a>
             
           </div>
@@ -357,10 +362,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-5-5/" rel="prev" title="Reinforcement Learning Exercise 5.5">
-                Reinforcement Learning Exercise 5.5 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
