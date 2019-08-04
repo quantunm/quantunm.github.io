@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Exercise 4.5 How would policy iteration be defined for action values? Give a complete algorithm for computing $q_$, analogous to that on page 80 for computing $v_$. Please pay special attention to thi">
+<meta name="description" content="Exercise 4.5 How would policy iteration be defined for action values? Give a complete algorithm for computing q_*, analogous to that on page 80 for computing v_*. Please pay special attention to this">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Reinforcement Learning Exercise 4.5">
 <meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-5/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 4.5 How would policy iteration be defined for action values? Give a complete algorithm for computing $q_$, analogous to that on page 80 for computing $v_$. Please pay special attention to thi">
+<meta property="og:description" content="Exercise 4.5 How would policy iteration be defined for action values? Give a complete algorithm for computing q_*, analogous to that on page 80 for computing v_*. Please pay special attention to this">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-04T05:19:20.950Z">
+<meta property="og:updated_time" content="2019-08-04T06:28:45.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reinforcement Learning Exercise 4.5">
-<meta name="twitter:description" content="Exercise 4.5 How would policy iteration be defined for action values? Give a complete algorithm for computing $q_$, analogous to that on page 80 for computing $v_$. Please pay special attention to thi">
+<meta name="twitter:description" content="Exercise 4.5 How would policy iteration be defined for action values? Give a complete algorithm for computing q_*, analogous to that on page 80 for computing v_*. Please pay special attention to this">
 
 
 
@@ -300,7 +300,7 @@
       
 
       
-        <p><strong>Exercise 4.5</strong> How would policy iteration be defined for action values? Give a complete algorithm for computing $q_<em>$, analogous to that on page 80 for computing $v_</em>$. Please pay special attention to this exercise, because the ideas involved will be used throughout the rest of the book.</p>
+        <p><strong>Exercise 4.5</strong> How would policy iteration be defined for action values? Give a complete algorithm for computing <script type="math/tex">q_*</script>, analogous to that on page 80 for computing <script type="math/tex">v_*</script>. Please pay special attention to this exercise, because the ideas involved will be used throughout the rest of the book.</p>
 <p>Here, we can use the result of exercise 3.17:</p>
 <script type="math/tex; mode=display">
 Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script><p>Then the algorithm which analogous to that on page 80 can be like this:</p>
