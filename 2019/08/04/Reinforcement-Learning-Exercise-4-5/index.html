@@ -276,6 +276,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/08/04/Reinforcement-Learning-Exercise-4-5/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -393,6 +403,13 @@ Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} 
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
 
   
 
@@ -647,6 +664,43 @@ Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} 
 
 
 
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: '',
+            repo: 'my_blog_comment',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '182e16bdde6e8ed8642df275f8b49e6dce741d23',
+            
+                client_id: 'b5304d42bf872d798665'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
