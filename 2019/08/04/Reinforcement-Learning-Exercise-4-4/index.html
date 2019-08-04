@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Exercise 3.11 If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $">
+<meta name="description" content="Exercise 4.4 The policy iteration algorithm on page 80 has a subtle bug in that it may never terminate if the policy continually switches between two or more policies that are equally good. This is OK">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 3.11">
-<meta property="og:url" content="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 4.4">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-4/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 3.11 If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $">
+<meta property="og:description" content="Exercise 4.4 The policy iteration algorithm on page 80 has a subtle bug in that it may never terminate if the policy continually switches between two or more policies that are equally good. This is OK">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-08T13:05:12.035Z">
+<meta property="og:updated_time" content="2019-08-04T05:04:01.065Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 3.11">
-<meta name="twitter:description" content="Exercise 3.11 If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 4.4">
+<meta name="twitter:description" content="Exercise 4.4 The policy iteration algorithm on page 80 has a subtle bug in that it may never terminate if the policy continually switches between two or more policies that are equally good. This is OK">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-4/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 3.11 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 4.4 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 3.11</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 4.4</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T21:04:08+08:00">
-                2019-06-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T12:27:53+08:00">
+                2019-08-04
               </time>
             
 
@@ -300,26 +300,30 @@
       
 
       
-        <p><strong>Exercise 3.11</strong> If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $p$(3.2)?</p>
+        <p><strong>Exercise 4.4</strong> The policy iteration algorithm on page 80 has a subtle bug in that it may never terminate if the policy continually switches between two or more policies that are equally good. This is OK for pedagogy, but not for actual use. Modify the pseudocode so that convergence is guaranteed.</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
-&= \pi(a|s) \cdot Pr(S_t = s) \qquad{(1)}
-\end{aligned}</script><script type="math/tex; mode=display">
-\begin{aligned}
-\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot Pr(R_{t+1} = r|S_t = s) \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s) \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{Pr (R_{t+1} = r, S_{t+1} = s', S_t = s)}{Pr(S_t = s)} \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s', S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot Pr(S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ]  \qquad{(2)} \\
-\end{aligned}</script><p>Substitute equation (1) into (2), there is :</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s)\cdot Pr(S_t=s)}{Pr(S_t = s)} \bigr ] \\
-&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s) \bigr ] \Bigr \} \\
-&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ p(r, s' | s, a) \cdot \pi(a|s) \bigr ] \Bigr \} \qquad{(3)} \\
-\end{aligned}</script><p>Equation (3) is the result.</p>
-
+&\text{1 Initialization} \\
+    &\qquad V(s) \in \mathbb R \text{ and } \pi (s) \in \mathcal A(s) \text{ arbitrarily } s \in \mathcal S \\
+&\text{2 Policy Evaluation} \\
+    &\qquad \text{Loop:} \\
+        &\qquad \qquad \Delta \leftarrow 0 \\
+        &\qquad \qquad \text{Loop for each } s \in \mathcal S: \\
+         &\qquad \qquad \qquad v \leftarrow V(s) \\
+        &\qquad \qquad \qquad V(s) \leftarrow \sum_{s',r}p(s',r \mid s,\pi(s)) \Bigl [ r + \gamma V(s')\Bigr ] \\
+        &\qquad \qquad \qquad \Delta \leftarrow \max (\Delta , |v-V(s)|) \\
+     &\qquad \text{until } \Delta \lt \theta \text{ (a small positive number determining the accuracy of estimation) } \\
+&\text{3 Policy Improvement} \\
+     &\qquad policy\text-stable \leftarrow true \\
+    &\qquad \text{For each }s \in \mathcal S: \\
+    &\qquad \qquad old \text-V(s) \leftarrow V(s) \\
+    &\qquad \qquad a \leftarrow \text{argmax}_a \sum_{s',r}p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \\ 
+     &\qquad \qquad V(s) \leftarrow \sum_{s',r}p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \\
+     &\qquad \qquad old \text- action \leftarrow \pi(s) \\
+     &\qquad \qquad \pi(s) \leftarrow a \\
+     &\qquad \qquad \text{If } old\text-action =\not \pi(s) \text{ and } |V(s) - old\text-V(s)| > \theta \text{ then } policy\text-stable \leftarrow false \\
+    &\qquad \text{If } policy\text-stable =true \text{ then stop and return } V \approx v_* \text{ and }\pi \approx \pi_* \text{ else go to 2.} \\
+\end{aligned}</script>
       
     </div>
     
@@ -349,15 +353,15 @@ Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-3/" rel="next" title="Reinforcement Learning Exercise 4.3">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 4.3
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/21/Reinforcement-Learning-Exercise-3-12/" rel="prev" title="Reinforcement Learning Exercise 3.12">
-                Reinforcement Learning Exercise 3.12 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
