@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Exercise 3.13 Give an equation for $q_\pi$ in terms of $v_\pi$ and the four-argument $p$. First, we need to derive a formula from multiplication formula of probability theory:  \begin{aligned} p(x|y)">
+<meta name="description" content="Exercise 4.2 In Example 4.1, suppose a new state 15 is added to the gridworld just below state 13, and its actions, left, up, right, and down, take the agent to states 12, 13, 14, and 15, respectively">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 3.13">
-<meta property="og:url" content="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-13/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 4.2">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-2/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 3.13 Give an equation for $q_\pi$ in terms of $v_\pi$ and the four-argument $p$. First, we need to derive a formula from multiplication formula of probability theory:  \begin{aligned} p(x|y)">
+<meta property="og:description" content="Exercise 4.2 In Example 4.1, suppose a new state 15 is added to the gridworld just below state 13, and its actions, left, up, right, and down, take the agent to states 12, 13, 14, and 15, respectively">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T15:34:35.375Z">
+<meta property="og:updated_time" content="2019-08-04T04:21:41.782Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 3.13">
-<meta name="twitter:description" content="Exercise 3.13 Give an equation for $q_\pi$ in terms of $v_\pi$ and the four-argument $p$. First, we need to derive a formula from multiplication formula of probability theory:  \begin{aligned} p(x|y)">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 4.2">
+<meta name="twitter:description" content="Exercise 4.2 In Example 4.1, suppose a new state 15 is added to the gridworld just below state 13, and its actions, left, up, right, and down, take the agent to states 12, 13, 14, and 15, respectively">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-13/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-2/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 3.13 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 4.2 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-13/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 3.13</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 4.2</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T23:33:39+08:00">
-                2019-06-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T12:20:48+08:00">
+                2019-08-04
               </time>
             
 
@@ -300,42 +300,59 @@
       
 
       
-        <p><strong>Exercise 3.13</strong> Give an equation for $q_\pi$ in terms of $v_\pi$ and the four-argument $p$.</p>
-<p>First, we need to derive a formula from multiplication formula of probability theory:</p>
+        <p><strong>Exercise 4.2</strong> In Example 4.1, suppose a new state 15 is added to the gridworld just below state 13, and its actions, left, up, right, and down, take the agent to states 12, 13, 14, and 15, respectively. Assume that the transitions from the original states are unchanged. What, then, is $v_\pi(15)$ for the equiprobable random policy? Now suppose the dynamics of state 13 are also changed, such that action down from state 13 takes the agent to the new state 15. What is $v_\pi(15)$ for the equiprobable random policy in this case?</p>
+<p>For the assumption that the transitions from the original states are unchanged, according to equation (4.4), we have:</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-p(x|y) &= \frac {p(x,y)}{p(y)} \\
-&= \frac {\sum_z p(x,y,z)}{p(y)} \\
-&= \frac {\sum_z \bigl [ p(x |y,z) \cdot p(z|y) \cdot p(y) \bigr ] } { p(y) } \\
-&= \sum_z \bigl [ p(x|y,z) \cdot p(z|y) \bigr ]  \qquad \qquad{(1)}\\
-\end{aligned}</script><p>With formula (1), we can calculate $q_\pi(s,a)$ as below:</p>
+v_\pi(s) &= \sum_a \pi(a \mid s) \sum_{s',r} p(s', r \mid s, a) \bigl [ r + \gamma v_\pi(s')\bigr ] \\
+&= \sum_a \pi(a \mid s) \sum_{s'} \biggl \{ \sum_r \Bigl [ r \cdot p(s',r \mid s, a) \Bigr ] + \sum_r \Bigl [ p(s', r \mid s,a ) \cdot \gamma v_\pi(s') \Bigr ]\biggr \} \\
+&= \sum_a \pi(a \mid s) \sum_{s'} \biggl \{ \sum_r \Bigl [ r \cdot p(r \mid s', s, a) \cdot p(s' \mid s,a) \Bigr ] + p(s' \mid s,a ) \cdot \gamma v_\pi(s') \biggr \} \\
+&= \sum_a \pi(a \mid s) \sum_{s'} \biggl \{  p(s' \mid s,a) \Bigl [ \sum_r  r \cdot p(r \mid s', s, a)  + \gamma v_\pi(s') \Bigr ]\biggr \} \\
+&= \sum_a \pi(a \mid s) \sum_{s'} \biggl \{ P_{s,s'}^a \Bigl [ R_{s,s'}^a + \gamma v_\pi(s') \Bigr ] \biggr \}
+\end{aligned}</script><p>So,</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-q_\pi(s,a)&= \mathbb E_\pi(G_t|S_t=s,A_t=a) \\
-&=\mathbb E_\pi(R_{t+1} + \gamma G_{t+1} | S_t = s, A_t = a) \\
-&= \mathbb E_\pi(R_{t+1} | S_t = s, A_t = a) + \gamma \mathbb E_\pi(G_{t+1}|S_t = s, A_t = a) \\
-&= \sum_r r \cdot Pr(R_{t+1} = r | S_t = s, A_t = a)  \\
-&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot Pr(G_{t+1}=g_{t+1}|S_t=s, A_t=a) \\
-\end{aligned}</script><p>Here, according to definition,  $g_{t+1} = \sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k}$. And use formula (1), we can derive:</p>
+v_\pi(15) &= \sum_a \pi( a \mid 15) \cdot \biggl \{ P_{15,12}^{left} \Bigl[ R_{15,12}^{left} + \gamma v_\pi(12) \Bigr ] + P_{15,13}^{up} \Bigl[ R_{15,13}^{up} + \gamma v_\pi(13) \Bigr ] \\
+& \quad + P_{15,14}^{right} \Bigl[ R_{15,14}^{right} + \gamma v_\pi(14) \Bigr ] + P_{15,15}^{down} \Bigl[ R_{15,15}^{down} + \gamma v_\pi(15) \Bigr ]\biggr \}
+\end{aligned}</script><p>Because the agent follows the equiprobable random policy, for all actions $\pi(a \mid s) = 1 / 4$. And the action is deterministic, so:</p>
+<script type="math/tex; mode=display">
+P_{s,s'}^a = 
+\begin{cases}
+1 & \text{ if $a$ leads to $s'$} \\
+0 & \text{if $a$ doesn't lead to $s'$}
+\end{cases}</script><p>According to Figure 4.2,  we have:</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-q_\pi(s,a) &= \sum_r r \cdot Pr(R_{t+1} = r | S_t = s, A_t = a)  \\
-&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot Pr(G_{t+1}=\sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k}|S_t=s, A_t=a) \\
-&= \sum_r r \cdot \sum_{s'} Pr(R_{t+1} = r | S_t = s, A_t = a, S_{t+1} = s') \cdot Pr(S_{t+1} = s' | S_t=s, A_t=a)  \\
-&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot \sum_{s'} Pr(G_{t+1}=\sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k}|S_t=s, A_t=a, S_{t+1} = s') \cdot Pr(S_{t+1}=s'| S_t=s, a_t = a) \\
-\end{aligned}</script><p>Because in Markov Process, $G_{t+1}$ is the reward of status $S_{t+1} = s’$, the information of $S_t = s$ and $A_t = a$ are no effect on $G_{t+1}$. So:</p>
+v_\pi(15) &= \frac {1}{4} \biggl \{ 1 \cdot \Bigl [ -1 + \gamma (-22) \Bigr ] + 1 \cdot \Bigl [ -1 + \gamma (-20) \Bigr ] \\
+& \quad + 1 \cdot \Bigl [ -1 + \gamma (-14) \Bigr ] + 1 \cdot \Bigl [ -1 + \gamma v_\pi(15) \Bigr ]\biggr \} \\
+&= -1 - 14 \gamma + \gamma v_\pi(15) \\
+\end{aligned}</script><script type="math/tex; mode=display">
+\therefore v_\pi(15) = \frac {4 + 56 \gamma} {\gamma - 4}</script><p>For the assumption that the dynamics of state 13 are also changed, similarly we have:</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-q_\pi(s,a) &= \sum_r r \cdot \sum_{s'} Pr(R_{t+1} = r | S_t = s, A_t = a, S_{t+1} = s') \cdot Pr(S_{t+1} = s' | S_t=s, A_t=a)  \\
-&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot \sum_{s'} Pr(G_{t+1}=\sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k} | S_{t+1} = s') \cdot Pr(S_{t+1}=s'| S_t=s, a_t = a) \\
-&= \sum_{s'}  \biggl \{ Pr(S_{t+1} = s' | S_t=s, A_t=a) \cdot \Bigl [ \sum_r r \cdot Pr(R_{t+1} = r | S_t = s, A_t = a, S_{t+1} = s')  \\
-&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot Pr(G_{t+1}=\sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k} | S_{t+1} = s') \Bigr ] \biggr \}\\
-&=\sum_{s'} \biggl \{ p(s'| s,a) \cdot \Bigl [ \mathbb E_\pi(r|s,a,s') + \gamma \cdot  \mathbb E_\pi(G_{t+1}|S_{t+1}=s') \Bigr ] \biggr \} \\
-&=\sum_{s'} \biggl \{ p(s'| s,a) \cdot \Bigl [ \mathbb E_\pi(r|s,a,s') + \gamma \cdot v_\pi(s')  \Bigr ] \biggr \} \\
-\end{aligned}</script><p>Denote $p(s’ |  a , s ) = P_{s,s’}^a$ and $\mathbb E_\pi ( r | s, a, s’ ) = R_{s,s’}^a$, then</p>
+v_\pi(13) &= \sum_a \pi( a \mid 13) \cdot \biggl \{ P_{13,12}^{left} \Bigl[ R_{13,12}^{left} + \gamma v_\pi(12) \Bigr ] + P_{13,9}^{up} \Bigl[ R_{13,9}^{up} + \gamma v_\pi(9) \Bigr ] \\
+& \quad + P_{13,14}^{right} \Bigl[ R_{13,14}^{right} + \gamma v_\pi(14) \Bigr ] + P_{13,15}^{down} \Bigl[ R_{13,15}^{down} + \gamma v_\pi(15) \Bigr ]\biggr \} \\
+v_\pi(15) &= \sum_a \pi( a \mid 15) \cdot \biggl \{ P_{15,12}^{left} \Bigl[ R_{15,12}^{left} + \gamma v_\pi(12) \Bigr ] + P_{15,13}^{up} \Bigl[ R_{15,13}^{up} + \gamma v_\pi(13) \Bigr ] \\
+& \quad + P_{15,14}^{right} \Bigl[ R_{15,14}^{right} + \gamma v_\pi(14) \Bigr ] + P_{15,15}^{down} \Bigl[ R_{15,15}^{down} + \gamma v_\pi(15) \Bigr ]\biggr \}
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(13) &= \frac{1}{4} \cdot \biggl \{ 1 \Bigl[ -1 + \gamma(-22) \Bigr ] + 1 \Bigl[ (-1 + \gamma (-20) \Bigr ] \\
+& \quad + 1 \Bigl[ (-1 + \gamma (-14) \Bigr ] + 1 \Bigl[ (-1 + \gamma v_\pi(15) \Bigr ]\biggr \} \\
+&= -1 - 14 \gamma + \frac {1}{4} \gamma v_\pi(15) \qquad \qquad \qquad \qquad \qquad \qquad \quad{(1)}\\
+v_\pi(15) &= \frac{1}{4} \cdot \biggl \{ 1 \Bigl[ -1 + \gamma (-22) \Bigr ] + 1 \Bigl[ -1 + \gamma v_\pi(13) \Bigr ] \\
+& \quad +1 \Bigl[ -1 + \gamma (-14) \Bigr ] + 1 \Bigl[ -1 + \gamma v_\pi(15) \Bigr ]\biggr \} \\
+& = -1 - 9 \gamma + \frac{1}{4} \gamma v_\pi(13) +\frac{1}{4}\gamma v_\pi(15) \qquad \qquad \qquad \qquad{(2)}
+\end{aligned}</script><p>Then we have equation set:</p>
 <script type="math/tex; mode=display">
-q_\pi(s,a) = \sum_{s'} \biggl \{ P_{s,s'}^a \cdot \Bigl [ R_{s,s'}^a + \gamma \cdot v_\pi(s')  \Bigr ] \biggr \} \qquad{(2)}</script><p>Here, the equation (2) is the result.</p>
-
+\begin{aligned}
+v_\pi(13) -  \frac {1}{4} \gamma v_\pi(15)&= -1 - 14 \gamma \qquad \qquad \qquad \qquad{(3)}\\
+ -\frac{1}{4} \gamma v_\pi(13) +(1-\frac{1}{4}\gamma )v_\pi(15) & = -1 - 9 \gamma \qquad \qquad \qquad \qquad{(4)}
+\end{aligned}</script><p>By solving equation set (3) and (4), we can obtain:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(15) &= \frac{14\gamma^2 + 37 \gamma + 4}{ \frac{1}{4}\gamma^2 + \gamma - 4} \\
+v_\pi(13) &= \frac{19\gamma^2 + 224\gamma -16}{\gamma^2+4\gamma-16}
+\end{aligned}</script>
       
     </div>
     
@@ -365,8 +382,8 @@ q_\pi(s,a) = \sum_{s'} \biggl \{ P_{s,s'}^a \cdot \Bigl [ R_{s,s'}^a + \gamma \c
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/21/Reinforcement-Learning-Exercise-3-12/" rel="next" title="Reinforcement Learning Exercise 3.12">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 3.12
+              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-1/" rel="next" title="Reinforcement Learning Exercise 4.1">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 4.1
               </a>
             
           </div>
@@ -374,10 +391,6 @@ q_\pi(s,a) = \sum_{s'} \biggl \{ P_{s,s'}^a \cdot \Bigl [ R_{s,s'}^a + \gamma \c
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/21/Reinforcement-Learning-Exercise-3-15/" rel="prev" title="Reinforcement Learning Exercise 3.15">
-                Reinforcement Learning Exercise 3.15 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
