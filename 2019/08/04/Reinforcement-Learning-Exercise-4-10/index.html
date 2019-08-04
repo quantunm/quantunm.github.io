@@ -79,23 +79,18 @@
 
 
 
-<meta name="description" content="Exercise 4.9 (programming) Implement value iteration for the gambler’s problem and solve it for $p_h$ = 0.25 and $p_h$ = 0.55. In programming, you may find it convenient to introduce two dummy states">
+<meta name="description" content="Exercise 4.10 What is the analog of the value iteration update (4.10) for action values,$q_{k+1}(s, a)$?Use the result of exercise 3.17:  Q_\pi(s,a) = \sum_{s&apos;} R_{s,s&apos;}^a P_{ss&apos;}^a + \gamma \sum_{s&apos;}">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 4.9">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-9/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 4.10">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-10/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 4.9 (programming) Implement value iteration for the gambler’s problem and solve it for $p_h$ = 0.25 and $p_h$ = 0.55. In programming, you may find it convenient to introduce two dummy states">
+<meta property="og:description" content="Exercise 4.10 What is the analog of the value iteration update (4.10) for action values,$q_{k+1}(s, a)$?Use the result of exercise 3.17:  Q_\pi(s,a) = \sum_{s&apos;} R_{s,s&apos;}^a P_{ss&apos;}^a + \gamma \sum_{s&apos;}">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.4_theta1e-9.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.25_theta1e-9.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.55_theta1e-9.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_ph0.4.png">
-<meta property="og:updated_time" content="2019-08-04T12:39:28.174Z">
+<meta property="og:updated_time" content="2019-08-04T12:42:53.456Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 4.9">
-<meta name="twitter:description" content="Exercise 4.9 (programming) Implement value iteration for the gambler’s problem and solve it for $p_h$ = 0.25 and $p_h$ = 0.55. In programming, you may find it convenient to introduce two dummy states">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.4_theta1e-9.png">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 4.10">
+<meta name="twitter:description" content="Exercise 4.10 What is the analog of the value iteration update (4.10) for action values,$q_{k+1}(s, a)$?Use the result of exercise 3.17:  Q_\pi(s,a) = \sum_{s&apos;} R_{s,s&apos;}^a P_{ss&apos;}^a + \gamma \sum_{s&apos;}">
 
 
 
@@ -125,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-9/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-10/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 4.9 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 4.10 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -238,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-9/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -255,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 4.9</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 4.10</h1>
         
 
         <div class="post-meta">
@@ -267,7 +262,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T20:28:21+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T20:42:16+08:00">
                 2019-08-04
               </time>
             
@@ -305,21 +300,11 @@
       
 
       
-        <p><strong>Exercise 4.9 (programming)</strong> Implement value iteration for the gambler’s problem and solve it for $p_h$ = 0.25 and $p_h$ = 0.55. In programming, you may find it convenient to introduce two dummy states corresponding to termination with capital of 0 and 100, giving them values of 0 and 1 respectively. Show your results graphically, as in Figure 4.3.Are your results stable as $\theta \rightarrow 0$?</p>
-<p>According to the pseudocode of value iteration for estimating $\pi \approx \pi_*$, we can easily write the code for this exercise.<br>The code’s address is here:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/gamblers_problem.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/gamblers_problem.py</a></p>
-<p>When $p_h = 0.4$ and $\theta = 10^{-9}$, the result is same as Figure 4.3 in the book.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.4_theta1e-9.png" width="100%" height="100%"></p>
-<center>Figure 1. $p_h = 0.4$ and $\theta = 10^{-9}$</center>
-
-<p>Change $p_h$ to the 0.25 and 0.55, the result to this exercise is:<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.25_theta1e-9.png" width="100%" height="100%"></p>
-<center>Figure 2. $p_h = 0.25$ and $\theta = 10^{-9}$</center>
-<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.55_theta1e-9.png" width="100%" height="100%">
-<center>Figure 3. $p_h = 0.55$ and $\theta = 10^{-9}$</center>
-Take $p_h=0.4$ as an example, change the $\theta$ from $0.1$ to $10^{-11}$, we can find that the result is stable.
-<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_ph0.4.png" width="100%" height="100%">
-<center>Figure 4. $p_h = 0.4$</center>
-
-<p>One important thing is although the results are stable, the results are not unique. Because actions in different states may result in an identical maximum state value. In the program, we select the first action which lead to the maximum state value, we can also choose the other actions those lead to the maximum state value, that makes the results to be not unique.</p>
-
+        <p><strong>Exercise 4.10</strong> What is the analog of the value iteration update (4.10) for action values,$q_{k+1}(s, a)$?<br>Use the result of exercise 3.17:</p>
+<script type="math/tex; mode=display">
+Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script><p>easily, we have the iteration for $q_{k+1}(s,a)$ which is analogous to the value iteration update (4.10): </p>
+<script type="math/tex; mode=display">
+q_{k+1}(s, a) = \max_a \biggl \{ \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} q_k(s',a') \pi(s',a') \bigr] P_{s,s'}^a \biggr \}</script>
       
     </div>
     
@@ -349,8 +334,8 @@ Take $p_h=0.4$ as an example, change the $\theta$ from $0.1$ to $10^{-11}$, we c
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-7/" rel="next" title="Reinforcement Learning Exercise 4.7">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 4.7
+              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-9/" rel="next" title="Reinforcement Learning Exercise 4.9">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 4.9
               </a>
             
           </div>
@@ -358,10 +343,6 @@ Take $p_h=0.4$ as an example, change the $\theta$ from $0.1$ to $10^{-11}$, we c
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-10/" rel="prev" title="Reinforcement Learning Exercise 4.10">
-                Reinforcement Learning Exercise 4.10 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
