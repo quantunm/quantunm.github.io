@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="Example 4.1 Consider the $4 \times 4$ gridworld shown below.The nonterminal states are $\mathcal S = \{1, 2, . . . , 14\}$. There are four actions possible in each state, $\mathcal A = \{up, down, rig">
+<meta name="description" content="Exercise 4.5 How would policy iteration be defined for action values? Give a complete algorithm for computing $q_$, analogous to that on page 80 for computing $v_$. Please pay special attention to thi">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 4.1">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-1/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 4.5">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-5/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Example 4.1 Consider the $4 \times 4$ gridworld shown below.The nonterminal states are $\mathcal S = \{1, 2, . . . , 14\}$. There are four actions possible in each state, $\mathcal A = \{up, down, rig">
+<meta property="og:description" content="Exercise 4.5 How would policy iteration be defined for action values? Give a complete algorithm for computing $q_$, analogous to that on page 80 for computing $v_$. Please pay special attention to thi">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-1/4-1-1.png#pic_center">
-<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-1/4-1-2.png#pic_center">
-<meta property="og:updated_time" content="2019-08-04T04:15:44.227Z">
+<meta property="og:updated_time" content="2019-08-04T05:19:20.950Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 4.1">
-<meta name="twitter:description" content="Example 4.1 Consider the $4 \times 4$ gridworld shown below.The nonterminal states are $\mathcal S = \{1, 2, . . . , 14\}$. There are four actions possible in each state, $\mathcal A = \{up, down, rig">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-1/4-1-1.png#pic_center">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 4.5">
+<meta name="twitter:description" content="Exercise 4.5 How would policy iteration be defined for action values? Give a complete algorithm for computing $q_$, analogous to that on page 80 for computing $v_$. Please pay special attention to thi">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-1/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-5/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 4.1 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 4.5 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -236,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -253,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 4.1</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 4.5</h1>
         
 
         <div class="post-meta">
@@ -265,7 +262,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T12:03:47+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T13:06:19+08:00">
                 2019-08-04
               </time>
             
@@ -303,28 +300,29 @@
       
 
       
-        <p><strong>Example 4.1</strong> Consider the $4 \times 4$ gridworld shown below.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-1/4-1-1.png#pic_center" alt><br>The nonterminal states are $\mathcal S = \{1, 2, . . . , 14\}$. There are four actions possible in each state, $\mathcal A = \{up, down, right, left\}$, which deterministically cause the corresponding state transitions, except that actions that would take the agent off the grid in fact leave the state unchanged. Thus, for instance, $p(6,.1\mid 5, right) = 1$, $p(7,.1\mid 7, right) = 1$, and $p(10, r \mid 5, right) = 0$ for all $r \in \mathcal R$. This is an undiscounted, episodic task. The reward is $-1$ on all transitions until the terminal state is reached. The terminal state is shaded in the figure (although it is shown in two places, it is formally one state). The expected reward function is thus $r(s, a, s0) = -1$ for all states $s$, $s’$ and actions $a$. Suppose the agent follows the equiprobable random policy (all actions equally likely). The left side of Figure 4.1 shows the sequence of value functions ${v_k}$ computed by iterative policy evaluation. The final estimate is in fact $v_\pi$, which in this case gives for each state the negation of the expected number of steps from that state until termination.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-1/4-1-2.png#pic_center" alt="Figure4.1"></p>
-<p><strong>Exercise 4.1</strong> In Example 4.1, if $\pi$ is the equiprobable random policy, what is $q_\pi(11, down)$? What is $q_\pi(7, down)$?<br>Here, we can use the result of exercise 3.13 for calculation. The result of exercise 3.13 is :</p>
+        <p><strong>Exercise 4.5</strong> How would policy iteration be defined for action values? Give a complete algorithm for computing $q_<em>$, analogous to that on page 80 for computing $v_</em>$. Please pay special attention to this exercise, because the ideas involved will be used throughout the rest of the book.</p>
+<p>Here, we can use the result of exercise 3.17:</p>
 <script type="math/tex; mode=display">
-q_\pi(s,a) = \sum_{s'} \biggl \{ P_{s,s'}^a \cdot \Bigl [ R_{s,s'}^a + \gamma \cdot v_\pi(s')  \Bigr ] \biggr \}</script><p>where $P_{s, s’}^a =  p(s’ \mid s,a)$ and $R_{s,s’}^a =  \mathbb E_\pi(r \mid s,a,s’)$.<br>So, </p>
+Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script><p>Then the algorithm which analogous to that on page 80 can be like this:</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-q_\pi(11,down) &= P_{11, 7}^{down} \cdot \Bigl [ R_{11, 7}^{down} + \gamma \cdot v_\pi(7)\Bigr ] + P_{11, 10}^{down} \cdot \Bigl [ R_{11, 10}^{down} + \gamma \cdot v_\pi(10)\Bigr ] \\
-& \quad + P_{11, 11}^{down} \cdot \Bigl [ R_{11, 11}^{down} + \gamma \cdot v_\pi(11)\Bigr ] + P_{11, terminal}^{down} \cdot \Bigl [ R_{11, terminal}^{down} + \gamma \cdot v_\pi(terminal)\Bigr ] \\
-&= 0+0+0+p(terminal \mid 11, down) \cdot \biggl \{ \sum_{s'} \Bigl [r\cdot p(r \mid 11, down, s') \Bigr ] + \gamma \cdot v_\pi(terminal)\biggr \} \\
-&=1 \cdot \biggl \{ \Bigl [ (-1)\cdot p(-1 \mid 11, down, 7) + (-1) \cdot p(-1 \mid 11, down, 10) \\
-&\quad +   (-1) \cdot p(-1 \mid 11, down, 11) +  0 \cdot p(0 \mid 11, down, terminal)\Bigr ] + \gamma \cdot 0\biggr \} \\
-&=1 \cdot \biggl \{ \Bigl [ (-1)\cdot 0 + (-1) \cdot 0 +   (-1) \cdot 0 +  0 \cdot 1\Bigr ] + \gamma \cdot 0\biggr \} \\
-&= 0
-\end{aligned}</script><script type="math/tex; mode=display">
-\begin{aligned}
-q_\pi(7,down) &= P_{7, 3}^{down} \cdot \Bigl [ R_{7, 3}^{down} + \gamma \cdot v_\pi(3)\Bigr ] + P_{7, 6}^{down} \cdot \Bigl [ R_{7, 6}^{down} + \gamma \cdot v_\pi(6)\Bigr ] \\
-& \quad + P_{7, 11}^{down} \cdot \Bigl [ R_{7, 11}^{down} + \gamma \cdot v_\pi(11)\Bigr ] + P_{7, 7}^{down} \cdot \Bigl [ R_{7, 7}^{down} + \gamma \cdot v_\pi(7)\Bigr ] \\
-&= 0+0+p(7 \mid 11, down) \cdot \biggl \{ \sum_{s'} \Bigl [r\cdot p(r \mid 7, down, s') \Bigr ] + \gamma \cdot v_\pi(11)\biggr \} + 0 \\
-&=1 \cdot \biggl \{ \Bigl [ (-1)\cdot p(-1 \mid 7, down, 7) + (-1) \cdot p(-1 \mid 7, down, 3) \\
-&\quad +   (-1) \cdot p(-1 \mid 7, down, 6) +  (-1) \cdot p(-1 \mid 7, down, 11)\Bigr ] + \gamma \cdot (-14)\biggr \} \\
-&=1 \cdot \biggl \{ \Bigl [ (-1)\cdot 0 + (-1) \cdot 0 +   (-1) \cdot 0 +  (-1) \cdot 1\Bigr ] - \gamma \cdot 14\biggr \} \\
-&= -1 -\gamma \cdot 14
+&\text{1 Initialization} \\
+    &\qquad Q_\pi(s, a) \in \mathbb R and \pi (s, a) \in \mathcal A(s) arbitrarily s \in \mathcal S and a \in \mathcal A(s) \\
+&\text{2 Policy Evaluation} \\
+    &\qquad \text{Loop:} \\
+    &\qquad \qquad \Delta \leftarrow 0 \\
+    &\qquad  \text{Loop for each }(s,a)\text{ pair:} \\
+        &\qquad \qquad q \leftarrow Q_\pi(s,a) \\
+        &\qquad \qquad Q_\pi(s,a) \leftarrow  \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a \\
+       & \qquad \qquad \Delta \leftarrow \max (\Delta , |q-Q_\pi(s,a)|) \\
+  &\qquad \text{until }\Delta \lt \theta \text{ (a small positive number determining the accuracy of estimation) } \\
+&\text{3 Policy Improvement} \\
+    &\qquad policy\text-stable \leftarrow true \\
+    &\qquad \text{For each }(a,s) \text{ pair, } s \in \mathcal S \text{ and } a \in \mathcal A(s): \\
+    &\qquad \qquad old \text- action \leftarrow \pi(s, a) \\
+    &\qquad \qquad \pi(s) \leftarrow \text{argmax}_{s,a} Q_\pi(s,a) \\
+    &\qquad \qquad \text{If } old\text-action =\not \pi(s) \text{, then } policy\text-stable \leftarrow false \\
+    &\qquad \text{If } policy\text-stable \text{, then stop and return } Q_\pi \approx q_* \text{ and }\pi \approx \pi_* \text{; else go to 2.} \\
 \end{aligned}</script>
       
     </div>
@@ -355,8 +353,8 @@ q_\pi(7,down) &= P_{7, 3}^{down} \cdot \Bigl [ R_{7, 3}^{down} + \gamma \cdot v_
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/04/The-derivation-of-Bellman-equation-for-value-of-a-policy/" rel="next" title="The derivation of Bellman equation for value of a policy">
-                <i class="fa fa-chevron-left"></i> The derivation of Bellman equation for value of a policy
+              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-4/" rel="next" title="Reinforcement Learning Exercise 4.4">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 4.4
               </a>
             
           </div>
@@ -364,10 +362,6 @@ q_\pi(7,down) &= P_{7, 3}^{down} \cdot \Bigl [ R_{7, 3}^{down} + \gamma \cdot v_
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-2/" rel="prev" title="Reinforcement Learning Exercise 4.2">
-                Reinforcement Learning Exercise 4.2 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
