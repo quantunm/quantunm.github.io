@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Reinforcement Learning Exercise,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,13 @@
 
 
 
-<meta name="description" content="Exercise 3.11 If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $">
-<meta name="keywords" content="Reinforcement Learning Exercise">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 3.11">
-<meta property="og:url" content="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Keep going">
+<meta property="og:url" content="http://yoursite.com/tags/Reinforcement-Learning-Exercise/page/3/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 3.11 If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-08T13:05:12.035Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 3.11">
-<meta name="twitter:description" content="Exercise 3.11 If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $">
+<meta name="twitter:title" content="Keep going">
 
 
 
@@ -120,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/">
+  <link rel="canonical" href="http://yoursite.com/tags/Reinforcement-Learning-Exercise/page/3/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 3.11 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Tag: Reinforcement Learning Exercise | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +140,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -219,165 +214,56 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block tag">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>Reinforcement Learning Exercise<small>Tag</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 3.11</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
+            <a class="post-title-link" href="/2019/06/08/Reinforcement-Learning-Exercise-3-11/" itemprop="url">
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span itemprop="name">Reinforcement Learning Exercise 3.11</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T21:04:08+08:00">
-                2019-06-08
-              </time>
-            
+            </a>
+        
+      </h2>
 
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-06-08T21:04:08+08:00" content="2019-06-08">
+          06-08
+        </time>
+      </div>
 
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p><strong>Exercise 3.11</strong> If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $p$(3.2)?</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
-&= \pi(a|s) \cdot Pr(S_t = s) \qquad{(1)}
-\end{aligned}</script><script type="math/tex; mode=display">
-\begin{aligned}
-\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot Pr(R_{t+1} = r|S_t = s) \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s) \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{Pr (R_{t+1} = r, S_{t+1} = s', S_t = s)}{Pr(S_t = s)} \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s', S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot Pr(S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ]  \qquad{(2)} \\
-\end{aligned}</script><p>Substitute equation (1) into (2), there is :</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s)\cdot Pr(S_t=s)}{Pr(S_t = s)} \bigr ] \\
-&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s) \bigr ] \Bigr \} \\
-&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ p(r, s' | s, a) \cdot \pi(a|s) \bigr ] \Bigr \} \qquad{(3)} \\
-\end{aligned}</script><p>Equation (3) is the result.</p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Reinforcement-Learning-Exercise/" rel="tag"># Reinforcement Learning Exercise</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/21/Reinforcement-Learning-Exercise-3-12/" rel="prev" title="Reinforcement Learning Exercise 3.12">
-                Reinforcement Learning Exercise 3.12 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/tags/Reinforcement-Learning-Exercise/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/tags/Reinforcement-Learning-Exercise/">1</a><a class="page-number" href="/tags/Reinforcement-Learning-Exercise/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
 
 
           </div>
@@ -385,10 +271,6 @@ Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
 
 
           
-
-  
-
-
 
         </div>
         
@@ -601,10 +483,6 @@ Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
