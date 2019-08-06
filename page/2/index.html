@@ -259,6 +259,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-4-7/" itemprop="url">Reinforcement Learning Exercise 4.7</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T16:07:59+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Exercise 4.7</strong> (programming) Write a program for policy iteration and re-solve Jack’s car rental problem with the following changes. One of Jack’s employees at the first location rides a bus home each night and lives near the second location. She is happy to shuttle one car to the second location for free. Each additional car still costs \$2, as do all cars moved in the other direction. In addition, Jack has limited parking space at each location.If more than 10 cars are kept overnight at a location (after any moving of cars), then an additional cost of \$4 must be incurred to use a second parking lot (independent of how many cars are kept there). These sorts of nonlinearities and arbitrary dynamics often occur in real problems and cannot easily be handled by optimization methods other than dynamic programming. To check your program, first replicate the results given for the original problem.</p>
+<p>First we can give out the code of Jack’s car rental problem, then just a few modification is needed to solve this problem.<br>I put the source code on my github repository:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/car_rental.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/car_rental.py</a></p>
+<p>Run car_rental.py, we can get the result as that in book.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/car_rental.png" width="100%" height="100%"></p>
+<center>Figure 1. car rental policy improvement</center>
+Now, go back to this exercise 4.7, we just use a child class to overwrite the cost function of car rental class to comply with the rule in exercise 4.7.
+The code is here: https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/exercise_4.7.py
+
+The result is shown as below:
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/exercise_4.7.png" width="100%" height="100%">
+<center>Figure 1. car rental policy improvement</center>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1640,167 +1768,6 @@ q_{*,\pi_{left}}(s_A, a_l) &= \frac {1648}{190}\\
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Reinforcement-Learning-Exercise-3-19/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/07/Reinforcement-Learning-Exercise-3-19/" itemprop="url">Reinforcement Learning Exercise 3.19</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-07T21:01:08+08:00">
-                2019-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Exercise 3.19 The value of an action, $q_\pi(s, a)$, depends on the expected next reward and the expected sum of the remaining rewards. Again we can think of this in terms of a small backup diagram, this one rooted at an action (state–action pair) and branching to the possible next states:<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-19/3-19.png#pic_center" alt><br>Give the equation corresponding to this intuition and diagram for the action value, $q_\pi(s, a)$, in terms of the expected next reward, $R_{t+1}$, and the expected next state value, $v_\pi(S_t+1)$, given that $S_t =s$ and $A_t =a$. This equation should include an expectation but not one conditioned on following the policy. Then give a second equation, writing out the expected value explicitly in terms of $p(s’, r|s, a)$ defined by (3.2), such that no expected value notation appears in the equation. </p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_\pi(s,a) &= \mathbb E_\pi(G_t | S_t = s, A_t = a) \\
-&= \mathbb E_\pi ( R_{t+1} + \gamma G_{t+1} | S_t = s, A_t = a) \\
-&= \mathbb E_\pi ( R_{t+1} | S_t= s, A_t = a) + \gamma \mathbb E_\pi ( G_{t+1} | S_t = s, A_t = a) \\
-&= \mathbb E_\pi ( R_{t+1} | S_t= s, A_t = a) + \gamma \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_t = s, A_t = a) \\
-&= R_{t+1}(s,a) + \gamma \sum_{s'} \bigl[ \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_t = s, A_t = a, S_{t+1} = s') Pr(S_{t+1} = s'| S_t = s, A_t = a) \bigr] \\
-\end{aligned}</script><p>denote $Pr(S_{t+1} = s’| S_t = s, A_t = a) = P_{s,s’}^a$<br>and $\because S_t$ and $A_t$ give no information to $R_{t+2+k}$</p>
-<script type="math/tex; mode=display">\therefore \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_t = s, A_t = a, S_{t+1} = s') Pr(S_{t+1} = s'| S_t = s, A_t = a)\\
-\begin{aligned}
-&= \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_{t+1} = s') P_{s,s'}^a \\
-&= \upsilon_\pi(S_{t+1}) P_{s,s'}^a \\
-\end{aligned}</script><script type="math/tex; mode=display">
-\begin{equation}
-\therefore
-q_\pi(s,a) = R_{t+1}(s,a) + \gamma \sum_{s'} \upsilon_\pi(S_{t+1}) P_{s,s'}^a
-\end{equation} \tag{1}</script><p>Above is the first equantion.</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\because
-R_{t+1}(s,a) &= \mathbb E_\pi (R_{t+1} | S_t = s, A_t = a) \\
-&= \sum_{s'} \bigl[ \mathbb E_\pi (R_{t+1}|S_t = s, A_t = a, S_{t+1} = s') Pr(S_{t+1} = s' | S_t = s, A_t = a) \bigr] \\
-&= \sum_r \sum_{s'} \bigl[ \mathbb E_\pi (R_{t+1}|S_t = s, A_t = a, S_{t+1} = s') Pr(S_{t+1} = s', R_{t+1} = r | S_t = s, A_t = a) \bigr] \\
-\end{aligned}</script><p>denote </p>
-<script type="math/tex; mode=display">
-\mathbb E_\pi (R_{t+1}|S_t = s, A_t = a, S_{t+1} = s') = R_{s,s'}^a \\
-Pr(S_{t+1} = s', R_{t+1} = r | S_t = s, A_t = a) = p(s', r | s, a)</script><script type="math/tex; mode=display">
-\therefore R_{t+1}(s, a) = \sum_r \sum_{s'} R_{s,s'}^a p(s', r | s, a)</script><script type="math/tex; mode=display">
-\begin{aligned}
-\because
-\gamma \sum_{s'} \upsilon_\pi(S_{t+1}) P_{s,s'}^a 
-&= \gamma \sum_r \sum_{s'} \upsilon_\pi(S_{t+1}) Pr(S_{t+1} = s', R_{t+1} = r | S_t = s, A_t = a) \\
-&=  \gamma \sum_r \sum_{s'} \upsilon_\pi(S_{t+1})  p(s', r | s, a)
-\end{aligned}</script><script type="math/tex; mode=display">
-\begin{equation}
-\begin{aligned}
-\therefore
-q_\pi(s,a) &= \sum_r \sum_{s'} R_{s,s'}^a p(s', r | s, a) + \gamma \sum_r \sum_{s'} \upsilon_\pi(S_{t+1})  p(s', r | s, a) \\
-&= \sum_r \sum_{s'} \bigl[ R_{s, s'}^a + \gamma \upsilon_\pi( S_{t+1} ) \bigr ] p(s', r | s, a) 
-\end{aligned}
-\end{equation} \tag{2} \label{eq2}</script><p>This is the second equation.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1851,7 +1818,7 @@ q_\pi(s,a) &= \sum_r \sum_{s'} R_{s,s'}^a p(s', r | s, a) + \gamma \sum_r \sum_{
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
