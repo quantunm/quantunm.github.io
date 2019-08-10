@@ -259,6 +259,139 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-4-9/" itemprop="url">Reinforcement Learning Exercise 4.9</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T20:28:21+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Exercise 4.9 (programming)</strong> Implement value iteration for the gambler’s problem and solve it for $p_h$ = 0.25 and $p_h$ = 0.55. In programming, you may find it convenient to introduce two dummy states corresponding to termination with capital of 0 and 100, giving them values of 0 and 1 respectively. Show your results graphically, as in Figure 4.3.Are your results stable as $\theta \rightarrow 0$?</p>
+<p>According to the pseudocode of value iteration for estimating $\pi \approx \pi_*$, we can easily write the code for this exercise.<br>The code’s address is here:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/gamblers_problem.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/gamblers_problem.py</a></p>
+<p>When $p_h = 0.4$ and $\theta = 10^{-9}$, the result is same as Figure 4.3 in the book.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.4_theta1e-9.png" width="100%" height="100%"></p>
+<center>Figure 1. $p_h = 0.4$ and $\theta = 10^{-9}$</center>
+
+<p>Change $p_h$ to the 0.25 and 0.55, the result to this exercise is:<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.25_theta1e-9.png" width="100%" height="100%"></p>
+<center>Figure 2. $p_h = 0.25$ and $\theta = 10^{-9}$</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.55_theta1e-9.png" width="100%" height="100%">
+<center>Figure 3. $p_h = 0.55$ and $\theta = 10^{-9}$</center>
+Take $p_h=0.4$ as an example, change the $\theta$ from $0.1$ to $10^{-11}$, we can find that the result is stable.
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_ph0.4.png" width="100%" height="100%">
+<center>Figure 4. $p_h = 0.4$</center>
+
+<p>One important thing is although the results are stable, the results are not unique. Because actions in different states may result in an identical maximum state value. In the program, we select the first action which lead to the maximum state value, we can also choose the other actions those lead to the maximum state value, that makes the results to be not unique.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1543,231 +1676,6 @@ q_*(s_l, a_r) &= \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qq
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Reinforcement-Learning-Exercise-3-22/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/07/Reinforcement-Learning-Exercise-3-22/" itemprop="url">Reinforcement Learning Exercise 3.22</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-07T21:41:59+08:00">
-                2019-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Exercise 3.22 Consider the continuing MDP shown on to the right. The only decision to be made is that in the top state, where two actions are available, left and right. The numbers show the rewards that are received deterministically after each action. There are exactly two deterministic policies, $\pi_{left}$ and $\pi_{right}$. What policy is optimal if $\gamma = 0$? If $\gamma = 0.9$? If $\gamma = 0.5$?<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-22/3-22-1.png#pic_center" alt><br>Before to solve this problem, we have to deduce the expression of $q_*(s,a)$ in terms of $R_{s,s’}^a$ and $P_{s,s’}^a$.<br>First, </p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s,a) &= \mathbb E[R_{t+1} + \gamma \max_{a'} q_*(S_{t+1}, a')|S_t=s,A_t=a] \\
-&= \sum_{s',r}\Bigl \{p(s',r|s,a) \bigl [ r + \gamma \max_{a'}q_*(s',a) \bigr ] \Bigr \} \\
-&= \sum_{s', r} \bigl [ rp(s',r|s,a) \bigr ] + \sum_{s',r} \bigl [ p(s',r|s,a) \gamma \max_{a'}q_*(s',a') \bigr ] \\
-&= \sum_r \bigl [ rp(r|s,a) \bigr ] + \sum_{s'} \bigl [ p(s'|s,a) \gamma \max_{a'} q_*(s', a') \bigr ] \\
-&= \mathbb E(r|s,a) + \sum_{s'} \bigl [ p(s'|s,a) \gamma \max_{a'} q_*(s', a') \bigr ] \\
-&= \sum_{s'} \bigl [ \mathbb E(r|s', s, a)p(s'|s,a) \bigr ] + \sum_{s'} \bigl [ p(s'|s,a) \gamma \max_{a'} q_*(s', a') \bigr ] \\
-&= \sum_{s'} \Bigl \{ \bigl [ \mathbb E(r|s',s,a) + \gamma \max_{a'} q_*(s',a') \bigr ] p(s'|s,a) \Bigr \}
-\end{aligned}</script><p>denote $\mathbb E(r|s’,s,a) = R_{s,s’}^a$ and $p(s’|s,a)=P_{s,s’}^a$, we get the expression we wanted</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-q_*(s,a)=\sum_{s'} \Bigl \{ \bigl [ R_{s,s'}^a + \gamma \max_{a'} q_*(s',a') \bigr ] P_{s,s'}^a \Bigr \}
-\end{equation} \tag{1} \label{eq1}</script><p>Next, we name the three status in circles as $s_A$, $s_B$, $s_C$, and denote the action to left as $a_l$, the action to right as $a_r$.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-22/3-22-2.png#pic_center" alt><br>According to equation (1) we can get Bellman optimality equation for $q_*$ of the three status.</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_{*, \pi_{left}}(s_A, a_l)&=\Bigl \{R_{s_A, s_B}^{a_l}+\gamma \max_{a'} \bigl [ q_*(s_B, a)\bigr ] \Bigr \} P_{s_A, s_B}^{a_l} + \Bigl \{R_{s_A, s_C}^{a_l}+\gamma \max_{a'} \bigl [ q_*(s_C, a) \bigr ] \Bigr \} P_{s_A, s_C}^{a_l}\\
-&= \bigl [ R_{s_A, s_B}^{a_l} + \gamma q_*(s_B, a) \bigr ] P_{s_A, s_B}^{a_l} +  \bigl [ R_{s_A, s_C}^{a_r} + \gamma q_*(s_C, a) \bigr ] P_{s_A, s_C}^{a_l} \\
-q_{*, \pi_{right}}(s_A, a_r)&=\Bigl \{R_{s_A, s_B}^{a_r}+\gamma \max_{a'} \bigl [ q_*(s_B, a) \bigr ] \Bigr \} P_{s_A, s_B}^{a_r} + \Bigl \{R_{s_A, s_C}^{a_r}+\gamma \max_{a'} \bigl [ q_*(s_C, a)\bigr ] \Bigr \} P_{s_A, s_C}^{a_r}\\
-&= \bigl [ R_{s_A, s_B}^{a_r} + \gamma q_*(s_B, a) \bigr ] P_{s_A, s_B}^{a_r} +  \bigl [ R_{s_A, s_C}^{a_r} + \gamma q_*(s_C, a) \bigr ] P_{s_A, s_C}^{a_r} \\
-q_*(s_B, a)&=\Bigl \{R_{s_B, s_A}^{a}+\gamma \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} P_{s_B, s_A}^{a} \\
-q_*(s_C, a)&=\Bigl \{R_{s_C, s_A}^{a}+\gamma \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} P_{s_C, s_A}^{a} \\
-\end{aligned}</script><script type="math/tex; mode=display">
-\because P_{s_A, s_B}^{a_r} = 0, P_{s_A, s_C}^{a_l} = 0\\
-\begin{aligned}
-\therefore q_{*, \pi_{left}}(s_A, a_l)&=\bigl [ R_{s_A, s_B}^{a_l} + \gamma q_*(s_B, a) \bigr ] P_{s_A, s_B}^{a_l} \\
-q_{*, \pi_{right}}(s_A, a_r)&= \bigl [ R_{s_A, s_C}^{a_r} + \gamma q_*(s_C, a) \bigr ] P_{s_A, s_C}^{a_r} \\
-\end{aligned}</script><p>Now, let’s discuss the cases in different $\gamma$.<br>For $\gamma = 0$:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_{*,\pi_{left}}(s_A, a_l) &= \bigl [ 1 + 0 \cdot q_*(s_B, a) \bigr ] \cdot 1 = 1\\
-q_{*,\pi_{right}}(s_A, a_r) &= \bigl [ 0 + 0 \cdot q_*(s_C,a) \bigr ] \cdot 1 = 0
-\end{aligned}</script><p>So, $\pi_{left}$ is the optimal policy when $\gamma = 0$.</p>
-<p>For $\gamma = 0.5$:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_B, a)&=\Bigl \{0+0.5 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} \cdot 1 \\
-&=0.5 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ]\\
-q_*(s_C, a)&=\Bigl \{2+0.5 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} \cdot1 \\
-&= 2+0.5 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ]\\
-q_{*,\pi_{left}}(s_A, a_l) &= \bigl [ 1 + 0.5 \cdot q_*(s_B, a) \bigr ] \cdot 1 \\
-&= 1 + 0.5 \cdot q_*(s_B, a)\\
-q_{*,\pi_{right}}(s_A, a_r) &= \bigl [ 0 + 0.5 \cdot q_*(s_C,a) \bigr ] \cdot 1 \\
-&= 0.5 \cdot q_*(s_C,a)
-\end{aligned}</script><p>Assume <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \geq q_{*,\pi_{left}}(s_C, a_l)</script> then we have:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_B, a) &= 0.5 \cdot q_{*,\pi_{left}}(s_A, a_l)\\
-q_*(s_C, a) &= 2+0.5 \cdot q_{*,\pi_{left}}(s_A, a_l)
-\end{aligned}</script><p>therefore,</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_{*,\pi_{left}}(s_A, a_l) &= 1 + 0.5 \cdot 0.5 \cdot q_{*,\pi_{left}}(s_A, a_l)\\
-q_{*,\pi_{left}}(s_A, a_l) &= \frac {4}{3}\\
-q_{*,\pi_{right}}(s_A, a_r) &= 0.5 \cdot \bigl [ 2+0.5 \cdot q_{*,\pi_{left}}(s_A, a_l) \bigr ] \\
-q_{*,\pi_{right}}(s_A, a_r) &= \frac {5}{3}
-\end{aligned}</script><p>Here, <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \lt q_{*,\pi_{right}}(s_C, a_l)</script>,  conflict with the assumption, so the assumption fails.<br>Assume <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \le q_{*,\pi_{right}}(s_C, a_l)</script>then we have:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_B, a) &= 0.5 \cdot q_{*,\pi_{right}}(s_A, a_r)\\
-q_*(s_C, a) &= 2+0.5 \cdot q_{*,\pi_{right}}(s_A, a_r)
-\end{aligned}</script><p>therefore,</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_{*,\pi_{right}}(s_A, a_r) &= 0.5 \cdot \bigl [ 2+0.5 \cdot q_{*,\pi_{right}}(s_A, a_r) \bigr ] \\
-q_{*,\pi_{right}}(s_A, a_r) &= \frac {4}{3}\\
-q_{*,\pi_{left}}(s_A, a_l) &= 1 + 0.5 \cdot 0.5 \cdot q_{*,\pi_{right}}(s_A, a_r)\\
-q_{*,\pi_{left}}(s_A, a_l) &= \frac {4}{3}\\
-\end{aligned}</script><p>Here <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) = q_{*,\pi_{right}}(s_A, a_r)</script>, assumption is correct. So, both <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l)</script> and <script type="math/tex">q_{*,\pi_{right}}(s_A, a_r)</script> are optimal policies for $\gamma = 0.5$.</p>
-<p>For $\gamma = 0.9$:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_B, a)&=\Bigl \{0+0.9 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} \cdot 1 \\
-&=0.9 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ]\\
-q_*(s_C, a)&=\Bigl \{2+0.9 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} \cdot1 \\
-&= 2+0.9 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ]\\
-q_{*,\pi_{left}}(s_A, a_l) &= \bigl [ 1 + 0.9 \cdot q_*(s_B, a) \bigr ] \cdot 1 \\
-&= 1 + 0.9 \cdot q_*(s_B, a)\\
-q_{*,\pi_{right}}(s_A, a_r) &= \bigl [ 0 + 0.9 \cdot q_*(s_C,a) \bigr ] \cdot 1 \\
-&= 0.9 \cdot q_*(s_C,a)
-\end{aligned}</script><p>Assume <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \geq q_{*,\pi_{left}}(s_C, a_l)</script> then we have:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_B, a) &= 0.9 \cdot q_{*,\pi_{left}}(s_A, a_l)\\
-q_*(s_C, a) &= 2+0.9 \cdot q_{*,\pi_{left}}(s_A, a_l)
-\end{aligned}</script><p>therefore,</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_{*,\pi_{left}}(s_A, a_l) &= 1 + 0.9 \cdot 0.9 \cdot q_{*,\pi_{left}}(s_A, a_l)\\
-q_{*,\pi_{left}}(s_A, a_l) &= \frac {100}{19} = \frac {500}{95}\\
-q_{*,\pi_{right}}(s_A, a_r) &= 0.9 \cdot \bigl [ 2+0.9 \cdot q_{*,\pi_{left}}(s_A, a_l) \bigr ] \\
-q_{*,\pi_{right}}(s_A, a_r) &= \frac {729}{95}
-\end{aligned}</script><p>Here, <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \lt q_{*,\pi_{right}}(s_C, a_l)</script>,  conflict with the assumption, so the assumption fails.<br>Assume <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \le q_{*,\pi_{right}}(s_C, a_l)</script> then we have:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_B, a) &= 0.9 \cdot q_{*,\pi_{right}}(s_A, a_r)\\
-q_*(s_C, a) &= 2+0.9 \cdot q_{*,\pi_{right}}(s_A, a_r)
-\end{aligned}</script><p>therefore,</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_{*,\pi_{right}}(s_A, a_r) &= 0.9 \cdot \bigl [ 2+0.9 \cdot q_{*,\pi_{right}}(s_A, a_r) \bigr ] \\
-q_{*,\pi_{right}}(s_A, a_r) &= \frac {180}{19}\\
-q_{*,\pi_{left}}(s_A, a_l) &= 1 + 0.9 \cdot 0.9 \cdot q_{*,\pi_{right}}(s_A, a_r)\\
-q_{*,\pi_{left}}(s_A, a_l) &= \frac {1648}{190}\\
-\end{aligned}</script><p>Here, <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \lt q_{*,\pi_{right}}(s_C, a_l)</script>, assumption is correct. So, $\pi_{right}$ is the optimal policy for $\gamma = 0.9$</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1818,7 +1726,7 @@ q_{*,\pi_{left}}(s_A, a_l) &= \frac {1648}{190}\\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

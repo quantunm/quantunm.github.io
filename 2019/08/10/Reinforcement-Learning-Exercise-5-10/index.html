@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Exercise 4.10 What is the analog of the value iteration update (4.10) for action values,$q_{k+1}(s, a)$?Use the result of exercise 3.17:  Q_\pi(s,a) = \sum_{s&apos;} R_{s,s&apos;}^a P_{ss&apos;}^a + \gamma \sum_{s&apos;}">
+<meta name="description" content="Exercise 5.10 Derive the weighted-average update rule (5.8) from (5.7). Follow the pattern of the derivation of the unweighted rule (2.3) According to:  V_{n} \doteq \frac{\sum_{k=1}^{n - 1}W_k G_k}{\">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 4.10">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-10/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 5.10">
+<meta property="og:url" content="http://yoursite.com/2019/08/10/Reinforcement-Learning-Exercise-5-10/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 4.10 What is the analog of the value iteration update (4.10) for action values,$q_{k+1}(s, a)$?Use the result of exercise 3.17:  Q_\pi(s,a) = \sum_{s&apos;} R_{s,s&apos;}^a P_{ss&apos;}^a + \gamma \sum_{s&apos;}">
+<meta property="og:description" content="Exercise 5.10 Derive the weighted-average update rule (5.8) from (5.7). Follow the pattern of the derivation of the unweighted rule (2.3) According to:  V_{n} \doteq \frac{\sum_{k=1}^{n - 1}W_k G_k}{\">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-04T12:42:53.456Z">
+<meta property="og:updated_time" content="2019-08-10T08:10:20.152Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 4.10">
-<meta name="twitter:description" content="Exercise 4.10 What is the analog of the value iteration update (4.10) for action values,$q_{k+1}(s, a)$?Use the result of exercise 3.17:  Q_\pi(s,a) = \sum_{s&apos;} R_{s,s&apos;}^a P_{ss&apos;}^a + \gamma \sum_{s&apos;}">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 5.10">
+<meta name="twitter:description" content="Exercise 5.10 Derive the weighted-average update rule (5.8) from (5.7). Follow the pattern of the derivation of the unweighted rule (2.3) According to:  V_{n} \doteq \frac{\sum_{k=1}^{n - 1}W_k G_k}{\">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-10/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/10/Reinforcement-Learning-Exercise-5-10/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 4.10 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 5.10 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-10/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/10/Reinforcement-Learning-Exercise-5-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 4.10</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 5.10</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T20:42:16+08:00">
-                2019-08-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-10T16:08:56+08:00">
+                2019-08-10
               </time>
             
 
@@ -311,8 +311,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-10/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/08/04/Reinforcement-Learning-Exercise-4-10/" itemprop="commentsCount"></span>
+                <a href="/2019/08/10/Reinforcement-Learning-Exercise-5-10/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/08/10/Reinforcement-Learning-Exercise-5-10/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -340,11 +340,21 @@
       
 
       
-        <p><strong>Exercise 4.10</strong> What is the analog of the value iteration update (4.10) for action values,$q_{k+1}(s, a)$?<br>Use the result of exercise 3.17:</p>
+        <p><strong><em>Exercise 5.10</em></strong> Derive the weighted-average update rule (5.8) from (5.7). Follow the pattern of the derivation of the unweighted rule (2.3)</p>
+<p>According to:</p>
 <script type="math/tex; mode=display">
-Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script><p>easily, we have the iteration for $q_{k+1}(s,a)$ which is analogous to the value iteration update (4.10): </p>
+V_{n} \doteq \frac{\sum_{k=1}^{n - 1}W_k G_k}{\sum_{k=1}^{n - 1}W_k} \text{,} \qquad n \geq 2 \qquad \text{(5.7)} \\</script><p>and denote $C_n$ as the weights given to the first n returns. So formula (5.7) is transferred to:</p>
 <script type="math/tex; mode=display">
-q_{k+1}(s, a) = \max_a \biggl \{ \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} q_k(s',a') \pi(s',a') \bigr] P_{s,s'}^a \biggr \}</script>
+V_{n} \doteq \frac{\sum_{k=1}^{n - 1}W_k G_k}{C_{n-1}} \text{,} \qquad n \geq 2</script><p>then we have:</p>
+<script type="math/tex; mode=display">
+V_{n+1} \doteq \frac{\sum_{k=1}^{n}W_k G_k}{C_n} \text{,} \qquad n \geq 1</script><script type="math/tex; mode=display">
+\begin{aligned}
+\therefore V_{n+1} &= \frac{\sum_{k=1}^{n - 1}W_k G_k}{C_n}+\frac{W_nG_n}{C_n}\\
+&=\frac{C_{n-1}}{C_{n}} V_n +\frac{W_nG_n}{C_n} \\
+&= (1 - \frac{W_n}{C_n})V_n + \frac{W_nG_n}{C_n} \\
+&=V_n + \frac{W_n}{C_n}(G_n - V_n), \qquad n \geq 1, \qquad \text{(5.8)}
+\end{aligned}</script><p>This derivation is very easy.</p>
+
       
     </div>
     
@@ -374,8 +384,8 @@ q_{k+1}(s, a) = \max_a \biggl \{ \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-9/" rel="next" title="Reinforcement Learning Exercise 4.9">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 4.9
+              <a href="/2019/08/06/Reinforcement-Learning-Exercise-5-9/" rel="next" title="Reinforcement Learning Exercise 5.9">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 5.9
               </a>
             
           </div>
@@ -383,10 +393,6 @@ q_{k+1}(s, a) = \max_a \biggl \{ \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/" rel="prev" title="Reinforcement Learning--Explanation to Formula (5.2)">
-                Reinforcement Learning--Explanation to Formula (5.2) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

@@ -259,6 +259,139 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/10/Reinforcement-Learning-Exercise-5-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/10/Reinforcement-Learning-Exercise-5-10/" itemprop="url">Reinforcement Learning Exercise 5.10</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-10T16:08:56+08:00">
+                2019-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong><em>Exercise 5.10</em></strong> Derive the weighted-average update rule (5.8) from (5.7). Follow the pattern of the derivation of the unweighted rule (2.3)</p>
+<p>According to:</p>
+<script type="math/tex; mode=display">
+V_{n} \doteq \frac{\sum_{k=1}^{n - 1}W_k G_k}{\sum_{k=1}^{n - 1}W_k} \text{,} \qquad n \geq 2 \qquad \text{(5.7)} \\</script><p>and denote $C_n$ as the weights given to the first n returns. So formula (5.7) is transferred to:</p>
+<script type="math/tex; mode=display">
+V_{n} \doteq \frac{\sum_{k=1}^{n - 1}W_k G_k}{C_{n-1}} \text{,} \qquad n \geq 2</script><p>then we have:</p>
+<script type="math/tex; mode=display">
+V_{n+1} \doteq \frac{\sum_{k=1}^{n}W_k G_k}{C_n} \text{,} \qquad n \geq 1</script><script type="math/tex; mode=display">
+\begin{aligned}
+\therefore V_{n+1} &= \frac{\sum_{k=1}^{n - 1}W_k G_k}{C_n}+\frac{W_nG_n}{C_n}\\
+&=\frac{C_{n-1}}{C_{n}} V_n +\frac{W_nG_n}{C_n} \\
+&= (1 - \frac{W_n}{C_n})V_n + \frac{W_nG_n}{C_n} \\
+&=V_n + \frac{W_n}{C_n}(G_n - V_n), \qquad n \geq 1, \qquad \text{(5.8)}
+\end{aligned}</script><p>This derivation is very easy.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/Reinforcement-Learning-Exercise-5-9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1442,139 +1575,6 @@ q_{k+1}(s, a) = \max_a \biggl \{ \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-4-9/" itemprop="url">Reinforcement Learning Exercise 4.9</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T20:28:21+08:00">
-                2019-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Exercise 4.9 (programming)</strong> Implement value iteration for the gambler’s problem and solve it for $p_h$ = 0.25 and $p_h$ = 0.55. In programming, you may find it convenient to introduce two dummy states corresponding to termination with capital of 0 and 100, giving them values of 0 and 1 respectively. Show your results graphically, as in Figure 4.3.Are your results stable as $\theta \rightarrow 0$?</p>
-<p>According to the pseudocode of value iteration for estimating $\pi \approx \pi_*$, we can easily write the code for this exercise.<br>The code’s address is here:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/gamblers_problem.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/gamblers_problem.py</a></p>
-<p>When $p_h = 0.4$ and $\theta = 10^{-9}$, the result is same as Figure 4.3 in the book.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.4_theta1e-9.png" width="100%" height="100%"></p>
-<center>Figure 1. $p_h = 0.4$ and $\theta = 10^{-9}$</center>
-
-<p>Change $p_h$ to the 0.25 and 0.55, the result to this exercise is:<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.25_theta1e-9.png" width="100%" height="100%"></p>
-<center>Figure 2. $p_h = 0.25$ and $\theta = 10^{-9}$</center>
-<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.55_theta1e-9.png" width="100%" height="100%">
-<center>Figure 3. $p_h = 0.55$ and $\theta = 10^{-9}$</center>
-Take $p_h=0.4$ as an example, change the $\theta$ from $0.1$ to $10^{-11}$, we can find that the result is stable.
-<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_ph0.4.png" width="100%" height="100%">
-<center>Figure 4. $p_h = 0.4$</center>
-
-<p>One important thing is although the results are stable, the results are not unique. Because actions in different states may result in an identical maximum state value. In the program, we select the first action which lead to the maximum state value, we can also choose the other actions those lead to the maximum state value, that makes the results to be not unique.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1625,7 +1625,7 @@ Take $p_h=0.4$ as an example, change the $\theta$ from $0.1$ to $10^{-11}$, we c
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
