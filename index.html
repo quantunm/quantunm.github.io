@@ -259,6 +259,136 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/Reinforcement-Learning-Exercise-5-13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/10/Reinforcement-Learning-Exercise-5-13/" itemprop="url">Reinforcement Learning Exercise 5.13</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-10T23:42:31+08:00">
+                2019-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Exercise 5.13</strong> Show the steps to derive (5.14) from (5.12).</p>
+<script type="math/tex; mode=display">
+\rho_{t:T-1}R_{t+1} = \frac{\pi(A_t \mid S_t)}{b(A_t \mid S_t)}\frac{\pi(A_{t+1} \mid S_{t + 1})}{b(A_{t+1} \mid S_{t + 1})}\frac{\pi(A_{t+2} \mid S_{t + 2})}{b(A_{t+2} \mid S_{t + 2})}\cdots\frac{\pi(A_{T-1} \mid S_{T - 1})}{b(A_{T-1} \mid S_{T - 1})}R_{t+1}    \qquad{(5.12)}</script><p>According to the property of Markov Procedure, each action step is independent, so we have</p>
+<script type="math/tex; mode=display">
+\mathbb E(\rho_{t:T-1}R_{t+1})=\mathbb E( \frac{\pi(A_t \mid S_t)}{b(A_t \mid S_t)}R_{t+1})\mathbb E(\frac{\pi(A_{t+1} \mid S_{t + 1})}{b(A_{t+1} \mid S_{t + 1})})\mathbb E(\frac{\pi(A_{t+2} \mid S_{t + 2})}{b(A_{t+2} \mid S_{t + 2})})\cdots\mathbb E(\frac{\pi(A_{T-1} \mid S_{T - 1})}{b(A_{T-1} \mid S_{T - 1})})</script><p>And according to equation (5.13), the expectation of each step is 1, except the first. </p>
+<script type="math/tex; mode=display">
+\mathbb E\Biggl[ \frac{\pi(A_k \mid S_k)}{b(A_k \mid S_k)}\Biggr] \doteq \sum_a b(a\mid S_k) \frac{\pi(a \mid S_k)}{b(a \mid S_k)} = \sum_a \pi(a \mid S_k) = 1 \qquad{(5.13)}</script><p>So, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbb E(\rho_{t:T-1}R_{t+1})&=\mathbb E( \frac{\pi(A_t \mid S_t)}{b(A_t \mid S_t)}R_{t+1})\\
+&=\mathbb E(\rho_{t:t}R_{t+1})    \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad{(5.14)}
+\end{aligned}</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/10/Reinforcement-Learning-Exercise-5-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1452,129 +1582,6 @@ q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) +
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-4-10/" itemprop="url">Reinforcement Learning Exercise 4.10</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T20:42:16+08:00">
-                2019-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Exercise 4.10</strong> What is the analog of the value iteration update (4.10) for action values,$q_{k+1}(s, a)$?<br>Use the result of exercise 3.17:</p>
-<script type="math/tex; mode=display">
-Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script><p>easily, we have the iteration for $q_{k+1}(s,a)$ which is analogous to the value iteration update (4.10): </p>
-<script type="math/tex; mode=display">
-q_{k+1}(s, a) = \max_a \biggl \{ \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} q_k(s',a') \pi(s',a') \bigr] P_{s,s'}^a \biggr \}</script>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1625,7 +1632,7 @@ q_{k+1}(s, a) = \max_a \biggl \{ \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

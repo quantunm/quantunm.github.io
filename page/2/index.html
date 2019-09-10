@@ -259,6 +259,129 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-4-10/" itemprop="url">Reinforcement Learning Exercise 4.10</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T20:42:16+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Exercise 4.10</strong> What is the analog of the value iteration update (4.10) for action values,$q_{k+1}(s, a)$?<br>Use the result of exercise 3.17:</p>
+<script type="math/tex; mode=display">
+Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script><p>easily, we have the iteration for $q_{k+1}(s,a)$ which is analogous to the value iteration update (4.10): </p>
+<script type="math/tex; mode=display">
+q_{k+1}(s, a) = \max_a \biggl \{ \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} q_k(s',a') \pi(s',a') \bigr] P_{s,s'}^a \biggr \}</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1523,159 +1646,6 @@ v_\pi(s) &= \mathbb E_\pi (G_t \mid S_t = s) \\
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Reinfocement-Learning-Exercise-3-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/07/Reinfocement-Learning-Exercise-3-23/" itemprop="url">Reinfocement Learning Exercise 3.23</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-07T22:19:21+08:00">
-                2019-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Exercise 3.23</strong> Give the Bellman equation for $q_*$ for the recycling robot.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-23/3-23.png#pic_center" alt><br>This picture shows the mechanism of the recycling robot.</p>
-<p>To give the Bellman equation for <script type="math/tex">q_*</script> for the recycling robot, we have to enumerate equations for <script type="math/tex">q_*(s_h, a_s)</script>, <script type="math/tex">q_*(s_h, a_w)</script>, <script type="math/tex">q_*(s_h, a_r)</script>, <script type="math/tex">q_*(s_l, a_s)</script>,<script type="math/tex">q_*(s_l, a_w)</script> and <script type="math/tex">q_*(s_l, a_r)</script>. Here, the subscripts h, l, s, w, r respectively denotes ‘high’, ‘low’, ‘search’, ‘wait’, ‘recharge’. For ‘high’ status, the available actions are ‘search’ and ‘wait’, so $q_*(s_h, a_r)$ is excluded.<br>First, we have to introduce the equation (1) from exercise 3.22:</p>
-<script type="math/tex; mode=display">
-q_*(s,a)=\sum_{s'} \Bigl \{ \bigl [ R_{s,s'}^a + \gamma \max_{a'} q_*(s',a') \bigr ] P_{s,s'}^a \Bigr \} \qquad{(1)}</script><p>For status ‘high’, we have:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_h, a_s) &= \bigl [ R_{s_h, s_h}^{a_s} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_h,s_h}^{a_s} + \bigl [ R_{s_h, s_l}^{a_s} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_h,s_l}^{a_s} \qquad{(2)}\\
-q_*(s_h, a_w) &= \bigl [ R_{s_h, s_h}^{a_w} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_h,s_h}^{a_w} + \bigl [ R_{s_h, s_l}^{a_w} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_h,s_l}^{a_w} \qquad{(3)}
-\end{aligned}</script><p>For status ‘low’, there are:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_l, a_s) &= \bigl [ R_{s_l, s_h}^{a_s} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_l,s_h}^{a_s} + \bigl [ R_{s_l, s_l}^{a_s} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_l,s_l}^{a_s} \qquad{(4)} \\
-q_*(s_l, a_w) &= \bigl [ R_{s_l, s_h}^{a_w} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_l,s_h}^{a_w} + \bigl [ R_{s_l, s_l}^{a_w} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_l,s_l}^{a_w} \qquad{(5)} \\
-q_*(s_l, a_r) &= \bigl [ R_{s_l, s_h}^{a_r} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_l,s_h}^{a_r} + \bigl [ R_{s_l, s_l}^{a_r} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_l,s_l}^{a_r} \qquad{(6)}
-\end{aligned}</script><p>Then according to the table in the above picture, $R_{s_h,s_h}^{a_s}=r_{search}$, $P_{s_h,s_h}^{a_s}=\alpha$, $R_{s_h,s_l}^{a_s}=r_{search}$, $P_{s_h,s_l}^{a_s}=1-\alpha$, … and  so on. Plug these values into equations (2), (3), (4), (5), (6), we get:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_h, a_s) &= \bigl [ r_{search} + \gamma \max_{a'} q_*(s_h,a') \bigr ] \alpha + \bigl [ r_{search} + \gamma \max_{a'} q_*(s_l,a') \bigr ] (1-\alpha)\\ &= r_{search} + \gamma \bigl [\alpha \max_{a'} q_*(s_h,a') +(1-\alpha) \max_{a'} q_*(s_l,a')\bigr ]\qquad{(7)}\\
-q_*(s_h, a_w) &= \bigl [ r_{wait} + \gamma \max_{a'} q_*(s_h,a') \bigr ] \cdot 1 + \bigl [ R_{s_h, s_l}^{a_w} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \cdot 0 \\
-&= r_{wait} + \gamma \max_{a'} q_*(s_h,a')\qquad{(8)}\\
-q_*(s_l, a_s) &= \bigl [ -3 + \gamma \max_{a'} q_*(s_h,a') \bigr ] (1-\beta) + \bigl [ r_{search} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \beta \\
-&= (r_{search} - 3) + \gamma \bigl [ (1-\beta)\max_{a'} q_*(s_h,a') + \beta \max_{a'} q_*(s_l,a') \bigr ] \qquad{(9)} \\
-q_*(s_l, a_w) &= \bigl [ R_{s_l, s_h}^{a_w} + \gamma \max_{a'} q_*(s_h,a') \bigr ] \cdot 0 + \bigl [ r_{wait} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \cdot 1 \\ &= r_{wait} + \gamma \max_{a'} q_*(s_l,a') \qquad{(10)} \\
-q_*(s_l, a_r) &= \bigl [ 0 + \gamma \max_{a'} q_*(s_h,a') \bigr ] \cdot 1 + \bigl [ R_{s_l, s_l}^{a_r} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \cdot 0 \\
-&= \gamma \max_{a'} q_*(s_h,a')\qquad{(11)}
-\end{aligned}</script><p>For ‘high’ status, $a’$ can only be ‘search’ and ‘wait’ while for ‘low’ status, $a’$ can be ‘search’, ‘wait’ and ‘recharge’. So, equations (7) to (11) can be rearranged as below:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_h, a_s) &= r_{search} + \gamma \Bigl \{\alpha \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ]+(1-\alpha) \max_{a'} \bigl [ q_*(s_l,a_s), q_*(s_l,a_w), q_*(s_l,a_r) \bigr ] \Bigr \} \qquad{(12)} \\
-q_*(s_h, a_w) &= r_{wait} + \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qquad {(13)}\\
-q_*(s_l, a_s) &= (r_{search} - 3) + \gamma \Bigl \{ (1-\beta)\max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] + \beta \max_{a'} \bigl [ q_*(s_l,a_s), q_*(s_l,a_w), q_*(s_l,a_r) \bigr ] \Bigr \} \qquad{(14)} \\
-q_*(s_l, a_w) &= r_{wait} + \gamma \max_{a'} \bigl [ q_*(s_l,a_s), q_*(s_l,a_w), q_*(s_l,a_r) \bigr ] \qquad{(15)} \\
-q_*(s_l, a_r) &= \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qquad{(16)}
-\end{aligned}</script><p>These equations from (12) to (16) are the Bellman equations for the recycling robot and can be solved in a similar way like exercise 3.22.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1726,7 +1696,7 @@ q_*(s_l, a_r) &= \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qq
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
