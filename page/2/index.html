@@ -1007,6 +1007,8 @@ Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} 
 \begin{aligned}
 &\text{1 Initialization} \\
     &\qquad V(s) \in \mathbb R \text{ and } \pi (s) \in \mathcal A(s) \text{ arbitrarily } s \in \mathcal S \\
+    &\qquad \text{For each } s \in \mathcal S \text{ create an empty list : } old\_list\_of\_a(s)\\
+    &\qquad \text{For each } s \in \mathcal S \text{ create an iterator : } iterator\_old\_list\_of\_a(s)\\
 &\text{2 Policy Evaluation} \\
     &\qquad \text{Loop:} \\
         &\qquad \qquad \Delta \leftarrow 0 \\
@@ -1018,12 +1020,28 @@ Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} 
 &\text{3 Policy Improvement} \\
      &\qquad policy\text-stable \leftarrow true \\
     &\qquad \text{For each }s \in \mathcal S: \\
-    &\qquad \qquad old \text-V(s) \leftarrow V(s) \\
-    &\qquad \qquad a \leftarrow \text{argmax}_a \sum_{s',r}p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \\ 
-     &\qquad \qquad V(s) \leftarrow \sum_{s',r}p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \\
-     &\qquad \qquad old \text- action \leftarrow \pi(s) \\
-     &\qquad \qquad \pi(s) \leftarrow a \\
-     &\qquad \qquad \text{If } old\text-action =\not \pi(s) \text{ and } |V(s) - old\text-V(s)| > \theta \text{ then } policy\text-stable \leftarrow false \\
+    &\qquad \qquad V_{max}(s)  \leftarrow \max_a \sum_{s',r}p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \\
+    &\qquad \qquad \text{Create an empty list: }new\_list\_of\_a(s)\\
+    &\qquad \qquad \text{For each }a \in |\mathcal A(s)|:\\
+    &\qquad \qquad \qquad \text{If }\sum_{s',r}p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \text{ is equal to } V_{max}(s):\\
+    &\qquad \qquad \qquad \qquad \text{Append }a \text{ to } new\_list\_of\_a(s)\\
+    &\qquad \qquad \text{If }new\_list\_of\_a(s) \text{ is not equal to } old\_list\_of\_a(s)\text{ :}\\
+    &\qquad \qquad \qquad policy\text{-}stable \leftarrow false \\
+    &\qquad \qquad \qquad old\_list\_of\_a(s) \leftarrow new\_list\_of\_a(s)\\
+    &\qquad \qquad \qquad iterator\_old\_list\_of\_a(s) \leftarrow \text{the beginning of }old\_list\_of\_a(s)\\
+    &\qquad \qquad \text{else :}\\
+    &\qquad \qquad \qquad \text{If }old\_list\_of\_a(s) \text{ is empty :}\\
+    &\qquad \qquad \qquad \qquad old\_list\_of\_a(s) \leftarrow new\_list\_of\_a(s)\\
+    &\qquad \qquad \qquad \qquad iterator\_old\_list\_of\_a(s) \leftarrow \text{the beginning of }old\_list\_of\_a(s)\\
+    &\qquad \qquad \qquad \qquad policy\text{-}stable \leftarrow false\\
+    &\qquad \qquad \qquad\text{else :}\\
+    &\qquad \qquad \qquad \qquad \text{If }iterator\_old\_list\_of\_a(s) \text{ is not equal to the end of }old\_list\_of\_a(s) \text{ :}\\
+    &\qquad \qquad \qquad \qquad \qquad \text{Move }iterator\_old\_list\_of\_a(s) \text{ to next.}\\
+    &\qquad \qquad \qquad \qquad \qquad policy\text{-}stable \leftarrow false\\
+    &\qquad \qquad \text{If }iterator\_old\_list\_of\_a(s) \text{ is not equal to the end of }old\_list\_of\_a(s) \text{ :}\\
+    &\qquad \qquad \qquad \pi(s) \leftarrow \text{Select }a \text{ in }old\_list\_of\_a(s) \text{ by } iterator\_old\_list\_of\_a(s)\\
+    &\qquad \qquad \text{else : }\\
+    &\qquad \qquad \qquad \pi(s) \leftarrow \text{Select }a \text{ in }old\_list\_of\_a(s) \text{ randomly}\\
     &\qquad \text{If } policy\text-stable =true \text{ then stop and return } V \approx v_* \text{ and }\pi \approx \pi_* \text{ else go to 2.} \\
 \end{aligned}</script>
           
