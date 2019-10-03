@@ -259,6 +259,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/03/Reinforcement-Learning-Exercise-6-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/03/Reinforcement-Learning-Exercise-6-1/" itemprop="url">Reinforcement Learning Exercise 6.1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-03T12:34:02+08:00">
+                2019-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Exercise 6.1</strong> If $V$ changes during the episode, then (6.6) only holds approximately; what would the difference be between the two sides? Let $V_t$ denote the array of state values used at time $t$ in the TD error (6.5) and in the TD update (6.2). Redo the derivation above to determine the additional amount that must be added to the sum of TD errors in order to equal the Monte Carlo error.</p>
+<p>Suppose $V$ changes at time $u$ since time $t$, then the sum of TD error is:</p>
+<script type="math/tex; mode=display">
+G_u - V_u</script><p>So the amount the must be added to the sum of TD errors at time $t$ is:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\quad(G_u - V_u) - (G_t - V_t)\\
+&=\sum_{k=u}^{T-1}\gamma^{k-u}\delta_u - \sum_{k=t}^{T-1}\gamma^{k-t}\delta_t \qquad\qquad (u \geq t)\\
+&= - \sum_{k = t}^{u-1}\gamma^{k-t}\delta_k \\
+\end{aligned}</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/Reinforcement-Learning-Exercise-5-13/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1433,155 +1561,6 @@ V(S_{noterminal}) &= G(S_0) + G(S_1) + \cdots + G_(S_{10})\\
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/" itemprop="url">Reinforcement Learning--Explanation to Formula (5.2)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T20:45:02+08:00">
-                2019-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>The book doesn’t explain the formula (5.2) clearly, and the second and third lines of the formula (5.2) in page 101 made me confused. So, here, I make it clear to be understood.<br>First, </p>
-<script type="math/tex; mode=display">
-q_\pi(s, \pi'(s)) = \sum_a \pi'(a \mid s) q_\pi(s,a) \\
-\because \text{for all }\pi(a \mid s), \text{there is } \pi(a \mid s) = 
-\begin{cases}
-1 - \epsilon + \epsilon / | \mathcal A(s)| & \text{if } a = A^* \\
-\epsilon / | \mathcal A(s) |& \text{if } a \not = A^* \\
-\end{cases} \\</script><script type="math/tex; mode=display">
-\begin{aligned}
-\therefore  q_\pi(s, \pi'(s)) &= \sum_{a(a = \not A^*)} \frac {\epsilon} {| \mathcal A(s) |}q_\pi(s,a) + (1 - \epsilon + \frac{\epsilon}{|\mathcal A(s)|})q_\pi(s,a = A^*) \\
-&=\frac {\epsilon} {| \mathcal A(s) |} \sum_{a(a = \not A^*)} q_\pi(s,a) + \frac {\epsilon} {| \mathcal A(s) |}q_\pi(s,a = A^*) + (1-\epsilon)q_\pi(s,a = A^*) \\
-&= \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) + (1-\epsilon) \max_a q_\pi(s,a) \qquad \text{this is the second line of formula (5.2)}
-\end{aligned}</script><p>Consider value $x$, let </p>
-<script type="math/tex; mode=display">
-x =\sum_a \Bigl [ \pi(a \mid s) - \frac {\epsilon}{| \mathcal A(s) |} \Bigr ]q_\pi(s,a)</script><p>When $a \not = A^*$, $\pi(a \mid s) =  \epsilon/| \mathcal A(s) |$</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\therefore x &= \Bigl [ \pi(a = A^* \mid s) -  \frac {\epsilon}{| \mathcal A(s) |} \Bigr ]q_\pi(s, a = A^*) \\
-&= \Bigl [ 1 - \epsilon +  \frac {\epsilon}{| \mathcal A(s) |} - \frac {\epsilon}{| \mathcal A(s) |}\Bigr ]q_\pi(s, a=A^*) \\
-&= ( 1 - \epsilon) q_\pi(s, a=A^*) \\
-&= (1-\epsilon)\max_aq_\pi(s,a) \\
-&\leq \max_a q_\pi(s,a)
-\end{aligned}</script><p>Also </p>
-<script type="math/tex; mode=display">
-x = (1-\epsilon) \sum_a \frac { \pi(a \mid s) -  \frac {\epsilon}{| \mathcal A(s) |} }{ 1 - \epsilon}q_\pi(s,a)</script><script type="math/tex; mode=display">
-\begin{aligned}
-\therefore
-q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) + (1-\epsilon) \max_a q_\pi(s,a) \\
-& \geq  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) + (1-\epsilon) \sum_a \frac { \pi(a \mid s) -  \frac {\epsilon}{| \mathcal A(s) |} }{ 1 - \epsilon}q_\pi(s,a)
-\end{aligned}</script><p>This is the third line of formula (5.2). It’s clear to be understood now.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1632,7 +1611,7 @@ q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) +
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

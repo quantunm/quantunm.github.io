@@ -259,6 +259,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/The-derivation-of-Bellman-equation-for-value-of-a-policy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/The-derivation-of-Bellman-equation-for-value-of-a-policy/" itemprop="url">The derivation of Bellman equation for value of a policy</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T11:59:07+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>In book ‘Reinforcement Learning - An Introduction’, Chapter 3, the author gives out the Bellman equation for $v_\pi$ as equation (3.14), but without detailed derivation. That makes me feel confused and uncomfortable, so I try to derive the Bellman equation by myself. The details of derivation are gave out as below:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(s) &= \mathbb E_\pi (G_t \mid S_t = s) \\
+&= \mathbb E_\pi(R_{t+1} + \gamma \cdot G_{t+1} \mid S_t = s) \\
+&= \mathbb E_\pi(R_{t+1} \mid S_t = s) + \gamma \cdot \mathbb E_\pi(G_{t+1} \mid S_t = s) \\
+&= \sum_a \bigl [ \mathbb E_\pi (R_{t+1} \mid S_t = s, A_t = a) \cdot Pr(A_t = a \mid S_t =s) \\
+&\quad + \gamma \cdot \mathbb E_\pi(G_{t+1} \mid S_t = s, A_t = a)\cdot Pr(A_t= a \mid S_t =s) \bigr ] \\
+&= \sum_a Pr(A_t = a\mid S_t = s) \bigl [ \mathbb E_\pi(R_{t+1} \mid S_t = s, A_t =a) + \gamma \cdot \mathbb E_\pi (G_{t+1} \mid S_t =s, A_t = a) \bigr] \\
+&= \sum_a \pi(a\mid s) \Bigl [ \sum_r r \cdot Pr(R_{t+1} = r \mid S_t = s, A_t = a) + \gamma \sum_g g \cdot Pr(G_{t+1} = g \mid S_t = s, A_t = a) \Bigr ] \\
+&= \sum_a \pi(a \mid s) \Bigl [ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} Pr(G_{t+1} = g, R_{t+1} = r, S_{t+1} = s' \mid S_t = s, A_t = a) \Bigr ] \\
+&= \sum_a \pi(a \mid s) \Bigl [ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} \frac {Pr(G_{t+1} = g, R_{t+1} = r, S_{t+1} = s' , S_t = s, A_t = a)} {Pr(S_t = s, A_t = a)} \Bigr ] \\
+&= \sum_a \pi(a \mid s) \biggl \{ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} \Bigl [ Pr(G_{t+1} = g \mid R_{t+1} = r, S_{t+1} = s' , S_t = s, A_t = a) \\
+&\quad \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t = s, A_t = a) Pr(S_t = s, A_t = a) /Pr(S_t = s, A_t = a) \Bigr ] \biggr \} \\
+&= \sum_a \pi(a \mid s) \biggl \{ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} \Bigl [ Pr(G_{t+1} = g \mid R_{t+1} = r, S_{t+1} = s' , S_t = s, A_t = a) \\
+&\quad \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t = s, A_t = a) \Bigr ] \biggr \} \\
+&= \sum_a \pi(a \mid s) \biggl \{ \sum_r \sum_{s'} Pr(R_{t+1} = r, S_{t+1} = s' |S_t = s, A_t = a) \\
+&\quad \cdot \Bigl [ r + \gamma \sum_g g \cdot Pr(G_{t+1} = g| R_{t+1} =r, S_{t+1} = s', S_t =s, A_t = a) \Bigr ] \biggr \}
+\end{aligned}</script><p>$\because$ In Markov Process, $G_{t+1}$ only relate to $S_{t+1}$, $S_t$ and $A_t$ give no contribution to $G_{t+1}$,<br>$\therefore Pr(G_{t+1} = g \mid R_{t=1}= r, S_{t+1} = s’, S_t = s, A_t = a) = Pr(G_{t+1} = g \mid S_{t+1} =s’)$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\therefore v_\pi(s) &= \sum_a \pi ( a \mid s) \biggl \{ \sum_r \sum_{s'}Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t = a) \\
+&\quad \cdot \Bigl [ r + \gamma \sum_g g \cdot Pr(G_{t+1} = g \mid S_{t+1} = s') \Bigr ] \biggr \} \\
+&= \sum_a \pi ( a \mid s) \biggl \{ \sum_r \sum_{s'}Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t = a) \\
+&\quad \cdot \Bigl [ r + \gamma \mathbb E_\pi(G_{t+1} \mid S_{t+1} = s') \Bigr ] \biggr \} \\
+&= \sum_a \pi ( a \mid s) \biggl \{ \sum_r \sum_{s'}p( r,  s' \mid s, a) \cdot \Bigl [ r + \gamma v_\pi(s') \Bigr ] \biggr \} \\
+\end{aligned}</script><p>That’s the Bellman equation for $v_\pi$. We get it.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Reinfocement-Learning-Exercise-3-23/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1669,7 +1819,7 @@ Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="Exercise 3.23 Give the Bellman equation for $q_*$ for the recycling robot.This picture shows the mechanism of the recycling robot. To give the Bellman equation for q_* for the recycling robot, we have">
+<meta name="description" content="Exercise 6.1 If $V$ changes during the episode, then (6.6) only holds approximately; what would the difference be between the two sides? Let $V_t$ denote the array of state values used at time $t$ in">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinfocement Learning Exercise 3.23">
-<meta property="og:url" content="http://yoursite.com/2019/07/07/Reinfocement-Learning-Exercise-3-23/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 6.1">
+<meta property="og:url" content="http://yoursite.com/2019/10/03/Reinforcement-Learning-Exercise-6-1/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 3.23 Give the Bellman equation for $q_*$ for the recycling robot.This picture shows the mechanism of the recycling robot. To give the Bellman equation for q_* for the recycling robot, we have">
+<meta property="og:description" content="Exercise 6.1 If $V$ changes during the episode, then (6.6) only holds approximately; what would the difference be between the two sides? Let $V_t$ denote the array of state values used at time $t$ in">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-23/3-23.png#pic_center">
-<meta property="og:updated_time" content="2019-07-07T14:32:29.491Z">
+<meta property="og:updated_time" content="2019-10-03T04:36:33.189Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinfocement Learning Exercise 3.23">
-<meta name="twitter:description" content="Exercise 3.23 Give the Bellman equation for $q_*$ for the recycling robot.This picture shows the mechanism of the recycling robot. To give the Bellman equation for q_* for the recycling robot, we have">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-23/3-23.png#pic_center">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 6.1">
+<meta name="twitter:description" content="Exercise 6.1 If $V$ changes during the episode, then (6.6) only holds approximately; what would the difference be between the two sides? Let $V_t$ denote the array of state values used at time $t$ in">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/07/Reinfocement-Learning-Exercise-3-23/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/03/Reinforcement-Learning-Exercise-6-1/">
 
 
 
 
 
-  <title>Reinfocement Learning Exercise 3.23 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 6.1 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -265,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Reinfocement-Learning-Exercise-3-23/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/03/Reinforcement-Learning-Exercise-6-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -282,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinfocement Learning Exercise 3.23</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 6.1</h1>
         
 
         <div class="post-meta">
@@ -294,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-07T22:19:21+08:00">
-                2019-07-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-03T12:34:02+08:00">
+                2019-10-03
               </time>
             
 
@@ -313,8 +311,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/07/Reinfocement-Learning-Exercise-3-23/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/07/07/Reinfocement-Learning-Exercise-3-23/" itemprop="commentsCount"></span>
+                <a href="/2019/10/03/Reinforcement-Learning-Exercise-6-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/10/03/Reinforcement-Learning-Exercise-6-1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -342,41 +340,16 @@
       
 
       
-        <p><strong>Exercise 3.23</strong> Give the Bellman equation for $q_*$ for the recycling robot.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-23/3-23.png#pic_center" alt><br>This picture shows the mechanism of the recycling robot.</p>
-<p>To give the Bellman equation for <script type="math/tex">q_*</script> for the recycling robot, we have to enumerate equations for <script type="math/tex">q_*(s_h, a_s)</script>, <script type="math/tex">q_*(s_h, a_w)</script>, <script type="math/tex">q_*(s_h, a_r)</script>, <script type="math/tex">q_*(s_l, a_s)</script>,<script type="math/tex">q_*(s_l, a_w)</script> and <script type="math/tex">q_*(s_l, a_r)</script>. Here, the subscripts h, l, s, w, r respectively denotes ‘high’, ‘low’, ‘search’, ‘wait’, ‘recharge’. For ‘high’ status, the available actions are ‘search’ and ‘wait’, so $q_*(s_h, a_r)$ is excluded.<br>First, we have to introduce the equation (1) from exercise 3.22:</p>
+        <p><strong>Exercise 6.1</strong> If $V$ changes during the episode, then (6.6) only holds approximately; what would the difference be between the two sides? Let $V_t$ denote the array of state values used at time $t$ in the TD error (6.5) and in the TD update (6.2). Redo the derivation above to determine the additional amount that must be added to the sum of TD errors in order to equal the Monte Carlo error.</p>
+<p>Suppose $V$ changes at time $u$ since time $t$, then the sum of TD error is:</p>
 <script type="math/tex; mode=display">
-q_*(s,a)=\sum_{s'} \Bigl \{ \bigl [ R_{s,s'}^a + \gamma \max_{a'} q_*(s',a') \bigr ] P_{s,s'}^a \Bigr \} \qquad{(1)}</script><p>For status ‘high’, we have:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_h, a_s) &= \bigl [ R_{s_h, s_h}^{a_s} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_h,s_h}^{a_s} + \bigl [ R_{s_h, s_l}^{a_s} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_h,s_l}^{a_s} \qquad{(2)}\\
-q_*(s_h, a_w) &= \bigl [ R_{s_h, s_h}^{a_w} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_h,s_h}^{a_w} + \bigl [ R_{s_h, s_l}^{a_w} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_h,s_l}^{a_w} \qquad{(3)}
-\end{aligned}</script><p>For status ‘low’, there are:</p>
+G_u - V_u</script><p>So the amount the must be added to the sum of TD errors at time $t$ is:</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-q_*(s_l, a_s) &= \bigl [ R_{s_l, s_h}^{a_s} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_l,s_h}^{a_s} + \bigl [ R_{s_l, s_l}^{a_s} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_l,s_l}^{a_s} \qquad{(4)} \\
-q_*(s_l, a_w) &= \bigl [ R_{s_l, s_h}^{a_w} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_l,s_h}^{a_w} + \bigl [ R_{s_l, s_l}^{a_w} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_l,s_l}^{a_w} \qquad{(5)} \\
-q_*(s_l, a_r) &= \bigl [ R_{s_l, s_h}^{a_r} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_l,s_h}^{a_r} + \bigl [ R_{s_l, s_l}^{a_r} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_l,s_l}^{a_r} \qquad{(6)}
-\end{aligned}</script><p>Then according to the table in the above picture, $R_{s_h,s_h}^{a_s}=r_{search}$, $P_{s_h,s_h}^{a_s}=\alpha$, $R_{s_h,s_l}^{a_s}=r_{search}$, $P_{s_h,s_l}^{a_s}=1-\alpha$, … and  so on. Plug these values into equations (2), (3), (4), (5), (6), we get:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_h, a_s) &= \bigl [ r_{search} + \gamma \max_{a'} q_*(s_h,a') \bigr ] \alpha + \bigl [ r_{search} + \gamma \max_{a'} q_*(s_l,a') \bigr ] (1-\alpha)\\ &= r_{search} + \gamma \bigl [\alpha \max_{a'} q_*(s_h,a') +(1-\alpha) \max_{a'} q_*(s_l,a')\bigr ]\qquad{(7)}\\
-q_*(s_h, a_w) &= \bigl [ r_{wait} + \gamma \max_{a'} q_*(s_h,a') \bigr ] \cdot 1 + \bigl [ R_{s_h, s_l}^{a_w} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \cdot 0 \\
-&= r_{wait} + \gamma \max_{a'} q_*(s_h,a')\qquad{(8)}\\
-q_*(s_l, a_s) &= \bigl [ -3 + \gamma \max_{a'} q_*(s_h,a') \bigr ] (1-\beta) + \bigl [ r_{search} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \beta \\
-&= (r_{search} - 3) + \gamma \bigl [ (1-\beta)\max_{a'} q_*(s_h,a') + \beta \max_{a'} q_*(s_l,a') \bigr ] \qquad{(9)} \\
-q_*(s_l, a_w) &= \bigl [ R_{s_l, s_h}^{a_w} + \gamma \max_{a'} q_*(s_h,a') \bigr ] \cdot 0 + \bigl [ r_{wait} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \cdot 1 \\ &= r_{wait} + \gamma \max_{a'} q_*(s_l,a') \qquad{(10)} \\
-q_*(s_l, a_r) &= \bigl [ 0 + \gamma \max_{a'} q_*(s_h,a') \bigr ] \cdot 1 + \bigl [ R_{s_l, s_l}^{a_r} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \cdot 0 \\
-&= \gamma \max_{a'} q_*(s_h,a')\qquad{(11)}
-\end{aligned}</script><p>For ‘high’ status, $a’$ can only be ‘search’ and ‘wait’ while for ‘low’ status, $a’$ can be ‘search’, ‘wait’ and ‘recharge’. So, equations (7) to (11) can be rearranged as below:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-q_*(s_h, a_s) &= r_{search} + \gamma \Bigl \{\alpha \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ]+(1-\alpha) \max_{a'} \bigl [ q_*(s_l,a_s), q_*(s_l,a_w), q_*(s_l,a_r) \bigr ] \Bigr \} \qquad{(12)} \\
-q_*(s_h, a_w) &= r_{wait} + \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qquad {(13)}\\
-q_*(s_l, a_s) &= (r_{search} - 3) + \gamma \Bigl \{ (1-\beta)\max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] + \beta \max_{a'} \bigl [ q_*(s_l,a_s), q_*(s_l,a_w), q_*(s_l,a_r) \bigr ] \Bigr \} \qquad{(14)} \\
-q_*(s_l, a_w) &= r_{wait} + \gamma \max_{a'} \bigl [ q_*(s_l,a_s), q_*(s_l,a_w), q_*(s_l,a_r) \bigr ] \qquad{(15)} \\
-q_*(s_l, a_r) &= \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qquad{(16)}
-\end{aligned}</script><p>These equations from (12) to (16) are the Bellman equations for the recycling robot and can be solved in a similar way like exercise 3.22.</p>
-
+&\quad(G_u - V_u) - (G_t - V_t)\\
+&=\sum_{k=u}^{T-1}\gamma^{k-u}\delta_u - \sum_{k=t}^{T-1}\gamma^{k-t}\delta_t \qquad\qquad (u \geq t)\\
+&= - \sum_{k = t}^{u-1}\gamma^{k-t}\delta_k \\
+\end{aligned}</script>
       
     </div>
     
@@ -406,8 +379,8 @@ q_*(s_l, a_r) &= \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qq
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/07/Reinforcement-Learning-Exercise-3-22/" rel="next" title="Reinforcement Learning Exercise 3.22">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 3.22
+              <a href="/2019/09/10/Reinforcement-Learning-Exercise-5-13/" rel="next" title="Reinforcement Learning Exercise 5.13">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 5.13
               </a>
             
           </div>
@@ -415,10 +388,6 @@ q_*(s_l, a_r) &= \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qq
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/The-derivation-of-Bellman-equation-for-value-of-a-policy/" rel="prev" title="The derivation of Bellman equation for value of a policy">
-                The derivation of Bellman equation for value of a policy <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
