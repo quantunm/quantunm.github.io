@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Reinforcement Learning Exercise,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,13 @@
 
 
 
-<meta name="description" content="The book doesn’t explain the formula (5.2) clearly, and the second and third lines of the formula (5.2) in page 101 made me confused. So, here, I make it clear to be understood.First,   q_\pi(s, \pi&apos;(">
-<meta name="keywords" content="Reinforcement Learning Exercise">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning--Explanation to Formula (5.2)">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Keep going">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="The book doesn’t explain the formula (5.2) clearly, and the second and third lines of the formula (5.2) in page 101 made me confused. So, here, I make it clear to be understood.First,   q_\pi(s, \pi&apos;(">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-04T13:06:51.735Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning--Explanation to Formula (5.2)">
-<meta name="twitter:description" content="The book doesn’t explain the formula (5.2) clearly, and the second and third lines of the formula (5.2) in page 101 made me confused. So, here, I make it clear to be understood.First,   q_\pi(s, \pi&apos;(">
+<meta name="twitter:title" content="Keep going">
 
 
 
@@ -120,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/">
+  <link rel="canonical" href="http://yoursite.com/page/4/">
 
 
 
 
 
-  <title>Reinforcement Learning--Explanation to Formula (5.2) | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +140,8 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,9 +244,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -263,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -280,7 +276,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning--Explanation to Formula (5.2)</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/08/Reinforcement-Learning-Exercise-3-11/" itemprop="url">Reinforcement Learning Exercise 3.11</a></h1>
         
 
         <div class="post-meta">
@@ -292,8 +290,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T20:45:02+08:00">
-                2019-08-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T21:04:08+08:00">
+                2019-06-08
               </time>
             
 
@@ -305,16 +303,6 @@
           
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -340,37 +328,30 @@
       
 
       
-        <p>The book doesn’t explain the formula (5.2) clearly, and the second and third lines of the formula (5.2) in page 101 made me confused. So, here, I make it clear to be understood.<br>First, </p>
-<script type="math/tex; mode=display">
-q_\pi(s, \pi'(s)) = \sum_a \pi'(a \mid s) q_\pi(s,a) \\
-\because \text{for all }\pi(a \mid s), \text{there is } \pi(a \mid s) = 
-\begin{cases}
-1 - \epsilon + \epsilon / | \mathcal A(s)| & \text{if } a = A^* \\
-\epsilon / | \mathcal A(s) |& \text{if } a \not = A^* \\
-\end{cases} \\</script><script type="math/tex; mode=display">
-\begin{aligned}
-\therefore  q_\pi(s, \pi'(s)) &= \sum_{a(a = \not A^*)} \frac {\epsilon} {| \mathcal A(s) |}q_\pi(s,a) + (1 - \epsilon + \frac{\epsilon}{|\mathcal A(s)|})q_\pi(s,a = A^*) \\
-&=\frac {\epsilon} {| \mathcal A(s) |} \sum_{a(a = \not A^*)} q_\pi(s,a) + \frac {\epsilon} {| \mathcal A(s) |}q_\pi(s,a = A^*) + (1-\epsilon)q_\pi(s,a = A^*) \\
-&= \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) + (1-\epsilon) \max_a q_\pi(s,a) \qquad \text{this is the second line of formula (5.2)}
-\end{aligned}</script><p>Consider value $x$, let </p>
-<script type="math/tex; mode=display">
-x =\sum_a \Bigl [ \pi(a \mid s) - \frac {\epsilon}{| \mathcal A(s) |} \Bigr ]q_\pi(s,a)</script><p>When $a \not = A^*$, $\pi(a \mid s) =  \epsilon/| \mathcal A(s) |$</p>
+        
+          
+            <p><strong>Exercise 3.11</strong> If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $p$(3.2)?</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-\therefore x &= \Bigl [ \pi(a = A^* \mid s) -  \frac {\epsilon}{| \mathcal A(s) |} \Bigr ]q_\pi(s, a = A^*) \\
-&= \Bigl [ 1 - \epsilon +  \frac {\epsilon}{| \mathcal A(s) |} - \frac {\epsilon}{| \mathcal A(s) |}\Bigr ]q_\pi(s, a=A^*) \\
-&= ( 1 - \epsilon) q_\pi(s, a=A^*) \\
-&= (1-\epsilon)\max_aq_\pi(s,a) \\
-&\leq \max_a q_\pi(s,a)
-\end{aligned}</script><p>Also </p>
-<script type="math/tex; mode=display">
-x = (1-\epsilon) \sum_a \frac { \pi(a \mid s) -  \frac {\epsilon}{| \mathcal A(s) |} }{ 1 - \epsilon}q_\pi(s,a)</script><script type="math/tex; mode=display">
+Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
+&= \pi(a|s) \cdot Pr(S_t = s) \qquad{(1)}
+\end{aligned}</script><script type="math/tex; mode=display">
 \begin{aligned}
-\therefore
-q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) + (1-\epsilon) \max_a q_\pi(s,a) \\
-& \geq  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) + (1-\epsilon) \sum_a \frac { \pi(a \mid s) -  \frac {\epsilon}{| \mathcal A(s) |} }{ 1 - \epsilon}q_\pi(s,a)
-\end{aligned}</script><p>This is the third line of formula (5.2). It’s clear to be understood now.</p>
+\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot Pr(R_{t+1} = r|S_t = s) \bigr ] \\
+&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s) \bigr ] \\
+&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{Pr (R_{t+1} = r, S_{t+1} = s', S_t = s)}{Pr(S_t = s)} \bigr ] \\
+&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s', S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ] \\
+&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot Pr(S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ]  \qquad{(2)} \\
+\end{aligned}</script><p>Substitute equation (1) into (2), there is :</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s)\cdot Pr(S_t=s)}{Pr(S_t = s)} \bigr ] \\
+&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s) \bigr ] \Bigr \} \\
+&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ p(r, s' | s, a) \cdot \pi(a|s) \bigr ] \Bigr \} \qquad{(3)} \\
+\end{aligned}</script><p>Equation (3) is the result.</p>
 
+          
+        
       
     </div>
     
@@ -385,40 +366,14 @@ q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) +
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Reinforcement-Learning-Exercise/" rel="tag"># Reinforcement Learning Exercise</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-10/" rel="next" title="Reinforcement Learning Exercise 4.10">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 4.10
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-5-1-5-2/" rel="prev" title="Reinforcement Learning Exercise 5.1 & 5.2">
-                Reinforcement Learning Exercise 5.1 & 5.2 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -428,11 +383,14 @@ q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) +
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
 
 
           </div>
@@ -440,17 +398,6 @@ q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) +
 
 
           
-
-  
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
-
-  
-
-
 
         </div>
         
@@ -663,10 +610,6 @@ q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) +
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
@@ -713,30 +656,6 @@ q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) +
 
     
 
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname, 
-            owner: '',
-            repo: 'my_blog_comment',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '182e16bdde6e8ed8642df275f8b49e6dce741d23',
-            
-                client_id: 'b5304d42bf872d798665'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
     
 
 

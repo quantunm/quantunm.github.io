@@ -79,18 +79,25 @@
 
 
 
-<meta name="description" content="The book doesn’t explain the formula (5.2) clearly, and the second and third lines of the formula (5.2) in page 101 made me confused. So, here, I make it clear to be understood.First,   q_\pi(s, \pi&apos;(">
+<meta name="description" content="Exercise 6.9: Windy Gridworld with King’s Moves (programming) Re-solve the windy gridworld assuming eight possible actions, including the diagonal moves, rather than the usual four. How much better ca">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning--Explanation to Formula (5.2)">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 6.9 and 6.10">
+<meta property="og:url" content="http://yoursite.com/2019/10/03/Reinforcement-Learning-Exercise-6-9-and-6-10/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="The book doesn’t explain the formula (5.2) clearly, and the second and third lines of the formula (5.2) in page 101 made me confused. So, here, I make it clear to be understood.First,   q_\pi(s, \pi&apos;(">
+<meta property="og:description" content="Exercise 6.9: Windy Gridworld with King’s Moves (programming) Re-solve the windy gridworld assuming eight possible actions, including the diagonal moves, rather than the usual four. How much better ca">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-04T13:06:51.735Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_4actions_0.1alpha_0.1epsilon.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_8actions_0.1alpha_0.1epsilon.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_9actions_0.1alpha_0.1epsilon.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_stochastic_4actions_0.1alpha_0.1epsilon.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_stochastic_8actions_0.1alpha_0.1epsilon.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_stochastic_9actions_0.1alpha_0.1epsilon.png">
+<meta property="og:updated_time" content="2019-10-03T10:49:07.767Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning--Explanation to Formula (5.2)">
-<meta name="twitter:description" content="The book doesn’t explain the formula (5.2) clearly, and the second and third lines of the formula (5.2) in page 101 made me confused. So, here, I make it clear to be understood.First,   q_\pi(s, \pi&apos;(">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 6.9 and 6.10">
+<meta name="twitter:description" content="Exercise 6.9: Windy Gridworld with King’s Moves (programming) Re-solve the windy gridworld assuming eight possible actions, including the diagonal moves, rather than the usual four. How much better ca">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_4actions_0.1alpha_0.1epsilon.png">
 
 
 
@@ -120,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/03/Reinforcement-Learning-Exercise-6-9-and-6-10/">
 
 
 
 
 
-  <title>Reinforcement Learning--Explanation to Formula (5.2) | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 6.9 and 6.10 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -263,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/03/Reinforcement-Learning-Exercise-6-9-and-6-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -280,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning--Explanation to Formula (5.2)</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 6.9 and 6.10</h1>
         
 
         <div class="post-meta">
@@ -292,8 +299,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T20:45:02+08:00">
-                2019-08-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-03T18:40:02+08:00">
+                2019-10-03
               </time>
             
 
@@ -311,8 +318,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/" itemprop="commentsCount"></span>
+                <a href="/2019/10/03/Reinforcement-Learning-Exercise-6-9-and-6-10/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/10/03/Reinforcement-Learning-Exercise-6-9-and-6-10/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -340,37 +347,30 @@
       
 
       
-        <p>The book doesn’t explain the formula (5.2) clearly, and the second and third lines of the formula (5.2) in page 101 made me confused. So, here, I make it clear to be understood.<br>First, </p>
-<script type="math/tex; mode=display">
-q_\pi(s, \pi'(s)) = \sum_a \pi'(a \mid s) q_\pi(s,a) \\
-\because \text{for all }\pi(a \mid s), \text{there is } \pi(a \mid s) = 
-\begin{cases}
-1 - \epsilon + \epsilon / | \mathcal A(s)| & \text{if } a = A^* \\
-\epsilon / | \mathcal A(s) |& \text{if } a \not = A^* \\
-\end{cases} \\</script><script type="math/tex; mode=display">
-\begin{aligned}
-\therefore  q_\pi(s, \pi'(s)) &= \sum_{a(a = \not A^*)} \frac {\epsilon} {| \mathcal A(s) |}q_\pi(s,a) + (1 - \epsilon + \frac{\epsilon}{|\mathcal A(s)|})q_\pi(s,a = A^*) \\
-&=\frac {\epsilon} {| \mathcal A(s) |} \sum_{a(a = \not A^*)} q_\pi(s,a) + \frac {\epsilon} {| \mathcal A(s) |}q_\pi(s,a = A^*) + (1-\epsilon)q_\pi(s,a = A^*) \\
-&= \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) + (1-\epsilon) \max_a q_\pi(s,a) \qquad \text{this is the second line of formula (5.2)}
-\end{aligned}</script><p>Consider value $x$, let </p>
-<script type="math/tex; mode=display">
-x =\sum_a \Bigl [ \pi(a \mid s) - \frac {\epsilon}{| \mathcal A(s) |} \Bigr ]q_\pi(s,a)</script><p>When $a \not = A^*$, $\pi(a \mid s) =  \epsilon/| \mathcal A(s) |$</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\therefore x &= \Bigl [ \pi(a = A^* \mid s) -  \frac {\epsilon}{| \mathcal A(s) |} \Bigr ]q_\pi(s, a = A^*) \\
-&= \Bigl [ 1 - \epsilon +  \frac {\epsilon}{| \mathcal A(s) |} - \frac {\epsilon}{| \mathcal A(s) |}\Bigr ]q_\pi(s, a=A^*) \\
-&= ( 1 - \epsilon) q_\pi(s, a=A^*) \\
-&= (1-\epsilon)\max_aq_\pi(s,a) \\
-&\leq \max_a q_\pi(s,a)
-\end{aligned}</script><p>Also </p>
-<script type="math/tex; mode=display">
-x = (1-\epsilon) \sum_a \frac { \pi(a \mid s) -  \frac {\epsilon}{| \mathcal A(s) |} }{ 1 - \epsilon}q_\pi(s,a)</script><script type="math/tex; mode=display">
-\begin{aligned}
-\therefore
-q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) + (1-\epsilon) \max_a q_\pi(s,a) \\
-& \geq  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) + (1-\epsilon) \sum_a \frac { \pi(a \mid s) -  \frac {\epsilon}{| \mathcal A(s) |} }{ 1 - \epsilon}q_\pi(s,a)
-\end{aligned}</script><p>This is the third line of formula (5.2). It’s clear to be understood now.</p>
-
+        <p><strong>Exercise 6.9:</strong> Windy Gridworld with King’s Moves (programming) Re-solve the windy gridworld assuming eight possible actions, including the diagonal moves, rather than the usual four. How much better can you do with the extra actions? Can you do even better by including a ninth action that causes no movement at all other than that caused by the wind?<br><strong>Exercise 6.10:</strong> Stochastic Wind (programming) Re-solve the windy gridworld task with King’s moves, assuming that the e↵ect of the wind, if there is any, is stochastic, sometimes varying by 1 from the mean values given for each column. That is, a third of the time you move exactly according to these values, as in the previous exercise, but also a third of the time you move one cell above that, and another third of the time you move one cell below that. For example, if you are one cell to the right of the goal and you move left, then one-third of the time you move one cell above the goal, one-third of the time you move two cells above the goal, and one-third of the time you move to the goal. </p>
+<p>Both exercise 6.9 and 6.10 are implement in code: <a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_6/windy_gridworld.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_6/windy_gridworld.py</a><br>The results are shown as below:</p>
+<p><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_4actions_0.1alpha_0.1epsilon.png"></p>
+<center>Figure 1. 4 Actions</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_8actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 2. 8 Actions</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_9actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 3. 9 Actions</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_stochastic_4actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 4. 4 Actions for stochastic wind</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_stochastic_8actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 5. 8 Actions for stochastic wind</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_stochastic_9actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 6. 9 Actions for stochastic wind</center>
       
     </div>
     
@@ -400,8 +400,8 @@ q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) +
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-10/" rel="next" title="Reinforcement Learning Exercise 4.10">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 4.10
+              <a href="/2019/10/03/Reinforcement-Learning-Exercise-6-1/" rel="next" title="Reinforcement Learning Exercise 6.1">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 6.1
               </a>
             
           </div>
@@ -409,10 +409,6 @@ q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) +
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-5-1-5-2/" rel="prev" title="Reinforcement Learning Exercise 5.1 & 5.2">
-                Reinforcement Learning Exercise 5.1 & 5.2 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

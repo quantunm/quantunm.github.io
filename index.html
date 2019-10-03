@@ -259,6 +259,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/03/Reinforcement-Learning-Exercise-6-9-and-6-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/03/Reinforcement-Learning-Exercise-6-9-and-6-10/" itemprop="url">Reinforcement Learning Exercise 6.9 and 6.10</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-03T18:40:02+08:00">
+                2019-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Exercise 6.9:</strong> Windy Gridworld with King’s Moves (programming) Re-solve the windy gridworld assuming eight possible actions, including the diagonal moves, rather than the usual four. How much better can you do with the extra actions? Can you do even better by including a ninth action that causes no movement at all other than that caused by the wind?<br><strong>Exercise 6.10:</strong> Stochastic Wind (programming) Re-solve the windy gridworld task with King’s moves, assuming that the e↵ect of the wind, if there is any, is stochastic, sometimes varying by 1 from the mean values given for each column. That is, a third of the time you move exactly according to these values, as in the previous exercise, but also a third of the time you move one cell above that, and another third of the time you move one cell below that. For example, if you are one cell to the right of the goal and you move left, then one-third of the time you move one cell above the goal, one-third of the time you move two cells above the goal, and one-third of the time you move to the goal. </p>
+<p>Both exercise 6.9 and 6.10 are implement in code: <a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_6/windy_gridworld.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_6/windy_gridworld.py</a><br>The results are shown as below:</p>
+<p><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_4actions_0.1alpha_0.1epsilon.png"></p>
+<center>Figure 1. 4 Actions</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_8actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 2. 8 Actions</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_9actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 3. 9 Actions</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_stochastic_4actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 4. 4 Actions for stochastic wind</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_stochastic_8actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 5. 8 Actions for stochastic wind</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_stochastic_9actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 6. 9 Actions for stochastic wind</center>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/03/Reinforcement-Learning-Exercise-6-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1437,135 +1579,11 @@ V(S_{noterminal}) &= G(S_0) + G(S_1) + \cdots + G_(S_{10})\\
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-1-5-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-5-1-5-2/" itemprop="url">Reinforcement Learning Exercise 5.1 & 5.2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T20:58:19+08:00">
-                2019-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Exercise 5.1</strong> Consider the diagrams on the right in Figure 5.1. Why does the estimated value function jump up for the last two rows in the rear? Why does it drop off for the whole last row on the left? Why are the frontmost values higher in the upper diagrams than in the lower?<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-5-1/5-1.png" width="50%" height="50%"><br>The estimated value function jump up for the last 2 rows in the rear is because the play sticks on 20 or 21, and in a much higher probability he would win the game. The diagram drop off for the whole last row on the left is because the dealer showed an ace card which decrease the probability for the play to win. The frontmost values are higher in the upper diagrams than in the lower is because in the upper diagrams, the player has an usable ace card, which increase the probability for the player to win.</p>
-<hr>
-<p><strong>Exercise 5.2</strong> Suppose every-visit MC was used instead of first-visit MC on the blackjack task. Would you expect the results to be very different? Why or why not? </p>
-<p>The results will be same. That’s because on the blackjack task, all the rewards are zero except the last step. So in an episode the return is only be changed in the last step, no matter in a method of first-visit or every-visit.</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1611,7 +1629,7 @@ V(S_{noterminal}) &= G(S_0) + G(S_1) + \cdots + G_(S_{10})\\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
