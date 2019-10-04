@@ -259,6 +259,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/04/Reinforcement-Learning-Exercise-6-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/04/Reinforcement-Learning-Exercise-6-2/" itemprop="url">Reinforcement Learning Exercise 6.2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T14:47:17+08:00">
+                2019-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Exercise 6.3</strong> From the results shown in the left graph of the random walk example it appears that the first episode results in a change in only $V (A)$. What does this tell you about what happened on the first episode? Why was only the estimate for this one state changed? By exactly how much was it changed? </p>
+<p>As shown in the left graph of the random walk example, all the state values are initialized to 0.5, so the intermediate steps will not change the state values in the first episode. For example, from B to A, there is:</p>
+<script type="math/tex; mode=display">
+V(B) \leftarrow V(B) + \alpha[ 0 + \gamma V(A) - V(B)] \\
+\therefore V(B) = 0.5 +0.1[0 +1\cdot 0.5 -0.5]=0.5</script><p>Also, there is only state A changed in episode 1 shown in the left graph of the random walk example. So, the episode 1 terminate in left terminal of A, otherwise, state E should have been changed. Then, we can calculate how much the value of state A changed:</p>
+<script type="math/tex; mode=display">
+V(A) \leftarrow V(A) + \alpha[ 0 + \gamma V(terminal) - V(A)] \\
+\therefore V(A) = 0.5 +0.1[0 +1\cdot 0 -0.5]=0.45</script><p>The changed amount is 0.05.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/03/Reinforcement-Learning-Exercise-6-9-and-6-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1442,143 +1569,6 @@ V(S_{noterminal}) &= G(S_0) + G(S_1) + \cdots + G_(S_{10})\\
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-5-4/" itemprop="url">Reinforcement Learning Exercise 5.4</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T21:08:18+08:00">
-                2019-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Exercise 5.4 The pseudocode for Monte Carlo ES is inefficient because, for each state–action pair, it maintains a list of all returns and repeatedly calculates their mean. It would be more efficient to use techniques similar to those explained in Section 2.4 to maintain just the mean and a count (for each state–action pair) and update them incrementally. Describe how the pseudocode would be altered to achieve this.</p>
-<p>The altered pseudocode is shown as below:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-&\text{Initialize:} \\
-&\qquad \pi(s) \in \mathcal A(s) \text{(arbitrarily), for all } s \in S \\
-&\qquad Q(s, a) \in \mathbb R \text{(arbitrarily), for all } s \in S, a \in \mathcal A(s) \\
-&\qquad counts(s, a) \leftarrow 0\text{, for all s } \in S, a \in \mathcal A(s) \\
-&\text{Loop forever (for each episode):} \\
-&\qquad \text{Choose }S_0 \in \mathcal S, A_0 \in  \mathcal A(S_0) \text{ randomly such that all pairs have probability} > 0 \\
-&\qquad \text{Generate an episode from }S_0, A_0, \text{following }\pi: S_0, A_0, R_1, . . . , S_{T -1}, A_{T-1}, R_T \\
-&\qquad G \leftarrow 0 \\
-&\qquad \text{Loop for each step of episode, } t = T -1, T -2, . . . , 0: \\
-&\qquad \qquad G \leftarrow \gamma G + R_{t+1} \\
-&\qquad \qquad \text{Unless the pair }S_t, A_t \text{ appears in }S_0, A_0, S_1, A_1 . . . , S_{t-1}, A_{t-1}: \\
-&\qquad \qquad \qquad counts(S_t,A_t) \leftarrow counts(S_t,A_t) + 1\\
-&\qquad \qquad \qquad Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \frac {(G - Q(S_t, A_t))}{count(S_t, A_t)} \\
-&\qquad \qquad \qquad \pi(S_t) \leftarrow \text{argmax}_a Q(S_t, a) \\
-\end{aligned}</script>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1629,7 +1619,7 @@ V(S_{noterminal}) &= G(S_0) + G(S_1) + \cdots + G_(S_{10})\\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

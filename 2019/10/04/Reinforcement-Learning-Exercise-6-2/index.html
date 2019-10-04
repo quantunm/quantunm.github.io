@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Exercise 3.11 If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $">
+<meta name="description" content="Exercise 6.3 From the results shown in the left graph of the random walk example it appears that the first episode results in a change in only $V (A)$. What does this tell you about what happened on t">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 3.11">
-<meta property="og:url" content="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 6.2">
+<meta property="og:url" content="http://yoursite.com/2019/10/04/Reinforcement-Learning-Exercise-6-2/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 3.11 If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $">
+<meta property="og:description" content="Exercise 6.3 From the results shown in the left graph of the random walk example it appears that the first episode results in a change in only $V (A)$. What does this tell you about what happened on t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-08T13:05:12.035Z">
+<meta property="og:updated_time" content="2019-10-04T06:48:15.615Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 3.11">
-<meta name="twitter:description" content="Exercise 3.11 If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 6.2">
+<meta name="twitter:description" content="Exercise 6.3 From the results shown in the left graph of the random walk example it appears that the first episode results in a change in only $V (A)$. What does this tell you about what happened on t">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/04/Reinforcement-Learning-Exercise-6-2/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 3.11 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 6.2 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/Reinforcement-Learning-Exercise-3-11/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/04/Reinforcement-Learning-Exercise-6-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 3.11</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 6.2</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T21:04:08+08:00">
-                2019-06-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T14:47:17+08:00">
+                2019-10-04
               </time>
             
 
@@ -311,8 +311,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/08/Reinforcement-Learning-Exercise-3-11/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/06/08/Reinforcement-Learning-Exercise-3-11/" itemprop="commentsCount"></span>
+                <a href="/2019/10/04/Reinforcement-Learning-Exercise-6-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/10/04/Reinforcement-Learning-Exercise-6-2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -340,25 +340,14 @@
       
 
       
-        <p><strong>Exercise 3.11</strong> If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $p$(3.2)?</p>
+        <p><strong>Exercise 6.3</strong> From the results shown in the left graph of the random walk example it appears that the first episode results in a change in only $V (A)$. What does this tell you about what happened on the first episode? Why was only the estimate for this one state changed? By exactly how much was it changed? </p>
+<p>As shown in the left graph of the random walk example, all the state values are initialized to 0.5, so the intermediate steps will not change the state values in the first episode. For example, from B to A, there is:</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
-&= \pi(a|s) \cdot Pr(S_t = s) \qquad{(1)}
-\end{aligned}</script><script type="math/tex; mode=display">
-\begin{aligned}
-\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot Pr(R_{t+1} = r|S_t = s) \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s) \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{Pr (R_{t+1} = r, S_{t+1} = s', S_t = s)}{Pr(S_t = s)} \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s', S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ] \\
-&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot Pr(S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ]  \qquad{(2)} \\
-\end{aligned}</script><p>Substitute equation (1) into (2), there is :</p>
+V(B) \leftarrow V(B) + \alpha[ 0 + \gamma V(A) - V(B)] \\
+\therefore V(B) = 0.5 +0.1[0 +1\cdot 0.5 -0.5]=0.5</script><p>Also, there is only state A changed in episode 1 shown in the left graph of the random walk example. So, the episode 1 terminate in left terminal of A, otherwise, state E should have been changed. Then, we can calculate how much the value of state A changed:</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s)\cdot Pr(S_t=s)}{Pr(S_t = s)} \bigr ] \\
-&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s) \bigr ] \Bigr \} \\
-&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ p(r, s' | s, a) \cdot \pi(a|s) \bigr ] \Bigr \} \qquad{(3)} \\
-\end{aligned}</script><p>Equation (3) is the result.</p>
+V(A) \leftarrow V(A) + \alpha[ 0 + \gamma V(terminal) - V(A)] \\
+\therefore V(A) = 0.5 +0.1[0 +1\cdot 0 -0.5]=0.45</script><p>The changed amount is 0.05.</p>
 
       
     </div>
@@ -389,15 +378,15 @@ Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/10/03/Reinforcement-Learning-Exercise-6-9-and-6-10/" rel="next" title="Reinforcement Learning Exercise 6.9 and 6.10">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 6.9 and 6.10
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/21/Reinforcement-Learning-Exercise-3-12/" rel="prev" title="Reinforcement Learning Exercise 3.12">
-                Reinforcement Learning Exercise 3.12 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

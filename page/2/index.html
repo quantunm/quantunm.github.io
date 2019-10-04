@@ -259,6 +259,143 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-5-4/" itemprop="url">Reinforcement Learning Exercise 5.4</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T21:08:18+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Exercise 5.4 The pseudocode for Monte Carlo ES is inefficient because, for each state–action pair, it maintains a list of all returns and repeatedly calculates their mean. It would be more efficient to use techniques similar to those explained in Section 2.4 to maintain just the mean and a count (for each state–action pair) and update them incrementally. Describe how the pseudocode would be altered to achieve this.</p>
+<p>The altered pseudocode is shown as below:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\text{Initialize:} \\
+&\qquad \pi(s) \in \mathcal A(s) \text{(arbitrarily), for all } s \in S \\
+&\qquad Q(s, a) \in \mathbb R \text{(arbitrarily), for all } s \in S, a \in \mathcal A(s) \\
+&\qquad counts(s, a) \leftarrow 0\text{, for all s } \in S, a \in \mathcal A(s) \\
+&\text{Loop forever (for each episode):} \\
+&\qquad \text{Choose }S_0 \in \mathcal S, A_0 \in  \mathcal A(S_0) \text{ randomly such that all pairs have probability} > 0 \\
+&\qquad \text{Generate an episode from }S_0, A_0, \text{following }\pi: S_0, A_0, R_1, . . . , S_{T -1}, A_{T-1}, R_T \\
+&\qquad G \leftarrow 0 \\
+&\qquad \text{Loop for each step of episode, } t = T -1, T -2, . . . , 0: \\
+&\qquad \qquad G \leftarrow \gamma G + R_{t+1} \\
+&\qquad \qquad \text{Unless the pair }S_t, A_t \text{ appears in }S_0, A_0, S_1, A_1 . . . , S_{t-1}, A_{t-1}: \\
+&\qquad \qquad \qquad counts(S_t,A_t) \leftarrow counts(S_t,A_t) + 1\\
+&\qquad \qquad \qquad Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \frac {(G - Q(S_t, A_t))}{count(S_t, A_t)} \\
+&\qquad \qquad \qquad \pi(S_t) \leftarrow \text{argmax}_a Q(S_t, a) \\
+\end{aligned}</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-1-5-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1475,177 +1612,6 @@ Q_{k+1}^\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-4-2/" itemprop="url">Reinforcement Learning Exercise 4.2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T12:20:48+08:00">
-                2019-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Exercise 4.2</strong> In Example 4.1, suppose a new state 15 is added to the gridworld just below state 13, and its actions, left, up, right, and down, take the agent to states 12, 13, 14, and 15, respectively. Assume that the transitions from the original states are unchanged. What, then, is $v_\pi(15)$ for the equiprobable random policy? Now suppose the dynamics of state 13 are also changed, such that action down from state 13 takes the agent to the new state 15. What is $v_\pi(15)$ for the equiprobable random policy in this case?</p>
-<p>For the assumption that the transitions from the original states are unchanged, according to equation (4.4), we have:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-v_\pi(s) &= \sum_a \pi(a \mid s) \sum_{s',r} p(s', r \mid s, a) \bigl [ r + \gamma v_\pi(s')\bigr ] \\
-&= \sum_a \pi(a \mid s) \sum_{s'} \biggl \{ \sum_r \Bigl [ r \cdot p(s',r \mid s, a) \Bigr ] + \sum_r \Bigl [ p(s', r \mid s,a ) \cdot \gamma v_\pi(s') \Bigr ]\biggr \} \\
-&= \sum_a \pi(a \mid s) \sum_{s'} \biggl \{ \sum_r \Bigl [ r \cdot p(r \mid s', s, a) \cdot p(s' \mid s,a) \Bigr ] + p(s' \mid s,a ) \cdot \gamma v_\pi(s') \biggr \} \\
-&= \sum_a \pi(a \mid s) \sum_{s'} \biggl \{  p(s' \mid s,a) \Bigl [ \sum_r  r \cdot p(r \mid s', s, a)  + \gamma v_\pi(s') \Bigr ]\biggr \} \\
-&= \sum_a \pi(a \mid s) \sum_{s'} \biggl \{ P_{s,s'}^a \Bigl [ R_{s,s'}^a + \gamma v_\pi(s') \Bigr ] \biggr \}
-\end{aligned}</script><p>So,</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-v_\pi(15) &= \sum_a \pi( a \mid 15) \cdot \biggl \{ P_{15,12}^{left} \Bigl[ R_{15,12}^{left} + \gamma v_\pi(12) \Bigr ] + P_{15,13}^{up} \Bigl[ R_{15,13}^{up} + \gamma v_\pi(13) \Bigr ] \\
-& \quad + P_{15,14}^{right} \Bigl[ R_{15,14}^{right} + \gamma v_\pi(14) \Bigr ] + P_{15,15}^{down} \Bigl[ R_{15,15}^{down} + \gamma v_\pi(15) \Bigr ]\biggr \}
-\end{aligned}</script><p>Because the agent follows the equiprobable random policy, for all actions $\pi(a \mid s) = 1 / 4$. And the action is deterministic, so:</p>
-<script type="math/tex; mode=display">
-P_{s,s'}^a = 
-\begin{cases}
-1 & \text{ if $a$ leads to $s'$} \\
-0 & \text{if $a$ doesn't lead to $s'$}
-\end{cases}</script><p>According to Figure 4.2,  we have:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-v_\pi(15) &= \frac {1}{4} \biggl \{ 1 \cdot \Bigl [ -1 + \gamma (-22) \Bigr ] + 1 \cdot \Bigl [ -1 + \gamma (-20) \Bigr ] \\
-& \quad + 1 \cdot \Bigl [ -1 + \gamma (-14) \Bigr ] + 1 \cdot \Bigl [ -1 + \gamma v_\pi(15) \Bigr ]\biggr \} \\
-&= -1 - 14 \gamma + \gamma v_\pi(15) \\
-\end{aligned}</script><script type="math/tex; mode=display">
-\therefore v_\pi(15) = \frac {4 + 56 \gamma} {\gamma - 4}</script><p>For the assumption that the dynamics of state 13 are also changed, similarly we have:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-v_\pi(13) &= \sum_a \pi( a \mid 13) \cdot \biggl \{ P_{13,12}^{left} \Bigl[ R_{13,12}^{left} + \gamma v_\pi(12) \Bigr ] + P_{13,9}^{up} \Bigl[ R_{13,9}^{up} + \gamma v_\pi(9) \Bigr ] \\
-& \quad + P_{13,14}^{right} \Bigl[ R_{13,14}^{right} + \gamma v_\pi(14) \Bigr ] + P_{13,15}^{down} \Bigl[ R_{13,15}^{down} + \gamma v_\pi(15) \Bigr ]\biggr \} \\
-v_\pi(15) &= \sum_a \pi( a \mid 15) \cdot \biggl \{ P_{15,12}^{left} \Bigl[ R_{15,12}^{left} + \gamma v_\pi(12) \Bigr ] + P_{15,13}^{up} \Bigl[ R_{15,13}^{up} + \gamma v_\pi(13) \Bigr ] \\
-& \quad + P_{15,14}^{right} \Bigl[ R_{15,14}^{right} + \gamma v_\pi(14) \Bigr ] + P_{15,15}^{down} \Bigl[ R_{15,15}^{down} + \gamma v_\pi(15) \Bigr ]\biggr \}
-\end{aligned}</script><script type="math/tex; mode=display">
-\begin{aligned}
-v_\pi(13) &= \frac{1}{4} \cdot \biggl \{ 1 \Bigl[ -1 + \gamma(-22) \Bigr ] + 1 \Bigl[ (-1 + \gamma (-20) \Bigr ] \\
-& \quad + 1 \Bigl[ (-1 + \gamma (-14) \Bigr ] + 1 \Bigl[ (-1 + \gamma v_\pi(15) \Bigr ]\biggr \} \\
-&= -1 - 14 \gamma + \frac {1}{4} \gamma v_\pi(15) \qquad \qquad \qquad \qquad \qquad \qquad \quad{(1)}\\
-v_\pi(15) &= \frac{1}{4} \cdot \biggl \{ 1 \Bigl[ -1 + \gamma (-22) \Bigr ] + 1 \Bigl[ -1 + \gamma v_\pi(13) \Bigr ] \\
-& \quad +1 \Bigl[ -1 + \gamma (-14) \Bigr ] + 1 \Bigl[ -1 + \gamma v_\pi(15) \Bigr ]\biggr \} \\
-& = -1 - 9 \gamma + \frac{1}{4} \gamma v_\pi(13) +\frac{1}{4}\gamma v_\pi(15) \qquad \qquad \qquad \qquad{(2)}
-\end{aligned}</script><p>Then we have equation set:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-v_\pi(13) -  \frac {1}{4} \gamma v_\pi(15)&= -1 - 14 \gamma \qquad \qquad \qquad \qquad{(3)}\\
- -\frac{1}{4} \gamma v_\pi(13) +(1-\frac{1}{4}\gamma )v_\pi(15) & = -1 - 9 \gamma \qquad \qquad \qquad \qquad{(4)}
-\end{aligned}</script><p>By solving equation set (3) and (4), we can obtain:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-v_\pi(15) &= \frac{14\gamma^2 + 37 \gamma + 4}{ \frac{1}{4}\gamma^2 + \gamma - 4} \\
-v_\pi(13) &= \frac{19\gamma^2 + 224\gamma -16}{\gamma^2+4\gamma-16}
-\end{aligned}</script>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1696,7 +1662,7 @@ v_\pi(13) &= \frac{19\gamma^2 + 224\gamma -16}{\gamma^2+4\gamma-16}
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
