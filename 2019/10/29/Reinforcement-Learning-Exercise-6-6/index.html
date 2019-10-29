@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="Exercise 5.6 What is the equation analogous to (5.6) for action values $Q(s, a)$ instead ofstate values $V(s)$, again given returns generated using $b$? Given a starting state $St$, starting action $A">
+<meta name="description" content="Exercise 6.6 In Example 6.2 we stated that the true values for the random walk example are $\frac{1}{6}$, $\frac{2}{6}$, $\frac{3}{6}$, $\frac{4}{6}$ and $\frac{5}{6}$, for states A through E. Describ">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 5.6">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-6/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 6.6">
+<meta property="og:url" content="http://yoursite.com/2019/10/29/Reinforcement-Learning-Exercise-6-6/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 5.6 What is the equation analogous to (5.6) for action values $Q(s, a)$ instead ofstate values $V(s)$, again given returns generated using $b$? Given a starting state $St$, starting action $A">
+<meta property="og:description" content="Exercise 6.6 In Example 6.2 we stated that the true values for the random walk example are $\frac{1}{6}$, $\frac{2}{6}$, $\frac{3}{6}$, $\frac{4}{6}$ and $\frac{5}{6}$, for states A through E. Describ">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-04T13:34:23.523Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/29/Reinforcement-Learning-Exercise-6-6/Example_6.2.png">
+<meta property="og:updated_time" content="2019-10-29T15:19:17.959Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 5.6">
-<meta name="twitter:description" content="Exercise 5.6 What is the equation analogous to (5.6) for action values $Q(s, a)$ instead ofstate values $V(s)$, again given returns generated using $b$? Given a starting state $St$, starting action $A">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 6.6">
+<meta name="twitter:description" content="Exercise 6.6 In Example 6.2 we stated that the true values for the random walk example are $\frac{1}{6}$, $\frac{2}{6}$, $\frac{3}{6}$, $\frac{4}{6}$ and $\frac{5}{6}$, for states A through E. Describ">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/29/Reinforcement-Learning-Exercise-6-6/Example_6.2.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-6/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/29/Reinforcement-Learning-Exercise-6-6/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 5.6 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 6.6 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -263,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/Reinforcement-Learning-Exercise-6-6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -280,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 5.6</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 6.6</h1>
         
 
         <div class="post-meta">
@@ -292,8 +294,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T21:13:48+08:00">
-                2019-08-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-29T23:11:18+08:00">
+                2019-10-29
               </time>
             
 
@@ -311,8 +313,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/04/Reinforcement-Learning-Exercise-5-6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/08/04/Reinforcement-Learning-Exercise-5-6/" itemprop="commentsCount"></span>
+                <a href="/2019/10/29/Reinforcement-Learning-Exercise-6-6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/10/29/Reinforcement-Learning-Exercise-6-6/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -345,30 +347,22 @@
       
 
       
-        <p><strong><em>Exercise 5.6</em></strong> What is the equation analogous to (5.6) for action values $Q(s, a)$ instead ofstate values $V(s)$, again given returns generated using $b$?</p>
-<p>Given a starting state $St$, starting action $At$, the probability of the subsequent state-action trajectory, $S_{t+1}, A_{t+1}, \cdots , S_T$ occurring under any policy $\pi$ is</p>
+        <p><strong>Exercise 6.6</strong> In Example 6.2 we stated that the true values for the random walk example are $\frac{1}{6}$, $\frac{2}{6}$, $\frac{3}{6}$, $\frac{4}{6}$ and $\frac{5}{6}$, for states A through E. Describe at least two different ways that these could have been computed. Which would you guess we actually used? Why?</p>
+<p>Example 6.2 Random walk<br>In this example we empirically compare the prediction abilities of TD(0) and constant-$\alpha$ MC when applied to the following Markov reward process:</p>
+<p><div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/29/Reinforcement-Learning-Exercise-6-6/Example_6.2.png">
+</div><br>A Markov reward process, or MRP, is a Markov decision process without actions. We will often use MRPs when focusing on the prediction problem, in which there is no need to distinguish the dynamics due to the environment from those due to the agent. In this MRP, all episodes start in the center state, C, then proceed either left or right by one state on each step, with equal probability. Episodes terminate either on the extreme left or the extreme right. When an episode terminates on the right, a reward of +1 occurs; all other rewards are zero. For example, a typical episode might consist of the following state-and-reward sequence: C, 0, B, 0, C, 0, D, 0, E, 1. Because this task is undiscounted, the true value of each state is the probability of terminating on the right if starting from that state. Thus, the true value of the center state is $v_{\pi}(C)$ = 0.5. The true values of all the states, A through E, are$\frac{1}{6}$, $\frac{2}{6}$, $\frac{3}{6}$, $\frac{4}{6}$ and $\frac{5}{6}$.</p>
+<p>In this case, for all status, there is $\pi(a \mid s) =0.5$ because left action and right action are taken in equal probability. And also there is $p(s’, r\mid s, a) = 1$ for deterministic action, $\gamma = 1$ for no discount.<br><strong>Method 1:</strong><br>Use Bellman equation for $v_\pi(s)$ (equation 3.14) directly, and Bellman equation can be simplified to:</p>
+<script type="math/tex; mode=display">
+v_\pi(s) = 0.5 \sum_{s',r}\bigl [ r+v_\pi(s') \bigr]</script><p>So, for state A, $v_\pi(A) = 0.5\bigl[ 0+v_\pi(terminal) + 0+ v_\pi(B)\bigr] = 0.5v_\pi(B)\qquad \text{(1)}$.<br>For state B, $v_\pi(B) = 0.5\bigl[ 0 + v_\pi(A) + 0 +v_\pi(C)\bigr] = 0.5v_\pi(A)+0.5v_\pi(C)\qquad \text{(2)}$<br>And so on, we have:</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-&Pr(S_{t+1}, A_{t+1},\cdots, S_{T-1}, A_{T-1}, S_T \mid S_t, A_{t:T-1}\sim \pi)\\
-&\qquad = p(S_{t+1} \mid S_t, A_t) \pi(A_{t+1}|S_{t+1}) \cdots p(S_{T-1} \mid S_{T-2}, A_{T-2})\pi(A_{T-1} \mid S_{T-1})  p(S_T \mid S_{T-1}, A_{T-1})\\
-&\qquad =\frac {\prod_{k=t}^{T - 1} \pi(A_k \mid S_k)p(S_{k+1}\mid S_k, A_k)} {\pi(A_t \mid S_t)}
-\end{aligned}</script><p>The relative probability of the trajectory under the target and behavior policies is</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\sigma_{t:T-1} &= \frac {b(A_t \mid S_t)\prod_{k=t}^{T-1} \pi(A_k \mid S_k) p(S_{k+1} \mid S_k, A_k)} {\pi(A_t \mid S_t)\prod_{k=t}^{T-1} b(A_k \mid S_k) p(S_{k+1} \mid S_k, A_k)} \\
-&= \frac {b(A_t \mid S_t)\prod_{k=t}^{T-1} \pi(A_k \mid S_k) }{ \pi(A_t \mid S_t)\prod_{k=t}^{T-1} b(A_k \mid S_k) } \\
-&=  \frac {\prod_{k=t+1}^{T-1} \pi(A_k \mid S_k) }{\prod_{k=t+1}^{T-1} b(A_k \mid S_k) } \\
-&=\rho_{t+1:T-1}
-\end{aligned}</script><p>So,</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-Q_\pi(s, a) &= \mathbb E \bigl [ \sigma_{t:T-1}G_t \mid S_t = s, A_t = a \bigr ] \\
-&= \mathbb E \bigl [ \rho_{t+1:T-1}G_t \mid S_t = s, A_t = a\bigr ]
-\end{aligned}</script><p>In particular we can define the set of all time steps in which state s is visited and action a is taken, denoted $\mathcal K(s)$ for every-visit method. For first-visit method, $\mathcal K(s)$ would only include time steps that were first visits to s and first take action a within their episodes. Let $T(t)$ denote the first time of termination following time $t$, and $G_t$ denote the return after $t$ up through $T(t)$. Then $\{G_t\}_{t \in \mathcal K(s)}$ are the returns that pertain to state s and action a,  and $\{ \rho_{t:T(t) - 1}\}_{t \in \mathcal K(s)}$ are the corresponding importance-sampling ratios.<br>Thus, for ordinary importance sampling,</p>
-<script type="math/tex; mode=display">
-Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{| \mathcal K(s)|}</script><p>for weighted importance sampling,</p>
-<script type="math/tex; mode=display">
-Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}}</script>
+v_\pi(C) &= 0.5v_\pi(B) + 0.5v_\pi(D) \qquad \qquad \text{ (3)}\\
+v_\pi(D) &= 0.5v_\pi(C) + 0.5v_\pi(E) \qquad \qquad \text{  (4)}\\
+v_\pi(E) &= 0.5v_\pi(D) + 0.5 \qquad \qquad \qquad \quad\text{(5)}\\
+\end{aligned}</script><p>Solve equations from (1) to (5), we can obtain the state values A through E are $\frac{1}{6}$, $\frac{2}{6}$, $\frac{3}{6}$, $\frac{4}{6}$ and $\frac{5}{6}$.</p>
+<p><strong>Method 2:</strong><br>I can not find another way that totally different with method 1 yet. If anybody know, please tell me.</p>
+
       
     </div>
     
@@ -398,8 +392,8 @@ Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{\sum_{t \in 
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-5-5/" rel="next" title="Reinforcement Learning Exercise 5.5">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 5.5
+              <a href="/2019/10/04/Reinforcement-Learning-Exercise-6-2/" rel="next" title="Reinforcement Learning Exercise 6.2">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 6.2
               </a>
             
           </div>
@@ -407,10 +401,6 @@ Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{\sum_{t \in 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/Reinforcement-Learning-Chapter-5-Example-of-Blackjack/" rel="prev" title="Reinforcement Learning Chapter 5, Example of Blackjack">
-                Reinforcement Learning Chapter 5, Example of Blackjack <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

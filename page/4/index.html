@@ -259,6 +259,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/21/Reinforcement-Learning-Exercise-3-13/" itemprop="url">Reinforcement Learning Exercise 3.13</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T23:33:39+08:00">
+                2019-06-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Exercise 3.13</strong> Give an equation for $q_\pi$ in terms of $v_\pi$ and the four-argument $p$.</p>
+<p>First, we need to derive a formula from multiplication formula of probability theory:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+p(x|y) &= \frac {p(x,y)}{p(y)} \\
+&= \frac {\sum_z p(x,y,z)}{p(y)} \\
+&= \frac {\sum_z \bigl [ p(x |y,z) \cdot p(z|y) \cdot p(y) \bigr ] } { p(y) } \\
+&= \sum_z \bigl [ p(x|y,z) \cdot p(z|y) \bigr ]  \qquad \qquad{(1)}\\
+\end{aligned}</script><p>With formula (1), we can calculate $q_\pi(s,a)$ as below:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_\pi(s,a)&= \mathbb E_\pi(G_t|S_t=s,A_t=a) \\
+&=\mathbb E_\pi(R_{t+1} + \gamma G_{t+1} | S_t = s, A_t = a) \\
+&= \mathbb E_\pi(R_{t+1} | S_t = s, A_t = a) + \gamma \mathbb E_\pi(G_{t+1}|S_t = s, A_t = a) \\
+&= \sum_r r \cdot Pr(R_{t+1} = r | S_t = s, A_t = a)  \\
+&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot Pr(G_{t+1}=g_{t+1}|S_t=s, A_t=a) \\
+\end{aligned}</script><p>Here, according to definition,  $g_{t+1} = \sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k}$. And use formula (1), we can derive:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_\pi(s,a) &= \sum_r r \cdot Pr(R_{t+1} = r | S_t = s, A_t = a)  \\
+&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot Pr(G_{t+1}=\sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k}|S_t=s, A_t=a) \\
+&= \sum_r r \cdot \sum_{s'} Pr(R_{t+1} = r | S_t = s, A_t = a, S_{t+1} = s') \cdot Pr(S_{t+1} = s' | S_t=s, A_t=a)  \\
+&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot \sum_{s'} Pr(G_{t+1}=\sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k}|S_t=s, A_t=a, S_{t+1} = s') \cdot Pr(S_{t+1}=s'| S_t=s, a_t = a) \\
+\end{aligned}</script><p>Because in Markov Process, $G_{t+1}$ is the reward of status $S_{t+1} = s’$, the information of $S_t = s$ and $A_t = a$ are no effect on $G_{t+1}$. So:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_\pi(s,a) &= \sum_r r \cdot \sum_{s'} Pr(R_{t+1} = r | S_t = s, A_t = a, S_{t+1} = s') \cdot Pr(S_{t+1} = s' | S_t=s, A_t=a)  \\
+&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot \sum_{s'} Pr(G_{t+1}=\sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k} | S_{t+1} = s') \cdot Pr(S_{t+1}=s'| S_t=s, a_t = a) \\
+&= \sum_{s'}  \biggl \{ Pr(S_{t+1} = s' | S_t=s, A_t=a) \cdot \Bigl [ \sum_r r \cdot Pr(R_{t+1} = r | S_t = s, A_t = a, S_{t+1} = s')  \\
+&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot Pr(G_{t+1}=\sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k} | S_{t+1} = s') \Bigr ] \biggr \}\\
+&=\sum_{s'} \biggl \{ p(s'| s,a) \cdot \Bigl [ \mathbb E_\pi(r|s,a,s') + \gamma \cdot  \mathbb E_\pi(G_{t+1}|S_{t+1}=s') \Bigr ] \biggr \} \\
+&=\sum_{s'} \biggl \{ p(s'| s,a) \cdot \Bigl [ \mathbb E_\pi(r|s,a,s') + \gamma \cdot v_\pi(s')  \Bigr ] \biggr \} \\
+\end{aligned}</script><p>Denote $p(s’ |  a , s ) = P_{s,s’}^a$ and $\mathbb E_\pi ( r | s, a, s’ ) = R_{s,s’}^a$, then</p>
+<script type="math/tex; mode=display">
+q_\pi(s,a) = \sum_{s'} \biggl \{ P_{s,s'}^a \cdot \Bigl [ R_{s,s'}^a + \gamma \cdot v_\pi(s')  \Bigr ] \biggr \} \qquad{(2)}</script><p>Here, the equation (2) is the result.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/Reinforcement-Learning-Exercise-3-12/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -566,7 +720,7 @@ Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
