@@ -259,6 +259,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-5-6/" itemprop="url">Reinforcement Learning Exercise 5.6</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T21:13:48+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong><em>Exercise 5.6</em></strong> What is the equation analogous to (5.6) for action values $Q(s, a)$ instead ofstate values $V(s)$, again given returns generated using $b$?</p>
+<p>Given a starting state $St$, starting action $At$, the probability of the subsequent state-action trajectory, $S_{t+1}, A_{t+1}, \cdots , S_T$ occurring under any policy $\pi$ is</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&Pr(S_{t+1}, A_{t+1},\cdots, S_{T-1}, A_{T-1}, S_T \mid S_t, A_{t:T-1}\sim \pi)\\
+&\qquad = p(S_{t+1} \mid S_t, A_t) \pi(A_{t+1}|S_{t+1}) \cdots p(S_{T-1} \mid S_{T-2}, A_{T-2})\pi(A_{T-1} \mid S_{T-1})  p(S_T \mid S_{T-1}, A_{T-1})\\
+&\qquad =\frac {\prod_{k=t}^{T - 1} \pi(A_k \mid S_k)p(S_{k+1}\mid S_k, A_k)} {\pi(A_t \mid S_t)}
+\end{aligned}</script><p>The relative probability of the trajectory under the target and behavior policies is</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\sigma_{t:T-1} &= \frac {b(A_t \mid S_t)\prod_{k=t}^{T-1} \pi(A_k \mid S_k) p(S_{k+1} \mid S_k, A_k)} {\pi(A_t \mid S_t)\prod_{k=t}^{T-1} b(A_k \mid S_k) p(S_{k+1} \mid S_k, A_k)} \\
+&= \frac {b(A_t \mid S_t)\prod_{k=t}^{T-1} \pi(A_k \mid S_k) }{ \pi(A_t \mid S_t)\prod_{k=t}^{T-1} b(A_k \mid S_k) } \\
+&=  \frac {\prod_{k=t+1}^{T-1} \pi(A_k \mid S_k) }{\prod_{k=t+1}^{T-1} b(A_k \mid S_k) } \\
+&=\rho_{t+1:T-1}
+\end{aligned}</script><p>So,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Q_\pi(s, a) &= \mathbb E \bigl [ \sigma_{t:T-1}G_t \mid S_t = s, A_t = a \bigr ] \\
+&= \mathbb E \bigl [ \rho_{t+1:T-1}G_t \mid S_t = s, A_t = a\bigr ]
+\end{aligned}</script><p>In particular we can define the set of all time steps in which state s is visited and action a is taken, denoted $\mathcal K(s)$ for every-visit method. For first-visit method, $\mathcal K(s)$ would only include time steps that were first visits to s and first take action a within their episodes. Let $T(t)$ denote the first time of termination following time $t$, and $G_t$ denote the return after $t$ up through $T(t)$. Then $\{G_t\}_{t \in \mathcal K(s)}$ are the returns that pertain to state s and action a,  and $\{ \rho_{t:T(t) - 1}\}_{t \in \mathcal K(s)}$ are the corresponding importance-sampling ratios.<br>Thus, for ordinary importance sampling,</p>
+<script type="math/tex; mode=display">
+Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{| \mathcal K(s)|}</script><p>for weighted importance sampling,</p>
+<script type="math/tex; mode=display">
+Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}}</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1461,166 +1603,6 @@ Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} 
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-4-4/" itemprop="url">Reinforcement Learning Exercise 4.4</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T12:27:53+08:00">
-                2019-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Exercise 4.4</strong> The policy iteration algorithm on page 80 has a subtle bug in that it may never terminate if the policy continually switches between two or more policies that are equally good. This is OK for pedagogy, but not for actual use. Modify the pseudocode so that convergence is guaranteed.</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-&\text{1 Initialization} \\
-    &\qquad V(s) \in \mathbb R \text{ and } \pi (s) \in \mathcal A(s) \text{ arbitrarily } s \in \mathcal S \\
-    &\qquad \text{For each } s \in \mathcal S \text{ create an empty list : } old\_list\_of\_a(s)\\
-    &\qquad \text{For each } s \in \mathcal S \text{ create an iterator : } iterator\_old\_list\_of\_a(s)\\
-&\text{2 Policy Evaluation} \\
-    &\qquad \text{Loop:} \\
-        &\qquad \qquad \Delta \leftarrow 0 \\
-        &\qquad \qquad \text{Loop for each } s \in \mathcal S: \\
-         &\qquad \qquad \qquad v \leftarrow V(s) \\
-        &\qquad \qquad \qquad V(s) \leftarrow \sum_{s',r}p(s',r \mid s,\pi(s)) \Bigl [ r + \gamma V(s')\Bigr ] \\
-        &\qquad \qquad \qquad \Delta \leftarrow \max (\Delta , |v-V(s)|) \\
-     &\qquad \text{until } \Delta \lt \theta \text{ (a small positive number determining the accuracy of estimation) } \\
-&\text{3 Policy Improvement} \\
-     &\qquad policy\text-stable \leftarrow true \\
-    &\qquad \text{For each }s \in \mathcal S: \\
-    &\qquad \qquad V_{max}(s)  \leftarrow \max_a \sum_{s',r}p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \\
-    &\qquad \qquad \text{Create an empty list: }new\_list\_of\_a(s)\\
-    &\qquad \qquad \text{For each }a \in |\mathcal A(s)|:\\
-    &\qquad \qquad \qquad \text{If }\sum_{s',r}p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \text{ is equal to } V_{max}(s):\\
-    &\qquad \qquad \qquad \qquad \text{Append }a \text{ to } new\_list\_of\_a(s)\\
-    &\qquad \qquad \text{If }new\_list\_of\_a(s) \text{ is not equal to } old\_list\_of\_a(s)\text{ :}\\
-    &\qquad \qquad \qquad policy\text{-}stable \leftarrow false \\
-    &\qquad \qquad \qquad old\_list\_of\_a(s) \leftarrow new\_list\_of\_a(s)\\
-    &\qquad \qquad \qquad iterator\_old\_list\_of\_a(s) \leftarrow \text{the beginning of }old\_list\_of\_a(s)\\
-    &\qquad \qquad \text{else :}\\
-    &\qquad \qquad \qquad \text{If }old\_list\_of\_a(s) \text{ is empty :}\\
-    &\qquad \qquad \qquad \qquad old\_list\_of\_a(s) \leftarrow new\_list\_of\_a(s)\\
-    &\qquad \qquad \qquad \qquad iterator\_old\_list\_of\_a(s) \leftarrow \text{the beginning of }old\_list\_of\_a(s)\\
-    &\qquad \qquad \qquad \qquad policy\text{-}stable \leftarrow false\\
-    &\qquad \qquad \qquad\text{else :}\\
-    &\qquad \qquad \qquad \qquad \text{If }iterator\_old\_list\_of\_a(s) \text{ is not equal to the end of }old\_list\_of\_a(s) \text{ :}\\
-    &\qquad \qquad \qquad \qquad \qquad \text{Move }iterator\_old\_list\_of\_a(s) \text{ to next.}\\
-    &\qquad \qquad \qquad \qquad \qquad policy\text{-}stable \leftarrow false\\
-    &\qquad \qquad \text{If }iterator\_old\_list\_of\_a(s) \text{ is not equal to the end of }old\_list\_of\_a(s) \text{ :}\\
-    &\qquad \qquad \qquad \pi(s) \leftarrow \text{Select }a \text{ in }old\_list\_of\_a(s) \text{ by } iterator\_old\_list\_of\_a(s)\\
-    &\qquad \qquad \text{else : }\\
-    &\qquad \qquad \qquad \pi(s) \leftarrow \text{Select }a \text{ in }old\_list\_of\_a(s) \text{ randomly}\\
-    &\qquad \text{If } policy\text-stable =true \text{ then stop and return } V \approx v_* \text{ and }\pi \approx \pi_* \text{ else go to 2.} \\
-\end{aligned}</script>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1671,7 +1653,7 @@ Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} 
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -259,6 +259,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/14/Reinforcement-Learning-Exercise-7-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/14/Reinforcement-Learning-Exercise-7-1/" itemprop="url">Reinforcement Learning Exercise 7.1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-14T22:45:33+08:00">
+                2019-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Exercise 7.1</strong> In Chapter 6 we noted that the Monte Carlo error can be written as the sum of TD errors (6.6) if the value estimates don’t change from step to step. Show that the n-step error used in (7.2) can also be written as a sum TD errors (again if the value estimates don’t change) generalizing the earlier result.</p>
+<p>Here, according to equation (7.2), the TD error is:</p>
+<script type="math/tex; mode=display">
+\delta_t = G_{t:t+n} - V_{t+n-1}(S_t)</script><p>For $G_{t:t+n}$ there is:</p>
+<script type="math/tex; mode=display">
+G_{t:t+n} = 
+\begin{cases}
+R_{t+1} + \gamma R_{t+2} + \cdots + \gamma^{n-1}R_{t+n} + \gamma^n V_{t+n-1}(S_{t+n}) & (n \geq 1 \text{ and } 0 \leq t < T-n) \\
+R_{t+1} + \gamma R_{t+2} + \cdots + \gamma^{T-t-1}R_T & (t+n \geq T)
+\end{cases}</script><p>Then, for $t+n\geq T$, the Monte Carlo error is:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_t - V_{t+n}(S_t) &= R_{t+1} + \gamma R_{t+2} +\cdots + \gamma^{T-t-1}R_T - V_{t+n}(S_t) \\
+&=G_{t:t+n}-V_{t+n}(S_t)
+\end{aligned}</script><p>Because all states are unchanged: $V_{t+n}(s) = V_{t+n-1}(s)$, so:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_t - V_{t+n}(S_t) &=G_{t:t+n}-V_{t+n-1}(S_t)\\
+&=\delta_t
+\end{aligned}</script><p>and for state value in any time, there is $V_t(S_t) = V_{t+x}(S_t)$. Here, $x &gt; 0$.</p>
+<p>Similarly, for $n \geq 1$ and $0 \leq t &lt; T-kn$, (here $k \geq 1$) the Monte Carlo error should be:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_t - V_{t+n}(S_t) &= R_{t+1} + \gamma R_{t+2} +\cdots + \gamma^{T-t-1}R_T - V_{t+n}(S_t) \\
+&= R_{t+1} + \gamma R_{t+2} +\cdots + \gamma^{n-1}R_{t+n} + \gamma^n V_{t+n-1}(S_{t+n}) - V_{t+n}(S_t) \\
+& \quad - \gamma^n V_{t+n-1}(S_{t+n}) + \gamma^nR_{t+n+1}+\cdots+\gamma^{T-t-1}R_T\\
+&= R_{t+1} + \gamma R_{t+2} +\cdots + \gamma^{n-1}R_{t+n} + \gamma^n V_{t+n-1}(S_{t+n}) - V_{t+n -1}(S_t)\\
+& \quad - \gamma^n V_{t+n-1}(S_{t+n}) + \gamma^nR_{t+n+1}+\cdots+\gamma^{T-t-1}R_T \\
+&=\delta_t + \gamma^n\bigl [R_{t+n+1}+\cdots+\gamma^{T-(t+n) -1}R_T - V_{t+n-1}(S_{t+n}) \bigr ]\\
+&=\delta_t + \gamma^n \bigl [G_{t+n} - V_{t+2n}(S_{t+n}) \bigr ] \\
+&=\delta_t + \gamma^n \delta_{t+n} + \gamma^{2n} \bigl[ G_{t+2n} - V_{t+3n}(S_{t+2n})\bigr] \\
+&=\delta_t + \gamma^n \delta_{t+n} + \gamma^{2n}\delta_{t+2n} + \cdots +\gamma^{kn} \bigl [ G_{t+kn} - V_{t+(k+1)n}(S_{t+kn})\bigr ] \\
+&=\delta_t + \gamma^n \delta_{t+n} + \gamma^{2n}\delta_{t+2n} + \cdots +\gamma^{kn} \delta_{t+kn} \\
+& \quad+ \gamma^{kn} \Bigl [ R_{t+kn+1} + \gamma R_{t+kn+2} + \cdots + \gamma^{T-(t+kn)-1}R_T - V_{t+(k+1)n} \bigl(S_{t+(k+1)n} \bigr ) \Bigr ] \\
+&= \sum_{p=0}^{p=k}\gamma^{pn}\delta_{t+pn} + \gamma^{kn}\Bigl[ G_{t+kn} -V(S_T)\Bigr] \\
+&=\sum_{p=0}^{p=k}\gamma^{pn}\delta_{t+pn} + \gamma^{kn}\Bigl[ G_{t+kn}-0\Bigr] \\
+&=\sum_{p=0}^{p=k}\gamma^{pn}\delta_{t+pn} + \gamma^{kn} G_{t+kn}
+\end{aligned}</script><p>Specially, if $t+kn+1 =T$, then $G_{t+kn} = 0$, the Monte Carlo error is:</p>
+<script type="math/tex; mode=display">
+G_t - V_{t+n}(S_t) = \sum_{p=0}^{p=k}\gamma^{pn}\delta_{t+pn}</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/Reinforcement-Learning-Exercise-6-6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1428,148 +1586,6 @@ V_{n+1} \doteq \frac{\sum_{k=1}^{n}W_k G_k}{C_n} \text{,} \qquad n \geq 1</scrip
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-5-6/" itemprop="url">Reinforcement Learning Exercise 5.6</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T21:13:48+08:00">
-                2019-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong><em>Exercise 5.6</em></strong> What is the equation analogous to (5.6) for action values $Q(s, a)$ instead ofstate values $V(s)$, again given returns generated using $b$?</p>
-<p>Given a starting state $St$, starting action $At$, the probability of the subsequent state-action trajectory, $S_{t+1}, A_{t+1}, \cdots , S_T$ occurring under any policy $\pi$ is</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-&Pr(S_{t+1}, A_{t+1},\cdots, S_{T-1}, A_{T-1}, S_T \mid S_t, A_{t:T-1}\sim \pi)\\
-&\qquad = p(S_{t+1} \mid S_t, A_t) \pi(A_{t+1}|S_{t+1}) \cdots p(S_{T-1} \mid S_{T-2}, A_{T-2})\pi(A_{T-1} \mid S_{T-1})  p(S_T \mid S_{T-1}, A_{T-1})\\
-&\qquad =\frac {\prod_{k=t}^{T - 1} \pi(A_k \mid S_k)p(S_{k+1}\mid S_k, A_k)} {\pi(A_t \mid S_t)}
-\end{aligned}</script><p>The relative probability of the trajectory under the target and behavior policies is</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\sigma_{t:T-1} &= \frac {b(A_t \mid S_t)\prod_{k=t}^{T-1} \pi(A_k \mid S_k) p(S_{k+1} \mid S_k, A_k)} {\pi(A_t \mid S_t)\prod_{k=t}^{T-1} b(A_k \mid S_k) p(S_{k+1} \mid S_k, A_k)} \\
-&= \frac {b(A_t \mid S_t)\prod_{k=t}^{T-1} \pi(A_k \mid S_k) }{ \pi(A_t \mid S_t)\prod_{k=t}^{T-1} b(A_k \mid S_k) } \\
-&=  \frac {\prod_{k=t+1}^{T-1} \pi(A_k \mid S_k) }{\prod_{k=t+1}^{T-1} b(A_k \mid S_k) } \\
-&=\rho_{t+1:T-1}
-\end{aligned}</script><p>So,</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-Q_\pi(s, a) &= \mathbb E \bigl [ \sigma_{t:T-1}G_t \mid S_t = s, A_t = a \bigr ] \\
-&= \mathbb E \bigl [ \rho_{t+1:T-1}G_t \mid S_t = s, A_t = a\bigr ]
-\end{aligned}</script><p>In particular we can define the set of all time steps in which state s is visited and action a is taken, denoted $\mathcal K(s)$ for every-visit method. For first-visit method, $\mathcal K(s)$ would only include time steps that were first visits to s and first take action a within their episodes. Let $T(t)$ denote the first time of termination following time $t$, and $G_t$ denote the return after $t$ up through $T(t)$. Then $\{G_t\}_{t \in \mathcal K(s)}$ are the returns that pertain to state s and action a,  and $\{ \rho_{t:T(t) - 1}\}_{t \in \mathcal K(s)}$ are the corresponding importance-sampling ratios.<br>Thus, for ordinary importance sampling,</p>
-<script type="math/tex; mode=display">
-Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{| \mathcal K(s)|}</script><p>for weighted importance sampling,</p>
-<script type="math/tex; mode=display">
-Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}}</script>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1620,7 +1636,7 @@ Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{\sum_{t \in 
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
