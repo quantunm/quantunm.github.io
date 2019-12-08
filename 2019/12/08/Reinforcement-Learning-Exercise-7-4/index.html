@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="Exercise 4.7 (programming) Write a program for policy iteration and re-solve Jack’s car rental problem with the following changes. One of Jack’s employees at the first location rides a bus home each n">
+<meta name="description" content="Exercise 7.4 Prove that the n-step return of Sarsa (7.4) can be written exactly in terms of a novel TD error, as  G_{t:t+n}=Q_{t-1}(S_t,A_t)+\sum_{k=t}^{min(t+n,T)-1} \gamma^{k-t}[R_{k+1} + \gamma Q_k">
 <meta name="keywords" content="Reinforcement Learning Exercise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning Exercise 4.7">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-7/index.html">
+<meta property="og:title" content="Reinforcement Learning Exercise 7.4">
+<meta property="og:url" content="http://yoursite.com/2019/12/08/Reinforcement-Learning-Exercise-7-4/index.html">
 <meta property="og:site_name" content="Keep going">
-<meta property="og:description" content="Exercise 4.7 (programming) Write a program for policy iteration and re-solve Jack’s car rental problem with the following changes. One of Jack’s employees at the first location rides a bus home each n">
+<meta property="og:description" content="Exercise 7.4 Prove that the n-step return of Sarsa (7.4) can be written exactly in terms of a novel TD error, as  G_{t:t+n}=Q_{t-1}(S_t,A_t)+\sum_{k=t}^{min(t+n,T)-1} \gamma^{k-t}[R_{k+1} + \gamma Q_k">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/car_rental.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/exercise_4.7.png">
-<meta property="og:updated_time" content="2019-08-04T12:25:28.050Z">
+<meta property="og:updated_time" content="2019-12-08T14:32:22.884Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforcement Learning Exercise 4.7">
-<meta name="twitter:description" content="Exercise 4.7 (programming) Write a program for policy iteration and re-solve Jack’s car rental problem with the following changes. One of Jack’s employees at the first location rides a bus home each n">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/car_rental.png">
+<meta name="twitter:title" content="Reinforcement Learning Exercise 7.4">
+<meta name="twitter:description" content="Exercise 7.4 Prove that the n-step return of Sarsa (7.4) can be written exactly in terms of a novel TD error, as  G_{t:t+n}=Q_{t-1}(S_t,A_t)+\sum_{k=t}^{min(t+n,T)-1} \gamma^{k-t}[R_{k+1} + \gamma Q_k">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-7/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/08/Reinforcement-Learning-Exercise-7-4/">
 
 
 
 
 
-  <title>Reinforcement Learning Exercise 4.7 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Reinforcement Learning Exercise 7.4 | Keep going</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -266,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-7/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/08/Reinforcement-Learning-Exercise-7-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Xiang">
@@ -283,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 4.7</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning Exercise 7.4</h1>
         
 
         <div class="post-meta">
@@ -295,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T16:07:59+08:00">
-                2019-08-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-08T22:26:02+08:00">
+                2019-12-08
               </time>
             
 
@@ -314,8 +311,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-7/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/08/04/Reinforcement-Learning-Exercise-4-7/" itemprop="commentsCount"></span>
+                <a href="/2019/12/08/Reinforcement-Learning-Exercise-7-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/12/08/Reinforcement-Learning-Exercise-7-4/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -348,16 +345,39 @@
       
 
       
-        <p><strong>Exercise 4.7</strong> (programming) Write a program for policy iteration and re-solve Jack’s car rental problem with the following changes. One of Jack’s employees at the first location rides a bus home each night and lives near the second location. She is happy to shuttle one car to the second location for free. Each additional car still costs \$2, as do all cars moved in the other direction. In addition, Jack has limited parking space at each location.If more than 10 cars are kept overnight at a location (after any moving of cars), then an additional cost of \$4 must be incurred to use a second parking lot (independent of how many cars are kept there). These sorts of nonlinearities and arbitrary dynamics often occur in real problems and cannot easily be handled by optimization methods other than dynamic programming. To check your program, first replicate the results given for the original problem.</p>
-<p>First we can give out the code of Jack’s car rental problem, then just a few modification is needed to solve this problem.<br>I put the source code on my github repository:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/car_rental.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/car_rental.py</a></p>
-<p>Run car_rental.py, we can get the result as that in book.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/car_rental.png" width="100%" height="100%"></p>
-<center>Figure 1. car rental policy improvement</center>
-Now, go back to this exercise 4.7, we just use a child class to overwrite the cost function of car rental class to comply with the rule in exercise 4.7.
-The code is here: https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/exercise_4.7.py
+        <p><strong>Exercise 7.4</strong> Prove that the n-step return of Sarsa (7.4) can be written exactly in terms of a novel TD error, as</p>
+<script type="math/tex; mode=display">
+G_{t:t+n}=Q_{t-1}(S_t,A_t)+\sum_{k=t}^{min(t+n,T)-1} \gamma^{k-t}[R_{k+1} + \gamma Q_k( S_{k+1}, A_{k+1}) - Q_{k-1}(S_k,A_k)]</script><p>Prove:<br>First $G_{t:t+n}$ can be written in terms of the sum of difference:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t:t+n} &= G_{t:t+1} -G_{t:t+1} +G_{t:t+2} -G_{t:t+2} + \cdots + G_{t:t+n-2} -G_{t:t+n-2} +G_{t:t+n-1} -G_{t:t+n-1} + G_{t:t+n}\\
+&=G_{t:t+1} + (G_{t:t+2} - G_{t:t+1}) + \cdots +(G_{t:t+n} - G_{t:t+n-1})\\
+&=G_{t:t+1}+\sum_{i=2}^n(G_{t:t+i}-G_{t:t+i-1}) 
+\end{aligned} \tag{1}</script><p>According to Sarsa (7.4)</p>
+<script type="math/tex; mode=display">
+G_{t:t+n} \doteq R_{t+1} + \gamma R_{t+2} + \cdots + \gamma^{n-1}R_{t+n} + \gamma^n Q_{t+n-1}(S_{t+n}, A_{t+n}), \qquad n \geq1, 0 \leq t < T-n \tag{7.4}</script><p>there is:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t:t+n} - G_{t:t+n-1} & = \gamma^{n-1}R_{t+n} + \gamma^n Q_{t+n-1}(S_{t+n} , A_{t+n}) - \gamma^{n-1} Q_{t+n-2}(S_{t+n-1}, A_{t+n-1}) \\
+&= \gamma^{n-1}\bigl[ R_{t+n} + \gamma Q_{t+n-1}(S_{t+n} , A_{t+n}) -Q_{t+n-2}(S_{t+n-1} , A_{t+n-1})\bigr] 
+\end{aligned} \tag{2}</script><p>and for $n=1$, there is:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t:t+1} &=\gamma^0 R_{t+1} + \gamma^1 Q_{t+1-1} (S_{t+1}, A_{t+1}) \\
+&=\gamma^0R_{t+1} + \gamma^1 Q_{t+1-1} (S_{t+1}, A_{t+1}) - Q_{t-1}(S_t, A_t) + Q_{t-1}(S_t, A_t) \\
+&= Q_{t-1}(S_t, A_t) + \gamma^0 \bigl[ R_{t+1} + \gamma Q_t(S_{t+1}, A_{t+1}) - Q_{t-1}(S_t, A_t) \bigr ] 
+\end{aligned} \tag{3}</script><p>Substitute equation (2) and (3) into (1), we get:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t:t+n} &= Q_{t-1}(S_t,A_t) + \gamma^0 \bigl[ R_{t+1} + \gamma Q_t(S_{t+1}, A_{t+1}) - Q_{t-1}(S_t, A_t) \bigr ] \\
+&\quad+ \sum_{i=2}^n \gamma^{i-1}\bigl[ R_{t+i} + \gamma Q_{t+i-1}(S_{t+i} , A_{t+i}) -Q_{t+i-2}(S_{t+i-1} , A_{t+i-1})\bigr] \\
+&= Q_{t-1}(S_t,A_t) + \sum_{i=1}^n \gamma^{i-1}\bigl[ R_{t+i} + \gamma Q_{t+i-1}(S_{t+i} , A_{t+i}) -Q_{t+i-2}(S_{t+i-1} , A_{t+i-1})\bigr] 
+\end{aligned} \tag{4}</script><p>Let $k =i+t-1$, so $i =k-t+1$ equation (4) can be written as:</p>
+<script type="math/tex; mode=display">
+G_{t:t+n} = Q_{t-1}(S_t, A_t) + \sum_{k=t}^{t+n-1}\gamma^{k-t}\bigl[ R_{k+1} + \gamma Q_{k}(S_{k+1} , A_{k+1}) -Q_{k-1}(S_{k} , A_{k})\bigr] \tag{5}</script><p>$t +n$ should not larger than $T$, so equation (5) can be written as:</p>
+<script type="math/tex; mode=display">
+G_{t:t+n}=Q_{t-1}(S_t,A_t)+\sum_{k=t}^{min(t+n,T)-1} \gamma^{k-t}[R_{k+1} + \gamma Q_k( S_{k+1}, A_{k+1}) - Q_{k-1}(S_k,A_k)]</script><p>PROVED.</p>
 
-The result is shown as below:
-<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/exercise_4.7.png" width="100%" height="100%">
-<center>Figure 1. car rental policy improvement</center>
       
     </div>
     
@@ -387,8 +407,8 @@ The result is shown as below:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-6/" rel="next" title="Reinforcement Learning Exercise 4.6">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 4.6
+              <a href="/2019/11/14/Reinforcement-Learning-Exercise-7-1/" rel="next" title="Reinforcement Learning Exercise 7.1">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning Exercise 7.1
               </a>
             
           </div>
@@ -396,10 +416,6 @@ The result is shown as below:
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/Reinforcement-Learning-Exercise-4-9/" rel="prev" title="Reinforcement Learning Exercise 4.9">
-                Reinforcement Learning Exercise 4.9 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

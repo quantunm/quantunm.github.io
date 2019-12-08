@@ -259,6 +259,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Chapter-5-Example-of-Blackjack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Chapter-5-Example-of-Blackjack/" itemprop="url">Reinforcement Learning Chapter 5, Example of Blackjack</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T21:16:54+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>This article exhibits a source code and experiment result for the blackjack example in the book. Both on-policy and off-policy are implemented in this source code. The off-policy includes ordinary importance sampling and weighted importance sampling.The first-visit and every-visit methods are implemented in on_policy, although they lead to a same result (in blackjack example, the return of each state is zero except the terminal state).<br>The address of the code is:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_5/Blackjack.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_5/Blackjack.py</a><br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_on_policy_first_visit.png" width="100%" height="100%"></p>
+<center>Figure 1. state value estimation in MC on policy, first-visit</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_on_policy_every_visit.png" width="100%" height="100%">
+<center> Figure 2. state value estimation in MC on policy, every-visit</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_MC_ES_on_policy_first_visit.png" width="100%" height="100%">
+<center>Figure 3. Monte Carlo ES on policy, first-visit for estimating $\pi \approx \pi_*$</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_MC_ES_on_policy_every_visit.png" width="100%" height="100%">
+<center>Figure 4. Monte Carlo ES on policy, every-visit for estimating $\pi \approx \pi_*$</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/MSE_for_sampling.png" width="100%" height="100%">
+<center>Figure 5. Mean square error of ordinary and weighted importance sampling</center>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-5-6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1461,148 +1589,6 @@ The result is shown as below:
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Exercise-4-5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Exercise-4-5/" itemprop="url">Reinforcement Learning Exercise 4.5</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T13:06:19+08:00">
-                2019-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Exercise 4.5</strong> How would policy iteration be defined for action values? Give a complete algorithm for computing <script type="math/tex">q_*</script>, analogous to that on page 80 for computing <script type="math/tex">v_*</script>. Please pay special attention to this exercise, because the ideas involved will be used throughout the rest of the book.</p>
-<p>Here, we can use the result of exercise 3.17:</p>
-<script type="math/tex; mode=display">
-Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script><p>Then the algorithm which analogous to that on page 80 can be like this:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-&\text{1 Initialization} \\
-    &\qquad Q_\pi(s, a) \in \mathbb R and \pi (s, a) \in \mathcal A(s) arbitrarily s \in \mathcal S and a \in \mathcal A(s) \\
-&\text{2 Policy Evaluation} \\
-    &\qquad \text{Loop:} \\
-    &\qquad \qquad \Delta \leftarrow 0 \\
-    &\qquad  \text{Loop for each }(s,a)\text{ pair:} \\
-        &\qquad \qquad q \leftarrow Q_\pi(s,a) \\
-        &\qquad \qquad Q_\pi(s,a) \leftarrow  \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a \\
-       & \qquad \qquad \Delta \leftarrow \max (\Delta , |q-Q_\pi(s,a)|) \\
-  &\qquad \text{until }\Delta \lt \theta \text{ (a small positive number determining the accuracy of estimation) } \\
-&\text{3 Policy Improvement} \\
-    &\qquad policy\text-stable \leftarrow true \\
-    &\qquad \text{For each }(a,s) \text{ pair, } s \in \mathcal S \text{ and } a \in \mathcal A(s): \\
-    &\qquad \qquad old \text- action \leftarrow \pi(s, a) \\
-    &\qquad \qquad \pi(s) \leftarrow \text{argmax}_{s,a} Q_\pi(s,a) \\
-    &\qquad \qquad \text{If } old\text-action =\not \pi(s) \text{, then } policy\text-stable \leftarrow false \\
-    &\qquad \text{If } policy\text-stable \text{, then stop and return } Q_\pi \approx q_* \text{ and }\pi \approx \pi_* \text{; else go to 2.} \\
-\end{aligned}</script>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1653,7 +1639,7 @@ Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} 
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

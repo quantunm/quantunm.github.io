@@ -259,6 +259,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/08/Reinforcement-Learning-Exercise-7-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Xiang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keep going">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/08/Reinforcement-Learning-Exercise-7-4/" itemprop="url">Reinforcement Learning Exercise 7.4</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-08T22:26:02+08:00">
+                2019-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Exercise 7.4</strong> Prove that the n-step return of Sarsa (7.4) can be written exactly in terms of a novel TD error, as</p>
+<script type="math/tex; mode=display">
+G_{t:t+n}=Q_{t-1}(S_t,A_t)+\sum_{k=t}^{min(t+n,T)-1} \gamma^{k-t}[R_{k+1} + \gamma Q_k( S_{k+1}, A_{k+1}) - Q_{k-1}(S_k,A_k)]</script><p>Prove:<br>First $G_{t:t+n}$ can be written in terms of the sum of difference:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t:t+n} &= G_{t:t+1} -G_{t:t+1} +G_{t:t+2} -G_{t:t+2} + \cdots + G_{t:t+n-2} -G_{t:t+n-2} +G_{t:t+n-1} -G_{t:t+n-1} + G_{t:t+n}\\
+&=G_{t:t+1} + (G_{t:t+2} - G_{t:t+1}) + \cdots +(G_{t:t+n} - G_{t:t+n-1})\\
+&=G_{t:t+1}+\sum_{i=2}^n(G_{t:t+i}-G_{t:t+i-1}) 
+\end{aligned} \tag{1}</script><p>According to Sarsa (7.4)</p>
+<script type="math/tex; mode=display">
+G_{t:t+n} \doteq R_{t+1} + \gamma R_{t+2} + \cdots + \gamma^{n-1}R_{t+n} + \gamma^n Q_{t+n-1}(S_{t+n}, A_{t+n}), \qquad n \geq1, 0 \leq t < T-n \tag{7.4}</script><p>there is:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t:t+n} - G_{t:t+n-1} & = \gamma^{n-1}R_{t+n} + \gamma^n Q_{t+n-1}(S_{t+n} , A_{t+n}) - \gamma^{n-1} Q_{t+n-2}(S_{t+n-1}, A_{t+n-1}) \\
+&= \gamma^{n-1}\bigl[ R_{t+n} + \gamma Q_{t+n-1}(S_{t+n} , A_{t+n}) -Q_{t+n-2}(S_{t+n-1} , A_{t+n-1})\bigr] 
+\end{aligned} \tag{2}</script><p>and for $n=1$, there is:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t:t+1} &=\gamma^0 R_{t+1} + \gamma^1 Q_{t+1-1} (S_{t+1}, A_{t+1}) \\
+&=\gamma^0R_{t+1} + \gamma^1 Q_{t+1-1} (S_{t+1}, A_{t+1}) - Q_{t-1}(S_t, A_t) + Q_{t-1}(S_t, A_t) \\
+&= Q_{t-1}(S_t, A_t) + \gamma^0 \bigl[ R_{t+1} + \gamma Q_t(S_{t+1}, A_{t+1}) - Q_{t-1}(S_t, A_t) \bigr ] 
+\end{aligned} \tag{3}</script><p>Substitute equation (2) and (3) into (1), we get:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t:t+n} &= Q_{t-1}(S_t,A_t) + \gamma^0 \bigl[ R_{t+1} + \gamma Q_t(S_{t+1}, A_{t+1}) - Q_{t-1}(S_t, A_t) \bigr ] \\
+&\quad+ \sum_{i=2}^n \gamma^{i-1}\bigl[ R_{t+i} + \gamma Q_{t+i-1}(S_{t+i} , A_{t+i}) -Q_{t+i-2}(S_{t+i-1} , A_{t+i-1})\bigr] \\
+&= Q_{t-1}(S_t,A_t) + \sum_{i=1}^n \gamma^{i-1}\bigl[ R_{t+i} + \gamma Q_{t+i-1}(S_{t+i} , A_{t+i}) -Q_{t+i-2}(S_{t+i-1} , A_{t+i-1})\bigr] 
+\end{aligned} \tag{4}</script><p>Let $k =i+t-1$, so $i =k-t+1$ equation (4) can be written as:</p>
+<script type="math/tex; mode=display">
+G_{t:t+n} = Q_{t-1}(S_t, A_t) + \sum_{k=t}^{t+n-1}\gamma^{k-t}\bigl[ R_{k+1} + \gamma Q_{k}(S_{k+1} , A_{k+1}) -Q_{k-1}(S_{k} , A_{k})\bigr] \tag{5}</script><p>$t +n$ should not larger than $T$, so equation (5) can be written as:</p>
+<script type="math/tex; mode=display">
+G_{t:t+n}=Q_{t-1}(S_t,A_t)+\sum_{k=t}^{min(t+n,T)-1} \gamma^{k-t}[R_{k+1} + \gamma Q_k( S_{k+1}, A_{k+1}) - Q_{k-1}(S_k,A_k)]</script><p>PROVED.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/14/Reinforcement-Learning-Exercise-7-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1458,134 +1609,6 @@ V_{n+1} \doteq \frac{\sum_{k=1}^{n}W_k G_k}{C_n} \text{,} \qquad n \geq 1</scrip
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Reinforcement-Learning-Chapter-5-Example-of-Blackjack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Xiang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keep going">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/04/Reinforcement-Learning-Chapter-5-Example-of-Blackjack/" itemprop="url">Reinforcement Learning Chapter 5, Example of Blackjack</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T21:16:54+08:00">
-                2019-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>This article exhibits a source code and experiment result for the blackjack example in the book. Both on-policy and off-policy are implemented in this source code. The off-policy includes ordinary importance sampling and weighted importance sampling.The first-visit and every-visit methods are implemented in on_policy, although they lead to a same result (in blackjack example, the return of each state is zero except the terminal state).<br>The address of the code is:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_5/Blackjack.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_5/Blackjack.py</a><br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_on_policy_first_visit.png" width="100%" height="100%"></p>
-<center>Figure 1. state value estimation in MC on policy, first-visit</center>
-<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_on_policy_every_visit.png" width="100%" height="100%">
-<center> Figure 2. state value estimation in MC on policy, every-visit</center>
-<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_MC_ES_on_policy_first_visit.png" width="100%" height="100%">
-<center>Figure 3. Monte Carlo ES on policy, first-visit for estimating $\pi \approx \pi_*$</center>
-<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_MC_ES_on_policy_every_visit.png" width="100%" height="100%">
-<center>Figure 4. Monte Carlo ES on policy, every-visit for estimating $\pi \approx \pi_*$</center>
-<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/MSE_for_sampling.png" width="100%" height="100%">
-<center>Figure 5. Mean square error of ordinary and weighted importance sampling</center>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1636,7 +1659,7 @@ V_{n+1} \doteq \frac{\sum_{k=1}^{n}W_k G_k}{C_n} \text{,} \qquad n \geq 1</scrip
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
