@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Reinforcement Learning Exercise 7.4</title>
+    <url>/2019/12/08/Reinforcement-Learning-Exercise-7-4/</url>
+    <content><![CDATA[<p><strong>Exercise 7.4</strong> Prove that the n-step return of Sarsa (7.4) can be written exactly in terms of a novel TD error, as</p>
+<script type="math/tex; mode=display">
+G_{t:t+n}=Q_{t-1}(S_t,A_t)+\sum_{k=t}^{min(t+n,T)-1} \gamma^{k-t}[R_{k+1} + \gamma Q_k( S_{k+1}, A_{k+1}) - Q_{k-1}(S_k,A_k)]</script><p>Prove:<br>First $G_{t:t+n}$ can be written in terms of the sum of difference:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t:t+n} &= G_{t:t+1} -G_{t:t+1} +G_{t:t+2} -G_{t:t+2} + \cdots + G_{t:t+n-2} -G_{t:t+n-2} +G_{t:t+n-1} -G_{t:t+n-1} + G_{t:t+n}\\
+&=G_{t:t+1} + (G_{t:t+2} - G_{t:t+1}) + \cdots +(G_{t:t+n} - G_{t:t+n-1})\\
+&=G_{t:t+1}+\sum_{i=2}^n(G_{t:t+i}-G_{t:t+i-1}) 
+\end{aligned} \tag{1}</script><p>According to Sarsa (7.4)</p>
+<script type="math/tex; mode=display">
+G_{t:t+n} \doteq R_{t+1} + \gamma R_{t+2} + \cdots + \gamma^{n-1}R_{t+n} + \gamma^n Q_{t+n-1}(S_{t+n}, A_{t+n}), \qquad n \geq1, 0 \leq t < T-n \tag{7.4}</script><p>there is:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t:t+n} - G_{t:t+n-1} & = \gamma^{n-1}R_{t+n} + \gamma^n Q_{t+n-1}(S_{t+n} , A_{t+n}) - \gamma^{n-1} Q_{t+n-2}(S_{t+n-1}, A_{t+n-1}) \\
+&= \gamma^{n-1}\bigl[ R_{t+n} + \gamma Q_{t+n-1}(S_{t+n} , A_{t+n}) -Q_{t+n-2}(S_{t+n-1} , A_{t+n-1})\bigr] 
+\end{aligned} \tag{2}</script><p>and for $n=1$, there is:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t:t+1} &=\gamma^0 R_{t+1} + \gamma^1 Q_{t+1-1} (S_{t+1}, A_{t+1}) \\
+&=\gamma^0R_{t+1} + \gamma^1 Q_{t+1-1} (S_{t+1}, A_{t+1}) - Q_{t-1}(S_t, A_t) + Q_{t-1}(S_t, A_t) \\
+&= Q_{t-1}(S_t, A_t) + \gamma^0 \bigl[ R_{t+1} + \gamma Q_t(S_{t+1}, A_{t+1}) - Q_{t-1}(S_t, A_t) \bigr ] 
+\end{aligned} \tag{3}</script><p>Substitute equation (2) and (3) into (1), we get:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t:t+n} &= Q_{t-1}(S_t,A_t) + \gamma^0 \bigl[ R_{t+1} + \gamma Q_t(S_{t+1}, A_{t+1}) - Q_{t-1}(S_t, A_t) \bigr ] \\
+&\quad+ \sum_{i=2}^n \gamma^{i-1}\bigl[ R_{t+i} + \gamma Q_{t+i-1}(S_{t+i} , A_{t+i}) -Q_{t+i-2}(S_{t+i-1} , A_{t+i-1})\bigr] \\
+&= Q_{t-1}(S_t,A_t) + \sum_{i=1}^n \gamma^{i-1}\bigl[ R_{t+i} + \gamma Q_{t+i-1}(S_{t+i} , A_{t+i}) -Q_{t+i-2}(S_{t+i-1} , A_{t+i-1})\bigr] 
+\end{aligned} \tag{4}</script><p>Let $k =i+t-1$, so $i =k-t+1$ equation (4) can be written as:</p>
+<script type="math/tex; mode=display">
+G_{t:t+n} = Q_{t-1}(S_t, A_t) + \sum_{k=t}^{t+n-1}\gamma^{k-t}\bigl[ R_{k+1} + \gamma Q_{k}(S_{k+1} , A_{k+1}) -Q_{k-1}(S_{k} , A_{k})\bigr] \tag{5}</script><p>$t +n$ should not larger than $T$, so equation (5) can be written as:</p>
+<script type="math/tex; mode=display">
+G_{t:t+n}=Q_{t-1}(S_t,A_t)+\sum_{k=t}^{min(t+n,T)-1} \gamma^{k-t}[R_{k+1} + \gamma Q_k( S_{k+1}, A_{k+1}) - Q_{k-1}(S_k,A_k)]</script><p>PROVED.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 7.1</title>
+    <url>/2019/11/14/Reinforcement-Learning-Exercise-7-1/</url>
+    <content><![CDATA[<p><strong>Exercise 7.1</strong> In Chapter 6 we noted that the Monte Carlo error can be written as the sum of TD errors (6.6) if the value estimates don’t change from step to step. Show that the n-step error used in (7.2) can also be written as a sum TD errors (again if the value estimates don’t change) generalizing the earlier result.</p>
+<p>Here, according to equation (7.2), the TD error is:</p>
+<script type="math/tex; mode=display">
+\delta_t = G_{t:t+n} - V_{t+n-1}(S_t)</script><p>For $G_{t:t+n}$ there is:</p>
+<script type="math/tex; mode=display">
+G_{t:t+n} = 
+\begin{cases}
+R_{t+1} + \gamma R_{t+2} + \cdots + \gamma^{n-1}R_{t+n} + \gamma^n V_{t+n-1}(S_{t+n}) & (n \geq 1 \text{ and } 0 \leq t < T-n) \\
+R_{t+1} + \gamma R_{t+2} + \cdots + \gamma^{T-t-1}R_T & (t+n \geq T)
+\end{cases}</script><p>Then, for $t+n\geq T$, the Monte Carlo error is:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_t - V_{t+n}(S_t) &= R_{t+1} + \gamma R_{t+2} +\cdots + \gamma^{T-t-1}R_T - V_{t+n}(S_t) \\
+&=G_{t:t+n}-V_{t+n}(S_t)
+\end{aligned}</script><p>Because all states are unchanged: $V_{t+n}(s) = V_{t+n-1}(s)$, so:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_t - V_{t+n}(S_t) &=G_{t:t+n}-V_{t+n-1}(S_t)\\
+&=\delta_t
+\end{aligned}</script><p>and for state value in any time, there is $V_t(S_t) = V_{t+x}(S_t)$. Here, $x &gt; 0$.</p>
+<p>Similarly, for $n \geq 1$ and $0 \leq t &lt; T-kn$, (here $k \geq 1$) the Monte Carlo error should be:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_t - V_{t+n}(S_t) &= R_{t+1} + \gamma R_{t+2} +\cdots + \gamma^{T-t-1}R_T - V_{t+n}(S_t) \\
+&= R_{t+1} + \gamma R_{t+2} +\cdots + \gamma^{n-1}R_{t+n} + \gamma^n V_{t+n-1}(S_{t+n}) - V_{t+n}(S_t) \\
+& \quad - \gamma^n V_{t+n-1}(S_{t+n}) + \gamma^nR_{t+n+1}+\cdots+\gamma^{T-t-1}R_T\\
+&= R_{t+1} + \gamma R_{t+2} +\cdots + \gamma^{n-1}R_{t+n} + \gamma^n V_{t+n-1}(S_{t+n}) - V_{t+n -1}(S_t)\\
+& \quad - \gamma^n V_{t+n-1}(S_{t+n}) + \gamma^nR_{t+n+1}+\cdots+\gamma^{T-t-1}R_T \\
+&=\delta_t + \gamma^n\bigl [R_{t+n+1}+\cdots+\gamma^{T-(t+n) -1}R_T - V_{t+n-1}(S_{t+n}) \bigr ]\\
+&=\delta_t + \gamma^n \bigl [G_{t+n} - V_{t+2n}(S_{t+n}) \bigr ] \\
+&=\delta_t + \gamma^n \delta_{t+n} + \gamma^{2n} \bigl[ G_{t+2n} - V_{t+3n}(S_{t+2n})\bigr] \\
+&=\delta_t + \gamma^n \delta_{t+n} + \gamma^{2n}\delta_{t+2n} + \cdots +\gamma^{kn} \bigl [ G_{t+kn} - V_{t+(k+1)n}(S_{t+kn})\bigr ] \\
+&=\delta_t + \gamma^n \delta_{t+n} + \gamma^{2n}\delta_{t+2n} + \cdots +\gamma^{kn} \delta_{t+kn} \\
+& \quad+ \gamma^{kn} \Bigl [ R_{t+kn+1} + \gamma R_{t+kn+2} + \cdots + \gamma^{T-(t+kn)-1}R_T - V_{t+(k+1)n} \bigl(S_{t+(k+1)n} \bigr ) \Bigr ] \\
+&= \sum_{p=0}^{p=k}\gamma^{pn}\delta_{t+pn} + \gamma^{kn}\Bigl[ G_{t+kn} -V(S_T)\Bigr] \\
+&=\sum_{p=0}^{p=k}\gamma^{pn}\delta_{t+pn} + \gamma^{kn}\Bigl[ G_{t+kn}-0\Bigr] \\
+&=\sum_{p=0}^{p=k}\gamma^{pn}\delta_{t+pn} + \gamma^{kn} G_{t+kn}
+\end{aligned}</script><p>Specially, if $t+kn+1 =T$, then $G_{t+kn} = 0$, the Monte Carlo error is:</p>
+<script type="math/tex; mode=display">
+G_t - V_{t+n}(S_t) = \sum_{p=0}^{p=k}\gamma^{pn}\delta_{t+pn}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 6.6</title>
+    <url>/2019/10/29/Reinforcement-Learning-Exercise-6-6/</url>
+    <content><![CDATA[<p><strong>Exercise 6.6</strong> In Example 6.2 we stated that the true values for the random walk example are $\frac{1}{6}$, $\frac{2}{6}$, $\frac{3}{6}$, $\frac{4}{6}$ and $\frac{5}{6}$, for states A through E. Describe at least two different ways that these could have been computed. Which would you guess we actually used? Why?</p>
+<p>Example 6.2 Random walk<br>In this example we empirically compare the prediction abilities of TD(0) and constant-$\alpha$ MC when applied to the following Markov reward process:</p>
+<p><div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/29/Reinforcement-Learning-Exercise-6-6/Example_6.2.png">
+</div><br>A Markov reward process, or MRP, is a Markov decision process without actions. We will often use MRPs when focusing on the prediction problem, in which there is no need to distinguish the dynamics due to the environment from those due to the agent. In this MRP, all episodes start in the center state, C, then proceed either left or right by one state on each step, with equal probability. Episodes terminate either on the extreme left or the extreme right. When an episode terminates on the right, a reward of +1 occurs; all other rewards are zero. For example, a typical episode might consist of the following state-and-reward sequence: C, 0, B, 0, C, 0, D, 0, E, 1. Because this task is undiscounted, the true value of each state is the probability of terminating on the right if starting from that state. Thus, the true value of the center state is $v_{\pi}(C)$ = 0.5. The true values of all the states, A through E, are$\frac{1}{6}$, $\frac{2}{6}$, $\frac{3}{6}$, $\frac{4}{6}$ and $\frac{5}{6}$.</p>
+<p>In this case, for all status, there is $\pi(a \mid s) =0.5$ because left action and right action are taken in equal probability. And also there is $p(s’, r\mid s, a) = 1$ for deterministic action, $\gamma = 1$ for no discount.<br><strong>Method 1:</strong><br>Use Bellman equation for $v_\pi(s)$ (equation 3.14) directly, and Bellman equation can be simplified to:</p>
+<script type="math/tex; mode=display">
+v_\pi(s) = 0.5 \sum_{s',r}\bigl [ r+v_\pi(s') \bigr]</script><p>So, for state A, $v_\pi(A) = 0.5\bigl[ 0+v_\pi(terminal) + 0+ v_\pi(B)\bigr] = 0.5v_\pi(B)\qquad \text{(1)}$.<br>For state B, $v_\pi(B) = 0.5\bigl[ 0 + v_\pi(A) + 0 +v_\pi(C)\bigr] = 0.5v_\pi(A)+0.5v_\pi(C)\qquad \text{(2)}$<br>And so on, we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(C) &= 0.5v_\pi(B) + 0.5v_\pi(D) \qquad \qquad \text{ (3)}\\
+v_\pi(D) &= 0.5v_\pi(C) + 0.5v_\pi(E) \qquad \qquad \text{  (4)}\\
+v_\pi(E) &= 0.5v_\pi(D) + 0.5 \qquad \qquad \qquad \quad\text{(5)}\\
+\end{aligned}</script><p>Solve equations from (1) to (5), we can obtain the state values A through E are $\frac{1}{6}$, $\frac{2}{6}$, $\frac{3}{6}$, $\frac{4}{6}$ and $\frac{5}{6}$.</p>
+<p><strong>Method 2:</strong><br>I can not find another way that totally different with method 1 yet. If anybody know, please tell me.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 6.2</title>
+    <url>/2019/10/04/Reinforcement-Learning-Exercise-6-2/</url>
+    <content><![CDATA[<p><strong>Exercise 6.3</strong> From the results shown in the left graph of the random walk example it appears that the first episode results in a change in only $V (A)$. What does this tell you about what happened on the first episode? Why was only the estimate for this one state changed? By exactly how much was it changed? </p>
+<p>As shown in the left graph of the random walk example, all the state values are initialized to 0.5, so the intermediate steps will not change the state values in the first episode. For example, from B to A, there is:</p>
+<script type="math/tex; mode=display">
+V(B) \leftarrow V(B) + \alpha[ 0 + \gamma V(A) - V(B)] \\
+\therefore V(B) = 0.5 +0.1[0 +1\cdot 0.5 -0.5]=0.5</script><p>Also, there is only state A changed in episode 1 shown in the left graph of the random walk example. So, the episode 1 terminate in left terminal of A, otherwise, state E should have been changed. Then, we can calculate how much the value of state A changed:</p>
+<script type="math/tex; mode=display">
+V(A) \leftarrow V(A) + \alpha[ 0 + \gamma V(terminal) - V(A)] \\
+\therefore V(A) = 0.5 +0.1[0 +1\cdot 0 -0.5]=0.45</script><p>The changed amount is 0.05.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 6.9 and 6.10</title>
+    <url>/2019/10/03/Reinforcement-Learning-Exercise-6-9-and-6-10/</url>
+    <content><![CDATA[<p><strong>Exercise 6.9:</strong> Windy Gridworld with King’s Moves (programming) Re-solve the windy gridworld assuming eight possible actions, including the diagonal moves, rather than the usual four. How much better can you do with the extra actions? Can you do even better by including a ninth action that causes no movement at all other than that caused by the wind?<br><strong>Exercise 6.10:</strong> Stochastic Wind (programming) Re-solve the windy gridworld task with King’s moves, assuming that the e↵ect of the wind, if there is any, is stochastic, sometimes varying by 1 from the mean values given for each column. That is, a third of the time you move exactly according to these values, as in the previous exercise, but also a third of the time you move one cell above that, and another third of the time you move one cell below that. For example, if you are one cell to the right of the goal and you move left, then one-third of the time you move one cell above the goal, one-third of the time you move two cells above the goal, and one-third of the time you move to the goal. </p>
+<p>Both exercise 6.9 and 6.10 are implement in code: <a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_6/windy_gridworld.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_6/windy_gridworld.py</a><br>The results are shown as below:</p>
+<p><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_4actions_0.1alpha_0.1epsilon.png"></p>
+<center>Figure 1. 4 Actions</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_8actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 2. 8 Actions</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_9actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 3. 9 Actions</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_stochastic_4actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 4. 4 Actions for stochastic wind</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_stochastic_8actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 5. 8 Actions for stochastic wind</center>
+<div align="center">
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/10/3/Reinforcement-Learning-Exercise-6-9-and-6-10/Sarsa_on_policy_stochastic_9actions_0.1alpha_0.1epsilon.png">
+</div>
+<center>Figure 6. 9 Actions for stochastic wind</center>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 6.1</title>
+    <url>/2019/10/03/Reinforcement-Learning-Exercise-6-1/</url>
+    <content><![CDATA[<p><strong>Exercise 6.1</strong> If $V$ changes during the episode, then (6.6) only holds approximately; what would the difference be between the two sides? Let $V_t$ denote the array of state values used at time $t$ in the TD error (6.5) and in the TD update (6.2). Redo the derivation above to determine the additional amount that must be added to the sum of TD errors in order to equal the Monte Carlo error.</p>
+<p>Suppose $V$ changes at time $u$ since time $t$, then the sum of TD error is:</p>
+<script type="math/tex; mode=display">
+G_u - V_u</script><p>So the amount the must be added to the sum of TD errors at time $t$ is:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\quad(G_u - V_u) - (G_t - V_t)\\
+&=\sum_{k=u}^{T-1}\gamma^{k-u}\delta_u - \sum_{k=t}^{T-1}\gamma^{k-t}\delta_t \qquad\qquad (u \geq t)\\
+&= - \sum_{k = t}^{u-1}\gamma^{k-t}\delta_k \\
+\end{aligned}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 5.13</title>
+    <url>/2019/09/10/Reinforcement-Learning-Exercise-5-13/</url>
+    <content><![CDATA[<p><strong>Exercise 5.13</strong> Show the steps to derive (5.14) from (5.12).</p>
+<script type="math/tex; mode=display">
+\rho_{t:T-1}R_{t+1} = \frac{\pi(A_t \mid S_t)}{b(A_t \mid S_t)}\frac{\pi(A_{t+1} \mid S_{t + 1})}{b(A_{t+1} \mid S_{t + 1})}\frac{\pi(A_{t+2} \mid S_{t + 2})}{b(A_{t+2} \mid S_{t + 2})}\cdots\frac{\pi(A_{T-1} \mid S_{T - 1})}{b(A_{T-1} \mid S_{T - 1})}R_{t+1}    \qquad{(5.12)}</script><p>According to the property of Markov Procedure, each action step is independent, so we have</p>
+<script type="math/tex; mode=display">
+\mathbb E(\rho_{t:T-1}R_{t+1})=\mathbb E( \frac{\pi(A_t \mid S_t)}{b(A_t \mid S_t)}R_{t+1})\mathbb E(\frac{\pi(A_{t+1} \mid S_{t + 1})}{b(A_{t+1} \mid S_{t + 1})})\mathbb E(\frac{\pi(A_{t+2} \mid S_{t + 2})}{b(A_{t+2} \mid S_{t + 2})})\cdots\mathbb E(\frac{\pi(A_{T-1} \mid S_{T - 1})}{b(A_{T-1} \mid S_{T - 1})})</script><p>And according to equation (5.13), the expectation of each step is 1, except the first. </p>
+<script type="math/tex; mode=display">
+\mathbb E\Biggl[ \frac{\pi(A_k \mid S_k)}{b(A_k \mid S_k)}\Biggr] \doteq \sum_a b(a\mid S_k) \frac{\pi(a \mid S_k)}{b(a \mid S_k)} = \sum_a \pi(a \mid S_k) = 1 \qquad{(5.13)}</script><p>So, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbb E(\rho_{t:T-1}R_{t+1})&=\mathbb E( \frac{\pi(A_t \mid S_t)}{b(A_t \mid S_t)}R_{t+1})\\
+&=\mathbb E(\rho_{t:t}R_{t+1})    \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad{(5.14)}
+\end{aligned}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 5.10</title>
+    <url>/2019/08/10/Reinforcement-Learning-Exercise-5-10/</url>
+    <content><![CDATA[<p><strong><em>Exercise 5.10</em></strong> Derive the weighted-average update rule (5.8) from (5.7). Follow the pattern of the derivation of the unweighted rule (2.3)</p>
+<p>According to:</p>
+<script type="math/tex; mode=display">
+V_{n} \doteq \frac{\sum_{k=1}^{n - 1}W_k G_k}{\sum_{k=1}^{n - 1}W_k} \text{,} \qquad n \geq 2 \qquad \text{(5.7)} \\</script><p>and denote $C_n$ as the weights given to the first n returns. So formula (5.7) is transferred to:</p>
+<script type="math/tex; mode=display">
+V_{n} \doteq \frac{\sum_{k=1}^{n - 1}W_k G_k}{C_{n-1}} \text{,} \qquad n \geq 2</script><p>then we have:</p>
+<script type="math/tex; mode=display">
+V_{n+1} \doteq \frac{\sum_{k=1}^{n}W_k G_k}{C_n} \text{,} \qquad n \geq 1</script><script type="math/tex; mode=display">
+\begin{aligned}
+\therefore V_{n+1} &= \frac{\sum_{k=1}^{n - 1}W_k G_k}{C_n}+\frac{W_nG_n}{C_n}\\
+&=\frac{C_{n-1}}{C_{n}} V_n +\frac{W_nG_n}{C_n} \\
+&= (1 - \frac{W_n}{C_n})V_n + \frac{W_nG_n}{C_n} \\
+&=V_n + \frac{W_n}{C_n}(G_n - V_n), \qquad n \geq 1, \qquad \text{(5.8)}
+\end{aligned}</script><p>This derivation is very easy.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 5.9</title>
+    <url>/2019/08/06/Reinforcement-Learning-Exercise-5-9/</url>
+    <content><![CDATA[<p><strong><em>Exercise 5.9</em></strong> Modify the algorithm for first-visit MC policy evaluation (Section 5.1) to use the incremental implementation for sample averages described in Section 2.4.</p>
+<p>The modified algorithm should be like this:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\text{Input: an arbitrary target policy }\pi \\
+&\text{Initialize, for all }s \in \mathcal S, a \in \mathcal A(s): \\
+& \qquad Q(s,a) \text{ in }\mathbb R (\text{arbitrarily}) \\
+& \qquad C(s,a) \leftarrow 0 \\
+&\text{Loop forever (for each episode):} \\
+& \qquad b \leftarrow \text{any policy with coverage of } \pi \\
+& \qquad \text{Generate an episode following b: }S_0, A_0, R_1, \cdots,S_{T-1},A_{T-1},R_T \\
+& \qquad G \leftarrow 0 \\
+& \qquad W \leftarrow 1 \\
+& \qquad \text{Loop for each step of episode,  } t=T-1,T-2,\cdots,0, \text{ while } W \not = 0: \\
+& \qquad \qquad G \leftarrow \gamma G + R_{t+1} \\
+& \qquad \qquad C(S_t, A_t) \leftarrow C(S_t, A_t) + W \\
+& \qquad \qquad \text{Unless the pair } S_t, A_t \text{ appears in } S_0, A_0, S_1, A_1, \cdots , S_{t-1}, A_{t-1}:\\
+& \qquad \qquad \qquad Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \frac {W}{C(S_t, A_t)} \bigl [ G - Q(S_t, A_t)\bigr] \\
+& \qquad \qquad \qquad W \leftarrow W \frac {\pi(A_t \mid S_t)}{b(A_t \mid S_t)} \\
+\end{aligned}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Chapter 5 Example 5.5 Infinity Variance</title>
+    <url>/2019/08/05/Reinforcement-Learning-Chapter-5-Example-5-5-Infinity-Variance/</url>
+    <content><![CDATA[<p>In the book, example 5.5 shows the infinity variance of the ordinary importance sampling in a specific case. I tried this experiment in my computer and get a similar result. Unfortunately, my computer’s memory size is not enough to support 100,000,000 episodes for ten runs. So, here I shows the code and the result of 1000,000 episodes for ten runs. Additionally, I tried weighted importance sampling, it converges very fast. I show the result here also.<br>Code address:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_5/InfinityVariance.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_5/InfinityVariance.py</a><br><img src=https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/5/Reinforcement-Learning-Chapter5-Example-5-5/Infinity_variance.png></p>
+<center>Figure 1. Infinity variance for ordinary importance sampling (ten runs)</center>
+<img src=https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/5/Reinforcement-Learning-Chapter5-Example-5-5/variance_of_weighted_importance_sampling.png>
+<center>Figure 2. Variance of weighted importance sampling (ten runs)</center>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Chapter 5, Example of Blackjack</title>
+    <url>/2019/08/04/Reinforcement-Learning-Chapter-5-Example-of-Blackjack/</url>
+    <content><![CDATA[<p>This article exhibits a source code and experiment result for the blackjack example in the book. Both on-policy and off-policy are implemented in this source code. The off-policy includes ordinary importance sampling and weighted importance sampling.The first-visit and every-visit methods are implemented in on_policy, although they lead to a same result (in blackjack example, the return of each state is zero except the terminal state).<br>The address of the code is:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_5/Blackjack.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_5/Blackjack.py</a><br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_on_policy_first_visit.png" width="100%" height="100%"></p>
+<center>Figure 1. state value estimation in MC on policy, first-visit</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_on_policy_every_visit.png" width="100%" height="100%">
+<center> Figure 2. state value estimation in MC on policy, every-visit</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_MC_ES_on_policy_first_visit.png" width="100%" height="100%">
+<center>Figure 3. Monte Carlo ES on policy, first-visit for estimating $\pi \approx \pi_*$</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/Blackjack_MC_ES_on_policy_every_visit.png" width="100%" height="100%">
+<center>Figure 4. Monte Carlo ES on policy, every-visit for estimating $\pi \approx \pi_*$</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Chapter5-Blackjack/MSE_for_sampling.png" width="100%" height="100%">
+<center>Figure 5. Mean square error of ordinary and weighted importance sampling</center>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 5.6</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-5-6/</url>
+    <content><![CDATA[<p><strong><em>Exercise 5.6</em></strong> What is the equation analogous to (5.6) for action values $Q(s, a)$ instead ofstate values $V(s)$, again given returns generated using $b$?</p>
+<p>Given a starting state $St$, starting action $At$, the probability of the subsequent state-action trajectory, $S_{t+1}, A_{t+1}, \cdots , S_T$ occurring under any policy $\pi$ is</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&Pr(S_{t+1}, A_{t+1},\cdots, S_{T-1}, A_{T-1}, S_T \mid S_t, A_{t:T-1}\sim \pi)\\
+&\qquad = p(S_{t+1} \mid S_t, A_t) \pi(A_{t+1}|S_{t+1}) \cdots p(S_{T-1} \mid S_{T-2}, A_{T-2})\pi(A_{T-1} \mid S_{T-1})  p(S_T \mid S_{T-1}, A_{T-1})\\
+&\qquad =\frac {\prod_{k=t}^{T - 1} \pi(A_k \mid S_k)p(S_{k+1}\mid S_k, A_k)} {\pi(A_t \mid S_t)}
+\end{aligned}</script><p>The relative probability of the trajectory under the target and behavior policies is</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\sigma_{t:T-1} &= \frac {b(A_t \mid S_t)\prod_{k=t}^{T-1} \pi(A_k \mid S_k) p(S_{k+1} \mid S_k, A_k)} {\pi(A_t \mid S_t)\prod_{k=t}^{T-1} b(A_k \mid S_k) p(S_{k+1} \mid S_k, A_k)} \\
+&= \frac {b(A_t \mid S_t)\prod_{k=t}^{T-1} \pi(A_k \mid S_k) }{ \pi(A_t \mid S_t)\prod_{k=t}^{T-1} b(A_k \mid S_k) } \\
+&=  \frac {\prod_{k=t+1}^{T-1} \pi(A_k \mid S_k) }{\prod_{k=t+1}^{T-1} b(A_k \mid S_k) } \\
+&=\rho_{t+1:T-1}
+\end{aligned}</script><p>So,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Q_\pi(s, a) &= \mathbb E \bigl [ \sigma_{t:T-1}G_t \mid S_t = s, A_t = a \bigr ] \\
+&= \mathbb E \bigl [ \rho_{t+1:T-1}G_t \mid S_t = s, A_t = a\bigr ]
+\end{aligned}</script><p>In particular we can define the set of all time steps in which state s is visited and action a is taken, denoted $\mathcal K(s)$ for every-visit method. For first-visit method, $\mathcal K(s)$ would only include time steps that were first visits to s and first take action a within their episodes. Let $T(t)$ denote the first time of termination following time $t$, and $G_t$ denote the return after $t$ up through $T(t)$. Then $\{G_t\}_{t \in \mathcal K(s)}$ are the returns that pertain to state s and action a,  and $\{ \rho_{t:T(t) - 1}\}_{t \in \mathcal K(s)}$ are the corresponding importance-sampling ratios.<br>Thus, for ordinary importance sampling,</p>
+<script type="math/tex; mode=display">
+Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{| \mathcal K(s)|}</script><p>for weighted importance sampling,</p>
+<script type="math/tex; mode=display">
+Q(s, a) = \frac {\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}G_t}{\sum_{t \in \mathcal K(s)} \rho_{t+1:T(t) - 1}}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 5.5</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-5-5/</url>
+    <content><![CDATA[<p><strong>Exercise 5.5</strong> Consider an MDP with a single nonterminal state and a single action that transitions back to the nonterminal state with probability $p$ and transitions to the terminal state with probability $1-p$. Let the reward be $+1$ on all transitions, and let $\gamma=1$. Suppose you observe one episode that lasts 10 steps, with a return of 10. What are the first-visit and every-visit estimators of the value of the nonterminal state?</p>
+<p>For the first-visit estimator, only the first visit of a state is considered. So:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+V(S_{nonterminal}) &= G(S_0) \\
+&= 1 \cdot p + 0 \cdot (1-p) \\
+&= p
+\end{aligned}</script><p>For the every-visit estimator, every state is considered:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+V(S_{noterminal}) &= G(S_0) + G(S_1) + \cdots + G_(S_{10})\\
+&= [1 \cdot p + 0 \cdot (1-p)] + \gamma[1 \cdot p^2 + 0 \cdot (1 - p)] +\cdots+\gamma^9[1\cdot p^{10}+0\cdot(1-p)] \\
+&=p + p^2 + \cdots + p^{10} \\
+&= \frac{p}{1-p}(p^{10} - 1)
+\end{aligned}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 5.4</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-5-4/</url>
+    <content><![CDATA[<p>Exercise 5.4 The pseudocode for Monte Carlo ES is inefficient because, for each state–action pair, it maintains a list of all returns and repeatedly calculates their mean. It would be more efficient to use techniques similar to those explained in Section 2.4 to maintain just the mean and a count (for each state–action pair) and update them incrementally. Describe how the pseudocode would be altered to achieve this.</p>
+<p>The altered pseudocode is shown as below:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\text{Initialize:} \\
+&\qquad \pi(s) \in \mathcal A(s) \text{(arbitrarily), for all } s \in S \\
+&\qquad Q(s, a) \in \mathbb R \text{(arbitrarily), for all } s \in S, a \in \mathcal A(s) \\
+&\qquad counts(s, a) \leftarrow 0\text{, for all s } \in S, a \in \mathcal A(s) \\
+&\text{Loop forever (for each episode):} \\
+&\qquad \text{Choose }S_0 \in \mathcal S, A_0 \in  \mathcal A(S_0) \text{ randomly such that all pairs have probability} > 0 \\
+&\qquad \text{Generate an episode from }S_0, A_0, \text{following }\pi: S_0, A_0, R_1, . . . , S_{T -1}, A_{T-1}, R_T \\
+&\qquad G \leftarrow 0 \\
+&\qquad \text{Loop for each step of episode, } t = T -1, T -2, . . . , 0: \\
+&\qquad \qquad G \leftarrow \gamma G + R_{t+1} \\
+&\qquad \qquad \text{Unless the pair }S_t, A_t \text{ appears in }S_0, A_0, S_1, A_1 . . . , S_{t-1}, A_{t-1}: \\
+&\qquad \qquad \qquad counts(S_t,A_t) \leftarrow counts(S_t,A_t) + 1\\
+&\qquad \qquad \qquad Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \frac {(G - Q(S_t, A_t))}{count(S_t, A_t)} \\
+&\qquad \qquad \qquad \pi(S_t) \leftarrow \text{argmax}_a Q(S_t, a) \\
+\end{aligned}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 5.1 &amp; 5.2</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-5-1-5-2/</url>
+    <content><![CDATA[<p><strong>Exercise 5.1</strong> Consider the diagrams on the right in Figure 5.1. Why does the estimated value function jump up for the last two rows in the rear? Why does it drop off for the whole last row on the left? Why are the frontmost values higher in the upper diagrams than in the lower?<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-5-1/5-1.png" width="50%" height="50%"><br>The estimated value function jump up for the last 2 rows in the rear is because the play sticks on 20 or 21, and in a much higher probability he would win the game. The diagram drop off for the whole last row on the left is because the dealer showed an ace card which decrease the probability for the play to win. The frontmost values are higher in the upper diagrams than in the lower is because in the upper diagrams, the player has an usable ace card, which increase the probability for the player to win.</p>
+<hr>
+<p><strong>Exercise 5.2</strong> Suppose every-visit MC was used instead of first-visit MC on the blackjack task. Would you expect the results to be very different? Why or why not? </p>
+<p>The results will be same. That’s because on the blackjack task, all the rewards are zero except the last step. So in an episode the return is only be changed in the last step, no matter in a method of first-visit or every-visit.</p>
+<hr>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning--Explanation to Formula (5.2)</title>
+    <url>/2019/08/04/Reinforcement-Learning-Explanation-to-Formula-5-2/</url>
+    <content><![CDATA[<p>The book doesn’t explain the formula (5.2) clearly, and the second and third lines of the formula (5.2) in page 101 made me confused. So, here, I make it clear to be understood.<br>First, </p>
+<script type="math/tex; mode=display">
+q_\pi(s, \pi'(s)) = \sum_a \pi'(a \mid s) q_\pi(s,a) \\
+\because \text{for all }\pi(a \mid s), \text{there is } \pi(a \mid s) = 
+\begin{cases}
+1 - \epsilon + \epsilon / | \mathcal A(s)| & \text{if } a = A^* \\
+\epsilon / | \mathcal A(s) |& \text{if } a \not = A^* \\
+\end{cases} \\</script><script type="math/tex; mode=display">
+\begin{aligned}
+\therefore  q_\pi(s, \pi'(s)) &= \sum_{a(a = \not A^*)} \frac {\epsilon} {| \mathcal A(s) |}q_\pi(s,a) + (1 - \epsilon + \frac{\epsilon}{|\mathcal A(s)|})q_\pi(s,a = A^*) \\
+&=\frac {\epsilon} {| \mathcal A(s) |} \sum_{a(a = \not A^*)} q_\pi(s,a) + \frac {\epsilon} {| \mathcal A(s) |}q_\pi(s,a = A^*) + (1-\epsilon)q_\pi(s,a = A^*) \\
+&= \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) + (1-\epsilon) \max_a q_\pi(s,a) \qquad \text{this is the second line of formula (5.2)}
+\end{aligned}</script><p>Consider value $x$, let </p>
+<script type="math/tex; mode=display">
+x =\sum_a \Bigl [ \pi(a \mid s) - \frac {\epsilon}{| \mathcal A(s) |} \Bigr ]q_\pi(s,a)</script><p>When $a \not = A^*$, $\pi(a \mid s) =  \epsilon/| \mathcal A(s) |$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\therefore x &= \Bigl [ \pi(a = A^* \mid s) -  \frac {\epsilon}{| \mathcal A(s) |} \Bigr ]q_\pi(s, a = A^*) \\
+&= \Bigl [ 1 - \epsilon +  \frac {\epsilon}{| \mathcal A(s) |} - \frac {\epsilon}{| \mathcal A(s) |}\Bigr ]q_\pi(s, a=A^*) \\
+&= ( 1 - \epsilon) q_\pi(s, a=A^*) \\
+&= (1-\epsilon)\max_aq_\pi(s,a) \\
+&\leq \max_a q_\pi(s,a)
+\end{aligned}</script><p>Also </p>
+<script type="math/tex; mode=display">
+x = (1-\epsilon) \sum_a \frac { \pi(a \mid s) -  \frac {\epsilon}{| \mathcal A(s) |} }{ 1 - \epsilon}q_\pi(s,a)</script><script type="math/tex; mode=display">
+\begin{aligned}
+\therefore
+q_\pi(s, \pi'(s)) &=  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) + (1-\epsilon) \max_a q_\pi(s,a) \\
+& \geq  \frac {\epsilon} {| \mathcal A(s) |} \sum_{a} q_\pi(s,a) + (1-\epsilon) \sum_a \frac { \pi(a \mid s) -  \frac {\epsilon}{| \mathcal A(s) |} }{ 1 - \epsilon}q_\pi(s,a)
+\end{aligned}</script><p>This is the third line of formula (5.2). It’s clear to be understood now.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 4.10</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-4-10/</url>
+    <content><![CDATA[<p><strong>Exercise 4.10</strong> What is the analog of the value iteration update (4.10) for action values,$q_{k+1}(s, a)$?<br>Use the result of exercise 3.17:</p>
+<script type="math/tex; mode=display">
+Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script><p>easily, we have the iteration for $q_{k+1}(s,a)$ which is analogous to the value iteration update (4.10): </p>
+<script type="math/tex; mode=display">
+q_{k+1}(s, a) = \max_a \biggl \{ \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} q_k(s',a') \pi(s',a') \bigr] P_{s,s'}^a \biggr \}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 4.9</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-4-9/</url>
+    <content><![CDATA[<p><strong>Exercise 4.9 (programming)</strong> Implement value iteration for the gambler’s problem and solve it for $p_h$ = 0.25 and $p_h$ = 0.55. In programming, you may find it convenient to introduce two dummy states corresponding to termination with capital of 0 and 100, giving them values of 0 and 1 respectively. Show your results graphically, as in Figure 4.3.Are your results stable as $\theta \rightarrow 0$?</p>
+<p>According to the pseudocode of value iteration for estimating $\pi \approx \pi_*$, we can easily write the code for this exercise.<br>The code’s address is here:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/gamblers_problem.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/gamblers_problem.py</a></p>
+<p>When $p_h = 0.4$ and $\theta = 10^{-9}$, the result is same as Figure 4.3 in the book.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.4_theta1e-9.png" width="100%" height="100%"></p>
+<center>Figure 1. $p_h = 0.4$ and $\theta = 10^{-9}$</center>
+
+<p>Change $p_h$ to the 0.25 and 0.55, the result to this exercise is:<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.25_theta1e-9.png" width="100%" height="100%"></p>
+<center>Figure 2. $p_h = 0.25$ and $\theta = 10^{-9}$</center>
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_Ph0.55_theta1e-9.png" width="100%" height="100%">
+<center>Figure 3. $p_h = 0.55$ and $\theta = 10^{-9}$</center>
+Take $p_h=0.4$ as an example, change the $\theta$ from $0.1$ to $10^{-11}$, we can find that the result is stable.
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-9/gamblers_problem_ph0.4.png" width="100%" height="100%">
+<center>Figure 4. $p_h = 0.4$</center>
+
+<p>One important thing is although the results are stable, the results are not unique. Because actions in different states may result in an identical maximum state value. In the program, we select the first action which lead to the maximum state value, we can also choose the other actions those lead to the maximum state value, that makes the results to be not unique.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 4.7</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-4-7/</url>
+    <content><![CDATA[<p><strong>Exercise 4.7</strong> (programming) Write a program for policy iteration and re-solve Jack’s car rental problem with the following changes. One of Jack’s employees at the first location rides a bus home each night and lives near the second location. She is happy to shuttle one car to the second location for free. Each additional car still costs \$2, as do all cars moved in the other direction. In addition, Jack has limited parking space at each location.If more than 10 cars are kept overnight at a location (after any moving of cars), then an additional cost of \$4 must be incurred to use a second parking lot (independent of how many cars are kept there). These sorts of nonlinearities and arbitrary dynamics often occur in real problems and cannot easily be handled by optimization methods other than dynamic programming. To check your program, first replicate the results given for the original problem.</p>
+<p>First we can give out the code of Jack’s car rental problem, then just a few modification is needed to solve this problem.<br>I put the source code on my github repository:<br><a href="https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/car_rental.py" target="_blank" rel="noopener">https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/car_rental.py</a></p>
+<p>Run car_rental.py, we can get the result as that in book.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/car_rental.png" width="100%" height="100%"></p>
+<center>Figure 1. car rental policy improvement</center>
+Now, go back to this exercise 4.7, we just use a child class to overwrite the cost function of car rental class to comply with the rule in exercise 4.7.
+The code is here: https://github.com/quantunm/reinforcement_learning_exercises_src/blob/master/Chapter_4/exercise_4.7.py
+
+The result is shown as below:
+<img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-7/exercise_4.7.png" width="100%" height="100%">
+<center>Figure 1. car rental policy improvement</center>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 4.6</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-4-6/</url>
+    <content><![CDATA[<p><strong>Exercise 4.6</strong> Suppose you are restricted to considering only policies that are $\epsilon$-soft, meaning that the probability of selecting each action in each state, $s$, is at least $\epsilon/|\mathcal A(s)|$. Describe qualitatively the changes that would be required in each of the steps 3, 2, and 1, in that order, of the policy iteration algorithm for $v_*$ on page 80.</p>
+<p>The algorithm on page 80 in section 4.2 is based on the assumption that the policy is deterministic. For a stochastic case, we can modify the algorithm like this:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\text{1 Initialization} \\
+    &\qquad V(s) \in \mathbb R \text{ and }\pi (s) \in \mathcal A(s) \text{ arbitrarily } s \in \mathcal S \\
+&\text{2 Policy Evaluation} \\
+    &\qquad \text{Loop:} \\
+    &\qquad \qquad \Delta \leftarrow 0 \\
+    &\qquad \qquad \text{Loop for each }s \in \mathcal S: \\
+        &\qquad \qquad \qquad v \leftarrow V(s) \\
+        &\qquad \qquad \qquad V(s) \leftarrow \sum_{s',r}\pi(a \mid s)p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \\
+        &\qquad \qquad \qquad \Delta \leftarrow \max (\Delta , |v-V(s)|) \\
+     &\qquad \qquad \text{until } \Delta \lt \theta \text{ (a small positive number determining the accuracy of estimation) } \\
+ &\text{3 Policy Improvement} \\
+    &\qquad policy\text-stable \leftarrow true \\
+    &\qquad \text{For each }s \in \mathcal S: \\
+    &\qquad \qquad old \text- action \leftarrow \pi(s) \\
+    &\qquad \qquad \pi(s) \leftarrow \text{argmax}_a \sum_{s',r}\pi(a \mid s)p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \\
+    &\qquad \qquad \text{If }old\text-action =\not \pi(s) \text{, then }policy\text-stable \leftarrow false \\
+    &\qquad \text{If } policy\text-stable \text{, then stop and return } V \approx v_* \text{ and }\pi \approx \pi_*\text{; else go to 2.} \\
+\end{aligned}</script><p>Because the only policies are $\epsilon$-soft, the probability that the policy doesn’t select action $a$ is $\frac{\epsilon}{|\mathcal A(s)|}\cdot (|\mathcal A(s)| - 1)$. So, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\pi(a \mid s) &= 1 - \frac{\epsilon}{|\mathcal A(s)|}\cdot (|\mathcal A(s)| - 1) \\
+&= 1 - \epsilon + \frac {\epsilon}{|\mathcal A(s)|}
+\end{aligned}</script><p>Substitute this $\pi(a \mid s)$ into the algorithm, we can get the final result.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 4.5</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-4-5/</url>
+    <content><![CDATA[<p><strong>Exercise 4.5</strong> How would policy iteration be defined for action values? Give a complete algorithm for computing <script type="math/tex">q_*</script>, analogous to that on page 80 for computing <script type="math/tex">v_*</script>. Please pay special attention to this exercise, because the ideas involved will be used throughout the rest of the book.</p>
+<p>Here, we can use the result of exercise 3.17:</p>
+<script type="math/tex; mode=display">
+Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script><p>Then the algorithm which analogous to that on page 80 can be like this:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\text{1 Initialization} \\
+    &\qquad Q_\pi(s, a) \in \mathbb R and \pi (s, a) \in \mathcal A(s) arbitrarily s \in \mathcal S and a \in \mathcal A(s) \\
+&\text{2 Policy Evaluation} \\
+    &\qquad \text{Loop:} \\
+    &\qquad \qquad \Delta \leftarrow 0 \\
+    &\qquad  \text{Loop for each }(s,a)\text{ pair:} \\
+        &\qquad \qquad q \leftarrow Q_\pi(s,a) \\
+        &\qquad \qquad Q_\pi(s,a) \leftarrow  \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a \\
+       & \qquad \qquad \Delta \leftarrow \max (\Delta , |q-Q_\pi(s,a)|) \\
+  &\qquad \text{until }\Delta \lt \theta \text{ (a small positive number determining the accuracy of estimation) } \\
+&\text{3 Policy Improvement} \\
+    &\qquad policy\text-stable \leftarrow true \\
+    &\qquad \text{For each }(a,s) \text{ pair, } s \in \mathcal S \text{ and } a \in \mathcal A(s): \\
+    &\qquad \qquad old \text- action \leftarrow \pi(s, a) \\
+    &\qquad \qquad \pi(s) \leftarrow \text{argmax}_{s,a} Q_\pi(s,a) \\
+    &\qquad \qquad \text{If } old\text-action =\not \pi(s) \text{, then } policy\text-stable \leftarrow false \\
+    &\qquad \text{If } policy\text-stable \text{, then stop and return } Q_\pi \approx q_* \text{ and }\pi \approx \pi_* \text{; else go to 2.} \\
+\end{aligned}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 4.4</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-4-4/</url>
+    <content><![CDATA[<p><strong>Exercise 4.4</strong> The policy iteration algorithm on page 80 has a subtle bug in that it may never terminate if the policy continually switches between two or more policies that are equally good. This is OK for pedagogy, but not for actual use. Modify the pseudocode so that convergence is guaranteed.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\text{1 Initialization} \\
+    &\qquad V(s) \in \mathbb R \text{ and } \pi (s) \in \mathcal A(s) \text{ arbitrarily } s \in \mathcal S \\
+    &\qquad \text{For each } s \in \mathcal S \text{ create an empty list : } old\_list\_of\_a(s)\\
+    &\qquad \text{For each } s \in \mathcal S \text{ create an iterator : } iterator\_old\_list\_of\_a(s)\\
+&\text{2 Policy Evaluation} \\
+    &\qquad \text{Loop:} \\
+        &\qquad \qquad \Delta \leftarrow 0 \\
+        &\qquad \qquad \text{Loop for each } s \in \mathcal S: \\
+         &\qquad \qquad \qquad v \leftarrow V(s) \\
+        &\qquad \qquad \qquad V(s) \leftarrow \sum_{s',r}p(s',r \mid s,\pi(s)) \Bigl [ r + \gamma V(s')\Bigr ] \\
+        &\qquad \qquad \qquad \Delta \leftarrow \max (\Delta , |v-V(s)|) \\
+     &\qquad \text{until } \Delta \lt \theta \text{ (a small positive number determining the accuracy of estimation) } \\
+&\text{3 Policy Improvement} \\
+     &\qquad policy\text-stable \leftarrow true \\
+    &\qquad \text{For each }s \in \mathcal S: \\
+    &\qquad \qquad V_{max}(s)  \leftarrow \max_a \sum_{s',r}p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \\
+    &\qquad \qquad \text{Create an empty list: }new\_list\_of\_a(s)\\
+    &\qquad \qquad \text{For each }a \in |\mathcal A(s)|:\\
+    &\qquad \qquad \qquad \text{If }\sum_{s',r}p(s',r \mid s,a) \Bigl [ r + \gamma V(s')\Bigr ] \text{ is equal to } V_{max}(s):\\
+    &\qquad \qquad \qquad \qquad \text{Append }a \text{ to } new\_list\_of\_a(s)\\
+    &\qquad \qquad \text{If }new\_list\_of\_a(s) \text{ is not equal to } old\_list\_of\_a(s)\text{ :}\\
+    &\qquad \qquad \qquad policy\text{-}stable \leftarrow false \\
+    &\qquad \qquad \qquad old\_list\_of\_a(s) \leftarrow new\_list\_of\_a(s)\\
+    &\qquad \qquad \qquad iterator\_old\_list\_of\_a(s) \leftarrow \text{the beginning of }old\_list\_of\_a(s)\\
+    &\qquad \qquad \text{else :}\\
+    &\qquad \qquad \qquad \text{If }old\_list\_of\_a(s) \text{ is empty :}\\
+    &\qquad \qquad \qquad \qquad old\_list\_of\_a(s) \leftarrow new\_list\_of\_a(s)\\
+    &\qquad \qquad \qquad \qquad iterator\_old\_list\_of\_a(s) \leftarrow \text{the beginning of }old\_list\_of\_a(s)\\
+    &\qquad \qquad \qquad \qquad policy\text{-}stable \leftarrow false\\
+    &\qquad \qquad \qquad\text{else :}\\
+    &\qquad \qquad \qquad \qquad \text{If }iterator\_old\_list\_of\_a(s) \text{ is not equal to the end of }old\_list\_of\_a(s) \text{ :}\\
+    &\qquad \qquad \qquad \qquad \qquad \text{Move }iterator\_old\_list\_of\_a(s) \text{ to next.}\\
+    &\qquad \qquad \qquad \qquad \qquad policy\text{-}stable \leftarrow false\\
+    &\qquad \qquad \text{If }iterator\_old\_list\_of\_a(s) \text{ is not equal to the end of }old\_list\_of\_a(s) \text{ :}\\
+    &\qquad \qquad \qquad \pi(s) \leftarrow \text{Select }a \text{ in }old\_list\_of\_a(s) \text{ by } iterator\_old\_list\_of\_a(s)\\
+    &\qquad \qquad \text{else : }\\
+    &\qquad \qquad \qquad \pi(s) \leftarrow \text{Select }a \text{ in }old\_list\_of\_a(s) \text{ randomly}\\
+    &\qquad \text{If } policy\text-stable =true \text{ then stop and return } V \approx v_* \text{ and }\pi \approx \pi_* \text{ else go to 2.} \\
+\end{aligned}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 4.3</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-4-3/</url>
+    <content><![CDATA[<p><strong>Exercise 4.3</strong> What are the equations analogous to (4.3), (4.4), and (4.5) for the action-value function $q_\pi$ and its successive approximation by a sequence of functions $q_0, q_1, q_2, . . .$?</p>
+<p>According to the result of exercise 3.17, we have:</p>
+<script type="math/tex; mode=display">
+Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script><p>Let $Q_k^\pi$ be the previous estimated value of $Q_\pi$ and substitute it to the right side of the equation. For the next iteration, $Q_{k+1}^\pi$ can be:</p>
+<script type="math/tex; mode=display">
+Q_{k+1}^\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_k^\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 4.2</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-4-2/</url>
+    <content><![CDATA[<p><strong>Exercise 4.2</strong> In Example 4.1, suppose a new state 15 is added to the gridworld just below state 13, and its actions, left, up, right, and down, take the agent to states 12, 13, 14, and 15, respectively. Assume that the transitions from the original states are unchanged. What, then, is $v_\pi(15)$ for the equiprobable random policy? Now suppose the dynamics of state 13 are also changed, such that action down from state 13 takes the agent to the new state 15. What is $v_\pi(15)$ for the equiprobable random policy in this case?</p>
+<p>For the assumption that the transitions from the original states are unchanged, according to equation (4.4), we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(s) &= \sum_a \pi(a \mid s) \sum_{s',r} p(s', r \mid s, a) \bigl [ r + \gamma v_\pi(s')\bigr ] \\
+&= \sum_a \pi(a \mid s) \sum_{s'} \biggl \{ \sum_r \Bigl [ r \cdot p(s',r \mid s, a) \Bigr ] + \sum_r \Bigl [ p(s', r \mid s,a ) \cdot \gamma v_\pi(s') \Bigr ]\biggr \} \\
+&= \sum_a \pi(a \mid s) \sum_{s'} \biggl \{ \sum_r \Bigl [ r \cdot p(r \mid s', s, a) \cdot p(s' \mid s,a) \Bigr ] + p(s' \mid s,a ) \cdot \gamma v_\pi(s') \biggr \} \\
+&= \sum_a \pi(a \mid s) \sum_{s'} \biggl \{  p(s' \mid s,a) \Bigl [ \sum_r  r \cdot p(r \mid s', s, a)  + \gamma v_\pi(s') \Bigr ]\biggr \} \\
+&= \sum_a \pi(a \mid s) \sum_{s'} \biggl \{ P_{s,s'}^a \Bigl [ R_{s,s'}^a + \gamma v_\pi(s') \Bigr ] \biggr \}
+\end{aligned}</script><p>So,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(15) &= \sum_a \pi( a \mid 15) \cdot \biggl \{ P_{15,12}^{left} \Bigl[ R_{15,12}^{left} + \gamma v_\pi(12) \Bigr ] + P_{15,13}^{up} \Bigl[ R_{15,13}^{up} + \gamma v_\pi(13) \Bigr ] \\
+& \quad + P_{15,14}^{right} \Bigl[ R_{15,14}^{right} + \gamma v_\pi(14) \Bigr ] + P_{15,15}^{down} \Bigl[ R_{15,15}^{down} + \gamma v_\pi(15) \Bigr ]\biggr \}
+\end{aligned}</script><p>Because the agent follows the equiprobable random policy, for all actions $\pi(a \mid s) = 1 / 4$. And the action is deterministic, so:</p>
+<script type="math/tex; mode=display">
+P_{s,s'}^a = 
+\begin{cases}
+1 & \text{ if $a$ leads to $s'$} \\
+0 & \text{if $a$ doesn't lead to $s'$}
+\end{cases}</script><p>According to Figure 4.2,  we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(15) &= \frac {1}{4} \biggl \{ 1 \cdot \Bigl [ -1 + \gamma (-22) \Bigr ] + 1 \cdot \Bigl [ -1 + \gamma (-20) \Bigr ] \\
+& \quad + 1 \cdot \Bigl [ -1 + \gamma (-14) \Bigr ] + 1 \cdot \Bigl [ -1 + \gamma v_\pi(15) \Bigr ]\biggr \} \\
+&= -1 - 14 \gamma + \gamma v_\pi(15) \\
+\end{aligned}</script><script type="math/tex; mode=display">
+\therefore v_\pi(15) = \frac {4 + 56 \gamma} {\gamma - 4}</script><p>For the assumption that the dynamics of state 13 are also changed, similarly we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(13) &= \sum_a \pi( a \mid 13) \cdot \biggl \{ P_{13,12}^{left} \Bigl[ R_{13,12}^{left} + \gamma v_\pi(12) \Bigr ] + P_{13,9}^{up} \Bigl[ R_{13,9}^{up} + \gamma v_\pi(9) \Bigr ] \\
+& \quad + P_{13,14}^{right} \Bigl[ R_{13,14}^{right} + \gamma v_\pi(14) \Bigr ] + P_{13,15}^{down} \Bigl[ R_{13,15}^{down} + \gamma v_\pi(15) \Bigr ]\biggr \} \\
+v_\pi(15) &= \sum_a \pi( a \mid 15) \cdot \biggl \{ P_{15,12}^{left} \Bigl[ R_{15,12}^{left} + \gamma v_\pi(12) \Bigr ] + P_{15,13}^{up} \Bigl[ R_{15,13}^{up} + \gamma v_\pi(13) \Bigr ] \\
+& \quad + P_{15,14}^{right} \Bigl[ R_{15,14}^{right} + \gamma v_\pi(14) \Bigr ] + P_{15,15}^{down} \Bigl[ R_{15,15}^{down} + \gamma v_\pi(15) \Bigr ]\biggr \}
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(13) &= \frac{1}{4} \cdot \biggl \{ 1 \Bigl[ -1 + \gamma(-22) \Bigr ] + 1 \Bigl[ (-1 + \gamma (-20) \Bigr ] \\
+& \quad + 1 \Bigl[ (-1 + \gamma (-14) \Bigr ] + 1 \Bigl[ (-1 + \gamma v_\pi(15) \Bigr ]\biggr \} \\
+&= -1 - 14 \gamma + \frac {1}{4} \gamma v_\pi(15) \qquad \qquad \qquad \qquad \qquad \qquad \quad{(1)}\\
+v_\pi(15) &= \frac{1}{4} \cdot \biggl \{ 1 \Bigl[ -1 + \gamma (-22) \Bigr ] + 1 \Bigl[ -1 + \gamma v_\pi(13) \Bigr ] \\
+& \quad +1 \Bigl[ -1 + \gamma (-14) \Bigr ] + 1 \Bigl[ -1 + \gamma v_\pi(15) \Bigr ]\biggr \} \\
+& = -1 - 9 \gamma + \frac{1}{4} \gamma v_\pi(13) +\frac{1}{4}\gamma v_\pi(15) \qquad \qquad \qquad \qquad{(2)}
+\end{aligned}</script><p>Then we have equation set:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(13) -  \frac {1}{4} \gamma v_\pi(15)&= -1 - 14 \gamma \qquad \qquad \qquad \qquad{(3)}\\
+ -\frac{1}{4} \gamma v_\pi(13) +(1-\frac{1}{4}\gamma )v_\pi(15) & = -1 - 9 \gamma \qquad \qquad \qquad \qquad{(4)}
+\end{aligned}</script><p>By solving equation set (3) and (4), we can obtain:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(15) &= \frac{14\gamma^2 + 37 \gamma + 4}{ \frac{1}{4}\gamma^2 + \gamma - 4} \\
+v_\pi(13) &= \frac{19\gamma^2 + 224\gamma -16}{\gamma^2+4\gamma-16}
+\end{aligned}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 4.1</title>
+    <url>/2019/08/04/Reinforcement-Learning-Exercise-4-1/</url>
+    <content><![CDATA[<p><strong>Example 4.1</strong> Consider the $4 \times 4$ gridworld shown below.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-1/4-1-1.png#pic_center" alt=""><br>The nonterminal states are $\mathcal S = \{1, 2, . . . , 14\}$. There are four actions possible in each state, $\mathcal A = \{up, down, right, left\}$, which deterministically cause the corresponding state transitions, except that actions that would take the agent off the grid in fact leave the state unchanged. Thus, for instance, $p(6,.1\mid 5, right) = 1$, $p(7,.1\mid 7, right) = 1$, and $p(10, r \mid 5, right) = 0$ for all $r \in \mathcal R$. This is an undiscounted, episodic task. The reward is $-1$ on all transitions until the terminal state is reached. The terminal state is shaded in the figure (although it is shown in two places, it is formally one state). The expected reward function is thus $r(s, a, s0) = -1$ for all states $s$, $s’$ and actions $a$. Suppose the agent follows the equiprobable random policy (all actions equally likely). The left side of Figure 4.1 shows the sequence of value functions ${v_k}$ computed by iterative policy evaluation. The final estimate is in fact $v_\pi$, which in this case gives for each state the negation of the expected number of steps from that state until termination.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/8/4/Reinforcement-Learning-Exercise-4-1/4-1-2.png#pic_center" alt="Figure4.1"></p>
+<p><strong>Exercise 4.1</strong> In Example 4.1, if $\pi$ is the equiprobable random policy, what is $q_\pi(11, down)$? What is $q_\pi(7, down)$?<br>Here, we can use the result of exercise 3.13 for calculation. The result of exercise 3.13 is :</p>
+<script type="math/tex; mode=display">
+q_\pi(s,a) = \sum_{s'} \biggl \{ P_{s,s'}^a \cdot \Bigl [ R_{s,s'}^a + \gamma \cdot v_\pi(s')  \Bigr ] \biggr \}</script><p>where $P_{s, s’}^a =  p(s’ \mid s,a)$ and $R_{s,s’}^a =  \mathbb E_\pi(r \mid s,a,s’)$.<br>So, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_\pi(11,down) &= P_{11, 7}^{down} \cdot \Bigl [ R_{11, 7}^{down} + \gamma \cdot v_\pi(7)\Bigr ] + P_{11, 10}^{down} \cdot \Bigl [ R_{11, 10}^{down} + \gamma \cdot v_\pi(10)\Bigr ] \\
+& \quad + P_{11, 11}^{down} \cdot \Bigl [ R_{11, 11}^{down} + \gamma \cdot v_\pi(11)\Bigr ] + P_{11, terminal}^{down} \cdot \Bigl [ R_{11, terminal}^{down} + \gamma \cdot v_\pi(terminal)\Bigr ] \\
+&= 0+0+0+p(terminal \mid 11, down) \cdot \biggl \{ \sum_{s'} \Bigl [r\cdot p(r \mid 11, down, s') \Bigr ] + \gamma \cdot v_\pi(terminal)\biggr \} \\
+&=1 \cdot \biggl \{ \Bigl [ (-1)\cdot p(-1 \mid 11, down, 7) + (-1) \cdot p(-1 \mid 11, down, 10) \\
+&\quad +   (-1) \cdot p(-1 \mid 11, down, 11) +  0 \cdot p(0 \mid 11, down, terminal)\Bigr ] + \gamma \cdot 0\biggr \} \\
+&=1 \cdot \biggl \{ \Bigl [ (-1)\cdot 0 + (-1) \cdot 0 +   (-1) \cdot 0 +  0 \cdot 1\Bigr ] + \gamma \cdot 0\biggr \} \\
+&= 0
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}
+q_\pi(7,down) &= P_{7, 3}^{down} \cdot \Bigl [ R_{7, 3}^{down} + \gamma \cdot v_\pi(3)\Bigr ] + P_{7, 6}^{down} \cdot \Bigl [ R_{7, 6}^{down} + \gamma \cdot v_\pi(6)\Bigr ] \\
+& \quad + P_{7, 11}^{down} \cdot \Bigl [ R_{7, 11}^{down} + \gamma \cdot v_\pi(11)\Bigr ] + P_{7, 7}^{down} \cdot \Bigl [ R_{7, 7}^{down} + \gamma \cdot v_\pi(7)\Bigr ] \\
+&= 0+0+p(7 \mid 11, down) \cdot \biggl \{ \sum_{s'} \Bigl [r\cdot p(r \mid 7, down, s') \Bigr ] + \gamma \cdot v_\pi(11)\biggr \} + 0 \\
+&=1 \cdot \biggl \{ \Bigl [ (-1)\cdot p(-1 \mid 7, down, 7) + (-1) \cdot p(-1 \mid 7, down, 3) \\
+&\quad +   (-1) \cdot p(-1 \mid 7, down, 6) +  (-1) \cdot p(-1 \mid 7, down, 11)\Bigr ] + \gamma \cdot (-14)\biggr \} \\
+&=1 \cdot \biggl \{ \Bigl [ (-1)\cdot 0 + (-1) \cdot 0 +   (-1) \cdot 0 +  (-1) \cdot 1\Bigr ] - \gamma \cdot 14\biggr \} \\
+&= -1 -\gamma \cdot 14
+\end{aligned}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>The derivation of Bellman equation for value of a policy</title>
+    <url>/2019/08/04/The-derivation-of-Bellman-equation-for-value-of-a-policy/</url>
+    <content><![CDATA[<p>In book ‘Reinforcement Learning - An Introduction’, Chapter 3, the author gives out the Bellman equation for $v_\pi$ as equation (3.14), but without detailed derivation. That makes me feel confused and uncomfortable, so I try to derive the Bellman equation by myself. The details of derivation are gave out as below:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(s) &= \mathbb E_\pi (G_t \mid S_t = s) \\
+&= \mathbb E_\pi(R_{t+1} + \gamma \cdot G_{t+1} \mid S_t = s) \\
+&= \mathbb E_\pi(R_{t+1} \mid S_t = s) + \gamma \cdot \mathbb E_\pi(G_{t+1} \mid S_t = s) \\
+&= \sum_a \bigl [ \mathbb E_\pi (R_{t+1} \mid S_t = s, A_t = a) \cdot Pr(A_t = a \mid S_t =s) \\
+&\quad + \gamma \cdot \mathbb E_\pi(G_{t+1} \mid S_t = s, A_t = a)\cdot Pr(A_t= a \mid S_t =s) \bigr ] \\
+&= \sum_a Pr(A_t = a\mid S_t = s) \bigl [ \mathbb E_\pi(R_{t+1} \mid S_t = s, A_t =a) + \gamma \cdot \mathbb E_\pi (G_{t+1} \mid S_t =s, A_t = a) \bigr] \\
+&= \sum_a \pi(a\mid s) \Bigl [ \sum_r r \cdot Pr(R_{t+1} = r \mid S_t = s, A_t = a) + \gamma \sum_g g \cdot Pr(G_{t+1} = g \mid S_t = s, A_t = a) \Bigr ] \\
+&= \sum_a \pi(a \mid s) \Bigl [ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} Pr(G_{t+1} = g, R_{t+1} = r, S_{t+1} = s' \mid S_t = s, A_t = a) \Bigr ] \\
+&= \sum_a \pi(a \mid s) \Bigl [ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} \frac {Pr(G_{t+1} = g, R_{t+1} = r, S_{t+1} = s' , S_t = s, A_t = a)} {Pr(S_t = s, A_t = a)} \Bigr ] \\
+&= \sum_a \pi(a \mid s) \biggl \{ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} \Bigl [ Pr(G_{t+1} = g \mid R_{t+1} = r, S_{t+1} = s' , S_t = s, A_t = a) \\
+&\quad \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t = s, A_t = a) Pr(S_t = s, A_t = a) /Pr(S_t = s, A_t = a) \Bigr ] \biggr \} \\
+&= \sum_a \pi(a \mid s) \biggl \{ \sum_r \sum_{s'} r \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t =a) \\
+&\quad + \gamma \cdot \sum_g g  \sum_r \sum_{s'} \Bigl [ Pr(G_{t+1} = g \mid R_{t+1} = r, S_{t+1} = s' , S_t = s, A_t = a) \\
+&\quad \cdot Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t = s, A_t = a) \Bigr ] \biggr \} \\
+&= \sum_a \pi(a \mid s) \biggl \{ \sum_r \sum_{s'} Pr(R_{t+1} = r, S_{t+1} = s' |S_t = s, A_t = a) \\
+&\quad \cdot \Bigl [ r + \gamma \sum_g g \cdot Pr(G_{t+1} = g| R_{t+1} =r, S_{t+1} = s', S_t =s, A_t = a) \Bigr ] \biggr \}
+\end{aligned}</script><p>$\because$ In Markov Process, $G_{t+1}$ only relate to $S_{t+1}$, $S_t$ and $A_t$ give no contribution to $G_{t+1}$,<br>$\therefore Pr(G_{t+1} = g \mid R_{t=1}= r, S_{t+1} = s’, S_t = s, A_t = a) = Pr(G_{t+1} = g \mid S_{t+1} =s’)$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\therefore v_\pi(s) &= \sum_a \pi ( a \mid s) \biggl \{ \sum_r \sum_{s'}Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t = a) \\
+&\quad \cdot \Bigl [ r + \gamma \sum_g g \cdot Pr(G_{t+1} = g \mid S_{t+1} = s') \Bigr ] \biggr \} \\
+&= \sum_a \pi ( a \mid s) \biggl \{ \sum_r \sum_{s'}Pr(R_{t+1} = r, S_{t+1} = s' \mid S_t =s, A_t = a) \\
+&\quad \cdot \Bigl [ r + \gamma \mathbb E_\pi(G_{t+1} \mid S_{t+1} = s') \Bigr ] \biggr \} \\
+&= \sum_a \pi ( a \mid s) \biggl \{ \sum_r \sum_{s'}p( r,  s' \mid s, a) \cdot \Bigl [ r + \gamma v_\pi(s') \Bigr ] \biggr \} \\
+\end{aligned}</script><p>That’s the Bellman equation for $v_\pi$. We get it.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinfocement Learning Exercise 3.23</title>
+    <url>/2019/07/07/Reinfocement-Learning-Exercise-3-23/</url>
+    <content><![CDATA[<p><strong>Exercise 3.23</strong> Give the Bellman equation for $q_*$ for the recycling robot.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-23/3-23.png#pic_center" alt=""><br>This picture shows the mechanism of the recycling robot.</p>
+<p>To give the Bellman equation for <script type="math/tex">q_*</script> for the recycling robot, we have to enumerate equations for <script type="math/tex">q_*(s_h, a_s)</script>, <script type="math/tex">q_*(s_h, a_w)</script>, <script type="math/tex">q_*(s_h, a_r)</script>, <script type="math/tex">q_*(s_l, a_s)</script>,<script type="math/tex">q_*(s_l, a_w)</script> and <script type="math/tex">q_*(s_l, a_r)</script>. Here, the subscripts h, l, s, w, r respectively denotes ‘high’, ‘low’, ‘search’, ‘wait’, ‘recharge’. For ‘high’ status, the available actions are ‘search’ and ‘wait’, so $q_*(s_h, a_r)$ is excluded.<br>First, we have to introduce the equation (1) from exercise 3.22:</p>
+<script type="math/tex; mode=display">
+q_*(s,a)=\sum_{s'} \Bigl \{ \bigl [ R_{s,s'}^a + \gamma \max_{a'} q_*(s',a') \bigr ] P_{s,s'}^a \Bigr \} \qquad{(1)}</script><p>For status ‘high’, we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_h, a_s) &= \bigl [ R_{s_h, s_h}^{a_s} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_h,s_h}^{a_s} + \bigl [ R_{s_h, s_l}^{a_s} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_h,s_l}^{a_s} \qquad{(2)}\\
+q_*(s_h, a_w) &= \bigl [ R_{s_h, s_h}^{a_w} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_h,s_h}^{a_w} + \bigl [ R_{s_h, s_l}^{a_w} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_h,s_l}^{a_w} \qquad{(3)}
+\end{aligned}</script><p>For status ‘low’, there are:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_l, a_s) &= \bigl [ R_{s_l, s_h}^{a_s} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_l,s_h}^{a_s} + \bigl [ R_{s_l, s_l}^{a_s} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_l,s_l}^{a_s} \qquad{(4)} \\
+q_*(s_l, a_w) &= \bigl [ R_{s_l, s_h}^{a_w} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_l,s_h}^{a_w} + \bigl [ R_{s_l, s_l}^{a_w} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_l,s_l}^{a_w} \qquad{(5)} \\
+q_*(s_l, a_r) &= \bigl [ R_{s_l, s_h}^{a_r} + \gamma \max_{a'} q_*(s_h,a') \bigr ] P_{s_l,s_h}^{a_r} + \bigl [ R_{s_l, s_l}^{a_r} + \gamma \max_{a'} q_*(s_l,a') \bigr ] P_{s_l,s_l}^{a_r} \qquad{(6)}
+\end{aligned}</script><p>Then according to the table in the above picture, $R_{s_h,s_h}^{a_s}=r_{search}$, $P_{s_h,s_h}^{a_s}=\alpha$, $R_{s_h,s_l}^{a_s}=r_{search}$, $P_{s_h,s_l}^{a_s}=1-\alpha$, … and  so on. Plug these values into equations (2), (3), (4), (5), (6), we get:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_h, a_s) &= \bigl [ r_{search} + \gamma \max_{a'} q_*(s_h,a') \bigr ] \alpha + \bigl [ r_{search} + \gamma \max_{a'} q_*(s_l,a') \bigr ] (1-\alpha)\\ &= r_{search} + \gamma \bigl [\alpha \max_{a'} q_*(s_h,a') +(1-\alpha) \max_{a'} q_*(s_l,a')\bigr ]\qquad{(7)}\\
+q_*(s_h, a_w) &= \bigl [ r_{wait} + \gamma \max_{a'} q_*(s_h,a') \bigr ] \cdot 1 + \bigl [ R_{s_h, s_l}^{a_w} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \cdot 0 \\
+&= r_{wait} + \gamma \max_{a'} q_*(s_h,a')\qquad{(8)}\\
+q_*(s_l, a_s) &= \bigl [ -3 + \gamma \max_{a'} q_*(s_h,a') \bigr ] (1-\beta) + \bigl [ r_{search} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \beta \\
+&= (r_{search} - 3) + \gamma \bigl [ (1-\beta)\max_{a'} q_*(s_h,a') + \beta \max_{a'} q_*(s_l,a') \bigr ] \qquad{(9)} \\
+q_*(s_l, a_w) &= \bigl [ R_{s_l, s_h}^{a_w} + \gamma \max_{a'} q_*(s_h,a') \bigr ] \cdot 0 + \bigl [ r_{wait} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \cdot 1 \\ &= r_{wait} + \gamma \max_{a'} q_*(s_l,a') \qquad{(10)} \\
+q_*(s_l, a_r) &= \bigl [ 0 + \gamma \max_{a'} q_*(s_h,a') \bigr ] \cdot 1 + \bigl [ R_{s_l, s_l}^{a_r} + \gamma \max_{a'} q_*(s_l,a') \bigr ] \cdot 0 \\
+&= \gamma \max_{a'} q_*(s_h,a')\qquad{(11)}
+\end{aligned}</script><p>For ‘high’ status, $a’$ can only be ‘search’ and ‘wait’ while for ‘low’ status, $a’$ can be ‘search’, ‘wait’ and ‘recharge’. So, equations (7) to (11) can be rearranged as below:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_h, a_s) &= r_{search} + \gamma \Bigl \{\alpha \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ]+(1-\alpha) \max_{a'} \bigl [ q_*(s_l,a_s), q_*(s_l,a_w), q_*(s_l,a_r) \bigr ] \Bigr \} \qquad{(12)} \\
+q_*(s_h, a_w) &= r_{wait} + \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qquad {(13)}\\
+q_*(s_l, a_s) &= (r_{search} - 3) + \gamma \Bigl \{ (1-\beta)\max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] + \beta \max_{a'} \bigl [ q_*(s_l,a_s), q_*(s_l,a_w), q_*(s_l,a_r) \bigr ] \Bigr \} \qquad{(14)} \\
+q_*(s_l, a_w) &= r_{wait} + \gamma \max_{a'} \bigl [ q_*(s_l,a_s), q_*(s_l,a_w), q_*(s_l,a_r) \bigr ] \qquad{(15)} \\
+q_*(s_l, a_r) &= \gamma \max_{a'} \bigl [ q_*(s_h,a_s), q_*(s_h,a_w) \bigr ] \qquad{(16)}
+\end{aligned}</script><p>These equations from (12) to (16) are the Bellman equations for the recycling robot and can be solved in a similar way like exercise 3.22.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 3.22</title>
+    <url>/2019/07/07/Reinforcement-Learning-Exercise-3-22/</url>
+    <content><![CDATA[<p>Exercise 3.22 Consider the continuing MDP shown on to the right. The only decision to be made is that in the top state, where two actions are available, left and right. The numbers show the rewards that are received deterministically after each action. There are exactly two deterministic policies, $\pi_{left}$ and $\pi_{right}$. What policy is optimal if $\gamma = 0$? If $\gamma = 0.9$? If $\gamma = 0.5$?<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-22/3-22-1.png#pic_center" alt=""><br>Before to solve this problem, we have to deduce the expression of $q_*(s,a)$ in terms of $R_{s,s’}^a$ and $P_{s,s’}^a$.<br>First, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s,a) &= \mathbb E[R_{t+1} + \gamma \max_{a'} q_*(S_{t+1}, a')|S_t=s,A_t=a] \\
+&= \sum_{s',r}\Bigl \{p(s',r|s,a) \bigl [ r + \gamma \max_{a'}q_*(s',a) \bigr ] \Bigr \} \\
+&= \sum_{s', r} \bigl [ rp(s',r|s,a) \bigr ] + \sum_{s',r} \bigl [ p(s',r|s,a) \gamma \max_{a'}q_*(s',a') \bigr ] \\
+&= \sum_r \bigl [ rp(r|s,a) \bigr ] + \sum_{s'} \bigl [ p(s'|s,a) \gamma \max_{a'} q_*(s', a') \bigr ] \\
+&= \mathbb E(r|s,a) + \sum_{s'} \bigl [ p(s'|s,a) \gamma \max_{a'} q_*(s', a') \bigr ] \\
+&= \sum_{s'} \bigl [ \mathbb E(r|s', s, a)p(s'|s,a) \bigr ] + \sum_{s'} \bigl [ p(s'|s,a) \gamma \max_{a'} q_*(s', a') \bigr ] \\
+&= \sum_{s'} \Bigl \{ \bigl [ \mathbb E(r|s',s,a) + \gamma \max_{a'} q_*(s',a') \bigr ] p(s'|s,a) \Bigr \}
+\end{aligned}</script><p>denote $\mathbb E(r|s’,s,a) = R_{s,s’}^a$ and $p(s’|s,a)=P_{s,s’}^a$, we get the expression we wanted</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+q_*(s,a)=\sum_{s'} \Bigl \{ \bigl [ R_{s,s'}^a + \gamma \max_{a'} q_*(s',a') \bigr ] P_{s,s'}^a \Bigr \}
+\end{equation} \tag{1} \label{eq1}</script><p>Next, we name the three status in circles as $s_A$, $s_B$, $s_C$, and denote the action to left as $a_l$, the action to right as $a_r$.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-22/3-22-2.png#pic_center" alt=""><br>According to equation (1) we can get Bellman optimality equation for $q_*$ of the three status.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_{*, \pi_{left}}(s_A, a_l)&=\Bigl \{R_{s_A, s_B}^{a_l}+\gamma \max_{a'} \bigl [ q_*(s_B, a)\bigr ] \Bigr \} P_{s_A, s_B}^{a_l} + \Bigl \{R_{s_A, s_C}^{a_l}+\gamma \max_{a'} \bigl [ q_*(s_C, a) \bigr ] \Bigr \} P_{s_A, s_C}^{a_l}\\
+&= \bigl [ R_{s_A, s_B}^{a_l} + \gamma q_*(s_B, a) \bigr ] P_{s_A, s_B}^{a_l} +  \bigl [ R_{s_A, s_C}^{a_r} + \gamma q_*(s_C, a) \bigr ] P_{s_A, s_C}^{a_l} \\
+q_{*, \pi_{right}}(s_A, a_r)&=\Bigl \{R_{s_A, s_B}^{a_r}+\gamma \max_{a'} \bigl [ q_*(s_B, a) \bigr ] \Bigr \} P_{s_A, s_B}^{a_r} + \Bigl \{R_{s_A, s_C}^{a_r}+\gamma \max_{a'} \bigl [ q_*(s_C, a)\bigr ] \Bigr \} P_{s_A, s_C}^{a_r}\\
+&= \bigl [ R_{s_A, s_B}^{a_r} + \gamma q_*(s_B, a) \bigr ] P_{s_A, s_B}^{a_r} +  \bigl [ R_{s_A, s_C}^{a_r} + \gamma q_*(s_C, a) \bigr ] P_{s_A, s_C}^{a_r} \\
+q_*(s_B, a)&=\Bigl \{R_{s_B, s_A}^{a}+\gamma \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} P_{s_B, s_A}^{a} \\
+q_*(s_C, a)&=\Bigl \{R_{s_C, s_A}^{a}+\gamma \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} P_{s_C, s_A}^{a} \\
+\end{aligned}</script><script type="math/tex; mode=display">
+\because P_{s_A, s_B}^{a_r} = 0, P_{s_A, s_C}^{a_l} = 0\\
+\begin{aligned}
+\therefore q_{*, \pi_{left}}(s_A, a_l)&=\bigl [ R_{s_A, s_B}^{a_l} + \gamma q_*(s_B, a) \bigr ] P_{s_A, s_B}^{a_l} \\
+q_{*, \pi_{right}}(s_A, a_r)&= \bigl [ R_{s_A, s_C}^{a_r} + \gamma q_*(s_C, a) \bigr ] P_{s_A, s_C}^{a_r} \\
+\end{aligned}</script><p>Now, let’s discuss the cases in different $\gamma$.<br>For $\gamma = 0$:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_{*,\pi_{left}}(s_A, a_l) &= \bigl [ 1 + 0 \cdot q_*(s_B, a) \bigr ] \cdot 1 = 1\\
+q_{*,\pi_{right}}(s_A, a_r) &= \bigl [ 0 + 0 \cdot q_*(s_C,a) \bigr ] \cdot 1 = 0
+\end{aligned}</script><p>So, $\pi_{left}$ is the optimal policy when $\gamma = 0$.</p>
+<p>For $\gamma = 0.5$:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_B, a)&=\Bigl \{0+0.5 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} \cdot 1 \\
+&=0.5 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ]\\
+q_*(s_C, a)&=\Bigl \{2+0.5 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} \cdot1 \\
+&= 2+0.5 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ]\\
+q_{*,\pi_{left}}(s_A, a_l) &= \bigl [ 1 + 0.5 \cdot q_*(s_B, a) \bigr ] \cdot 1 \\
+&= 1 + 0.5 \cdot q_*(s_B, a)\\
+q_{*,\pi_{right}}(s_A, a_r) &= \bigl [ 0 + 0.5 \cdot q_*(s_C,a) \bigr ] \cdot 1 \\
+&= 0.5 \cdot q_*(s_C,a)
+\end{aligned}</script><p>Assume <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \geq q_{*,\pi_{left}}(s_C, a_l)</script> then we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_B, a) &= 0.5 \cdot q_{*,\pi_{left}}(s_A, a_l)\\
+q_*(s_C, a) &= 2+0.5 \cdot q_{*,\pi_{left}}(s_A, a_l)
+\end{aligned}</script><p>therefore,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_{*,\pi_{left}}(s_A, a_l) &= 1 + 0.5 \cdot 0.5 \cdot q_{*,\pi_{left}}(s_A, a_l)\\
+q_{*,\pi_{left}}(s_A, a_l) &= \frac {4}{3}\\
+q_{*,\pi_{right}}(s_A, a_r) &= 0.5 \cdot \bigl [ 2+0.5 \cdot q_{*,\pi_{left}}(s_A, a_l) \bigr ] \\
+q_{*,\pi_{right}}(s_A, a_r) &= \frac {5}{3}
+\end{aligned}</script><p>Here, <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \lt q_{*,\pi_{right}}(s_C, a_l)</script>,  conflict with the assumption, so the assumption fails.<br>Assume <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \le q_{*,\pi_{right}}(s_C, a_l)</script>then we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_B, a) &= 0.5 \cdot q_{*,\pi_{right}}(s_A, a_r)\\
+q_*(s_C, a) &= 2+0.5 \cdot q_{*,\pi_{right}}(s_A, a_r)
+\end{aligned}</script><p>therefore,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_{*,\pi_{right}}(s_A, a_r) &= 0.5 \cdot \bigl [ 2+0.5 \cdot q_{*,\pi_{right}}(s_A, a_r) \bigr ] \\
+q_{*,\pi_{right}}(s_A, a_r) &= \frac {4}{3}\\
+q_{*,\pi_{left}}(s_A, a_l) &= 1 + 0.5 \cdot 0.5 \cdot q_{*,\pi_{right}}(s_A, a_r)\\
+q_{*,\pi_{left}}(s_A, a_l) &= \frac {4}{3}\\
+\end{aligned}</script><p>Here <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) = q_{*,\pi_{right}}(s_A, a_r)</script>, assumption is correct. So, both <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l)</script> and <script type="math/tex">q_{*,\pi_{right}}(s_A, a_r)</script> are optimal policies for $\gamma = 0.5$.</p>
+<p>For $\gamma = 0.9$:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_B, a)&=\Bigl \{0+0.9 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} \cdot 1 \\
+&=0.9 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ]\\
+q_*(s_C, a)&=\Bigl \{2+0.9 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ] \Bigr \} \cdot1 \\
+&= 2+0.9 \max_{a'} \bigl [ q_{*, \pi_{left}}(s_A, a_l), q_{*, \pi_{right}}(s_A, a_r) \bigr ]\\
+q_{*,\pi_{left}}(s_A, a_l) &= \bigl [ 1 + 0.9 \cdot q_*(s_B, a) \bigr ] \cdot 1 \\
+&= 1 + 0.9 \cdot q_*(s_B, a)\\
+q_{*,\pi_{right}}(s_A, a_r) &= \bigl [ 0 + 0.9 \cdot q_*(s_C,a) \bigr ] \cdot 1 \\
+&= 0.9 \cdot q_*(s_C,a)
+\end{aligned}</script><p>Assume <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \geq q_{*,\pi_{left}}(s_C, a_l)</script> then we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_B, a) &= 0.9 \cdot q_{*,\pi_{left}}(s_A, a_l)\\
+q_*(s_C, a) &= 2+0.9 \cdot q_{*,\pi_{left}}(s_A, a_l)
+\end{aligned}</script><p>therefore,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_{*,\pi_{left}}(s_A, a_l) &= 1 + 0.9 \cdot 0.9 \cdot q_{*,\pi_{left}}(s_A, a_l)\\
+q_{*,\pi_{left}}(s_A, a_l) &= \frac {100}{19} = \frac {500}{95}\\
+q_{*,\pi_{right}}(s_A, a_r) &= 0.9 \cdot \bigl [ 2+0.9 \cdot q_{*,\pi_{left}}(s_A, a_l) \bigr ] \\
+q_{*,\pi_{right}}(s_A, a_r) &= \frac {729}{95}
+\end{aligned}</script><p>Here, <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \lt q_{*,\pi_{right}}(s_C, a_l)</script>,  conflict with the assumption, so the assumption fails.<br>Assume <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \le q_{*,\pi_{right}}(s_C, a_l)</script> then we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_*(s_B, a) &= 0.9 \cdot q_{*,\pi_{right}}(s_A, a_r)\\
+q_*(s_C, a) &= 2+0.9 \cdot q_{*,\pi_{right}}(s_A, a_r)
+\end{aligned}</script><p>therefore,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_{*,\pi_{right}}(s_A, a_r) &= 0.9 \cdot \bigl [ 2+0.9 \cdot q_{*,\pi_{right}}(s_A, a_r) \bigr ] \\
+q_{*,\pi_{right}}(s_A, a_r) &= \frac {180}{19}\\
+q_{*,\pi_{left}}(s_A, a_l) &= 1 + 0.9 \cdot 0.9 \cdot q_{*,\pi_{right}}(s_A, a_r)\\
+q_{*,\pi_{left}}(s_A, a_l) &= \frac {1648}{190}\\
+\end{aligned}</script><p>Here, <script type="math/tex">q_{*,\pi_{left}}(s_A, a_l) \lt q_{*,\pi_{right}}(s_C, a_l)</script>, assumption is correct. So, $\pi_{right}$ is the optimal policy for $\gamma = 0.9$</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 3.19</title>
+    <url>/2019/07/07/Reinforcement-Learning-Exercise-3-19/</url>
+    <content><![CDATA[<p>Exercise 3.19 The value of an action, $q_\pi(s, a)$, depends on the expected next reward and the expected sum of the remaining rewards. Again we can think of this in terms of a small backup diagram, this one rooted at an action (state–action pair) and branching to the possible next states:<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/7/7/Reinforcement-Learning-Exercise-3-19/3-19.png#pic_center" alt=""><br>Give the equation corresponding to this intuition and diagram for the action value, $q_\pi(s, a)$, in terms of the expected next reward, $R_{t+1}$, and the expected next state value, $v_\pi(S_t+1)$, given that $S_t =s$ and $A_t =a$. This equation should include an expectation but not one conditioned on following the policy. Then give a second equation, writing out the expected value explicitly in terms of $p(s’, r|s, a)$ defined by (3.2), such that no expected value notation appears in the equation. </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_\pi(s,a) &= \mathbb E_\pi(G_t | S_t = s, A_t = a) \\
+&= \mathbb E_\pi ( R_{t+1} + \gamma G_{t+1} | S_t = s, A_t = a) \\
+&= \mathbb E_\pi ( R_{t+1} | S_t= s, A_t = a) + \gamma \mathbb E_\pi ( G_{t+1} | S_t = s, A_t = a) \\
+&= \mathbb E_\pi ( R_{t+1} | S_t= s, A_t = a) + \gamma \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_t = s, A_t = a) \\
+&= R_{t+1}(s,a) + \gamma \sum_{s'} \bigl[ \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_t = s, A_t = a, S_{t+1} = s') Pr(S_{t+1} = s'| S_t = s, A_t = a) \bigr] \\
+\end{aligned}</script><p>denote $Pr(S_{t+1} = s’| S_t = s, A_t = a) = P_{s,s’}^a$<br>and $\because S_t$ and $A_t$ give no information to $R_{t+2+k}$</p>
+<script type="math/tex; mode=display">\therefore \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_t = s, A_t = a, S_{t+1} = s') Pr(S_{t+1} = s'| S_t = s, A_t = a)\\
+\begin{aligned}
+&= \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+2} | S_{t+1} = s') P_{s,s'}^a \\
+&= \upsilon_\pi(S_{t+1}) P_{s,s'}^a \\
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{equation}
+\therefore
+q_\pi(s,a) = R_{t+1}(s,a) + \gamma \sum_{s'} \upsilon_\pi(S_{t+1}) P_{s,s'}^a
+\end{equation} \tag{1}</script><p>Above is the first equantion.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\because
+R_{t+1}(s,a) &= \mathbb E_\pi (R_{t+1} | S_t = s, A_t = a) \\
+&= \sum_{s'} \bigl[ \mathbb E_\pi (R_{t+1}|S_t = s, A_t = a, S_{t+1} = s') Pr(S_{t+1} = s' | S_t = s, A_t = a) \bigr] \\
+&= \sum_r \sum_{s'} \bigl[ \mathbb E_\pi (R_{t+1}|S_t = s, A_t = a, S_{t+1} = s') Pr(S_{t+1} = s', R_{t+1} = r | S_t = s, A_t = a) \bigr] \\
+\end{aligned}</script><p>denote </p>
+<script type="math/tex; mode=display">
+\mathbb E_\pi (R_{t+1}|S_t = s, A_t = a, S_{t+1} = s') = R_{s,s'}^a \\
+Pr(S_{t+1} = s', R_{t+1} = r | S_t = s, A_t = a) = p(s', r | s, a)</script><script type="math/tex; mode=display">
+\therefore R_{t+1}(s, a) = \sum_r \sum_{s'} R_{s,s'}^a p(s', r | s, a)</script><script type="math/tex; mode=display">
+\begin{aligned}
+\because
+\gamma \sum_{s'} \upsilon_\pi(S_{t+1}) P_{s,s'}^a 
+&= \gamma \sum_r \sum_{s'} \upsilon_\pi(S_{t+1}) Pr(S_{t+1} = s', R_{t+1} = r | S_t = s, A_t = a) \\
+&=  \gamma \sum_r \sum_{s'} \upsilon_\pi(S_{t+1})  p(s', r | s, a)
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+\therefore
+q_\pi(s,a) &= \sum_r \sum_{s'} R_{s,s'}^a p(s', r | s, a) + \gamma \sum_r \sum_{s'} \upsilon_\pi(S_{t+1})  p(s', r | s, a) \\
+&= \sum_r \sum_{s'} \bigl[ R_{s, s'}^a + \gamma \upsilon_\pi( S_{t+1} ) \bigr ] p(s', r | s, a) 
+\end{aligned}
+\end{equation} \tag{2} \label{eq2}</script><p>This is the second equation.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 3.18</title>
+    <url>/2019/06/22/Reinforcement-Learning-Exercise-3-18/</url>
+    <content><![CDATA[<p>Exercise 3.18 The value of a state depends on the values of the actions possible in that state and on how likely each action is to be taken under the current policy. We can think of this in terms of a small backup diagram rooted at the state and considering each possible action:<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/6/22/Reinforcement-Learning-Exercise-3-18/3-18.png#pic_center" alt=""><br>Give the equation corresponding to this intuition and diagram for the value at the root node, $v_\pi(s)$, in terms of the value at the expected leaf node, $q_\pi(s, a)$, given $S_t = s$. This equation should include an expectation conditioned on following the policy, $\pi$. Then give a second equation in which the expected value is written out explicitly in terms of $\pi(a|s)$ such that no expected value notation appears in the equation.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\\
+\upsilon_\pi(s) &= \mathbb E_\pi ( G_t | S_t = s ) \\
+&= \sum_{a \in \mathcal A} \mathbb E_\pi ( G_t | S_t = s, A_t = a ) P ( A_t = a | S_t = s) \\
+\end{aligned} \\
+\begin{aligned}
+&\because P ( A_t = a | S_t = s) = \pi(a | s) \\
+&\therefore \upsilon_\pi(s) = \sum_{a \in \mathcal A} \mathbb E_\pi ( G_t | S_t = s, A_t = a ) \pi(a | s)
+\end{aligned}</script><p>According to definition</p>
+<script type="math/tex; mode=display">
+\mathbb E_\pi ( G_t | S_t = s, A_t = a ) = q_\pi( s, a ) \\</script><p>so</p>
+<script type="math/tex; mode=display">
+\upsilon_\pi(s) = \sum_{a \in \mathcal A} q_\pi( s, a ) \pi(a | s)</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 3.17</title>
+    <url>/2019/06/22/Reinforcement-Learning-Exercise-3-17/</url>
+    <content><![CDATA[<p>Exercise 3.17 What is the Bellman equation for action values, that is, for $q_\pi$? It must give the action value $q_\pi(s, a)$ in terms of the action values, $q_\pi(s’, a’)$, of possible successors to the state–action pair (s, a). Hint: the backup diagram to the right corresponds to this equation. Show the sequence of equations analogous to (3.14), but for action values.<br><img src="https://raw.githubusercontent.com/quantunm/blogPictures/master/2019/6/22/Reinforcement-Learning-Exercise-3-17/3-17.png" alt=""></p>
+<p>According to definition：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Q_\pi(s,a) &= \mathbb E_\pi(G_t|S_t=s,A_t=a) \\
+&= \mathbb E_\pi (\sum_{k=0}^\infty \gamma^k R_t+k+1 | S_t=s, A_t=a) \\
+&= \sum_{s'} \bigl[ \mathbb E_\pi ( \sum_{k=0}^\infty \gamma^k R_{t+k+1} | S_t=s, A_t=a, S_{t+1}=s' ) P( S_{t+1} =s' | A_t = a, S_t = s ) \bigr] \\
+&= \sum_{s'} \Bigl\{  \bigl[  \mathbb E_\pi ( R_{t+1} | S_t = s , A_t = a , S_{t+1} = s ) + \mathbb E_\pi ( \sum_{k=1}^\infty \gamma^k R_{t+1+k} ) \bigr] P( S_{t+1} = s' | A_t = a , S_t = s ) \Bigr\}
+\end{aligned}</script><p>Denote</p>
+<script type="math/tex; mode=display">P(S_{t+1} = s' | A_t = a , S_t = s ) = P_{s,s'}^a</script><script type="math/tex; mode=display">\mathbb E_\pi (R_{t+1} | S_t = s , A_t = a , S_{t+1} = s' ) = R_{s,s'}^a</script><p>then：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Q_\pi(s,a) &= \sum_{s'} R_{s,s'}^a  P_{ss'}^a + \sum_{s'} \bigl[ \mathbb E(\sum_{k=1}^\infty  \gamma^k R_{t+1+k} | S_t = s, A_t = a, S_{t+1} = s' ) P_{s,s'}^a \bigr] \\
+&= \sum_{s'} R_{s,s'}^a  P_{ss'}^a + \gamma \sum_{s'} \bigl[ \mathbb E ( \sum_{k=1}^\infty \gamma^{k-1} R_{t+1+k} | S_t=s,A_t=a,S_{t+1}=s' )  P_{s,s'}^a  \bigr] \\
+&= \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \mathbb E ( \sum_{k=0}^\infty \gamma^k R_{t+2+k} | S_t = s , A_t = a , S_{t+1} = s' )  P_{s,s'}^a  \bigr] \\
+&= \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \mathbb E ( \sum_{k=0}^\infty \gamma^k R_{t+2+k} | S_{t+1} = s' ) P_{s,s'}^a \bigr] \\
+&= \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \Bigl\{ \sum_{a'} \bigl[ \mathbb E( \sum_{k=0}^\infty \gamma^k  R_{t+2+k} | S_{t+1} = s' , A_{t+1} = a' ) P( A_{t+1} = a' | S_{t+1} =s' ) \bigr] P_{s,s'}^a \Bigr\} \\
+\end{aligned}</script><p>According to definition</p>
+<script type="math/tex; mode=display">
+\mathbb E( \sum_{k=0}^\infty \gamma^k R_{t+2+k} | S_{t+1} = s' , A_{t+1} = a') = Q_\pi(s',a') \\
+P( A_{t+1} = a' | S_{t+1} = s' ) = \pi(s',a')</script><p>so</p>
+<script type="math/tex; mode=display">
+Q_\pi(s,a) = \sum_{s'} R_{s,s'}^a P_{ss'}^a + \gamma \sum_{s'} \bigl[ \sum_{a'} Q_\pi(s',a') \pi(s',a') \bigr] P_{s,s'}^a</script><p>This is the Bellman equation of action-value.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 3.15</title>
+    <url>/2019/06/21/Reinforcement-Learning-Exercise-3-15/</url>
+    <content><![CDATA[<p><strong>Exercise 3.15</strong> In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or only the intervals between them? Prove, using (3.8), that adding a constant $c$ to all the rewards adds a constant, $v_c$, to the values of all states, and thus does not affect the relative values of any states under any policies. What is $v_c$ in terms of $c$ and $\gamma$?</p>
+<p>First, for $v_\pi$, according to definition:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
+&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s)
+\end{aligned}</script><p>Denote $\hat R = R + c$, for $\hat R$, there is:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\hat {v}_\pi(s) &= \mathbb E_\pi(\hat G_t|S_t=s) \\
+&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot \hat R_{t+k+1} | S_t = s) \\
+&= \mathbb E_\pi  \bigl [ \sum_{k=0}^{\infty} \gamma^k \cdot (R_{t+k+1} + c ) | S_t = s \bigr ] \\
+&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s) + \mathbb E_\pi(\sum_{k=0}^{\infty} \gamma^k \cdot c | S_t = s)\\
+&= \mathbb E_\pi ( \sum_{k=0}^{\infty} \gamma^k \cdot R_{t+k+1} | S_t = s) + \sum_{k=0}^{\infty} \gamma^k \cdot c \\
+&= v_\pi(s) + \frac {c}{1 - \gamma} \\
+\end{aligned}</script><script type="math/tex; mode=display">
+\therefore v_c = \frac {c}{1-\gamma}</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 3.13</title>
+    <url>/2019/06/21/Reinforcement-Learning-Exercise-3-13/</url>
+    <content><![CDATA[<p><strong>Exercise 3.13</strong> Give an equation for $q_\pi$ in terms of $v_\pi$ and the four-argument $p$.</p>
+<p>First, we need to derive a formula from multiplication formula of probability theory:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+p(x|y) &= \frac {p(x,y)}{p(y)} \\
+&= \frac {\sum_z p(x,y,z)}{p(y)} \\
+&= \frac {\sum_z \bigl [ p(x |y,z) \cdot p(z|y) \cdot p(y) \bigr ] } { p(y) } \\
+&= \sum_z \bigl [ p(x|y,z) \cdot p(z|y) \bigr ]  \qquad \qquad{(1)}\\
+\end{aligned}</script><p>With formula (1), we can calculate $q_\pi(s,a)$ as below:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_\pi(s,a)&= \mathbb E_\pi(G_t|S_t=s,A_t=a) \\
+&=\mathbb E_\pi(R_{t+1} + \gamma G_{t+1} | S_t = s, A_t = a) \\
+&= \mathbb E_\pi(R_{t+1} | S_t = s, A_t = a) + \gamma \mathbb E_\pi(G_{t+1}|S_t = s, A_t = a) \\
+&= \sum_r r \cdot Pr(R_{t+1} = r | S_t = s, A_t = a)  \\
+&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot Pr(G_{t+1}=g_{t+1}|S_t=s, A_t=a) \\
+\end{aligned}</script><p>Here, according to definition,  $g_{t+1} = \sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k}$. And use formula (1), we can derive:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_\pi(s,a) &= \sum_r r \cdot Pr(R_{t+1} = r | S_t = s, A_t = a)  \\
+&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot Pr(G_{t+1}=\sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k}|S_t=s, A_t=a) \\
+&= \sum_r r \cdot \sum_{s'} Pr(R_{t+1} = r | S_t = s, A_t = a, S_{t+1} = s') \cdot Pr(S_{t+1} = s' | S_t=s, A_t=a)  \\
+&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot \sum_{s'} Pr(G_{t+1}=\sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k}|S_t=s, A_t=a, S_{t+1} = s') \cdot Pr(S_{t+1}=s'| S_t=s, a_t = a) \\
+\end{aligned}</script><p>Because in Markov Process, $G_{t+1}$ is the reward of status $S_{t+1} = s’$, the information of $S_t = s$ and $A_t = a$ are no effect on $G_{t+1}$. So:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+q_\pi(s,a) &= \sum_r r \cdot \sum_{s'} Pr(R_{t+1} = r | S_t = s, A_t = a, S_{t+1} = s') \cdot Pr(S_{t+1} = s' | S_t=s, A_t=a)  \\
+&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot \sum_{s'} Pr(G_{t+1}=\sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k} | S_{t+1} = s') \cdot Pr(S_{t+1}=s'| S_t=s, a_t = a) \\
+&= \sum_{s'}  \biggl \{ Pr(S_{t+1} = s' | S_t=s, A_t=a) \cdot \Bigl [ \sum_r r \cdot Pr(R_{t+1} = r | S_t = s, A_t = a, S_{t+1} = s')  \\
+&\quad + \gamma \sum_{g_{t+1}} g_{t+1} \cdot Pr(G_{t+1}=\sum_{k=0}^{\infty} \gamma^k \cdot r_{t+2+k} | S_{t+1} = s') \Bigr ] \biggr \}\\
+&=\sum_{s'} \biggl \{ p(s'| s,a) \cdot \Bigl [ \mathbb E_\pi(r|s,a,s') + \gamma \cdot  \mathbb E_\pi(G_{t+1}|S_{t+1}=s') \Bigr ] \biggr \} \\
+&=\sum_{s'} \biggl \{ p(s'| s,a) \cdot \Bigl [ \mathbb E_\pi(r|s,a,s') + \gamma \cdot v_\pi(s')  \Bigr ] \biggr \} \\
+\end{aligned}</script><p>Denote $p(s’ |  a , s ) = P_{s,s’}^a$ and $\mathbb E_\pi ( r | s, a, s’ ) = R_{s,s’}^a$, then</p>
+<script type="math/tex; mode=display">
+q_\pi(s,a) = \sum_{s'} \biggl \{ P_{s,s'}^a \cdot \Bigl [ R_{s,s'}^a + \gamma \cdot v_\pi(s')  \Bigr ] \biggr \} \qquad{(2)}</script><p>Here, the equation (2) is the result.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 3.12</title>
+    <url>/2019/06/21/Reinforcement-Learning-Exercise-3-12/</url>
+    <content><![CDATA[<p><strong>Exercise 3.12</strong> Give an equation for $v_\pi$ in terms of $q_\pi$ and $\pi$.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_\pi(s) &= \mathbb E_\pi(G_t|S_t=s) \\
+&=\sum_{g_t}\bigl [ g_t \cdot p(g_t|s) \bigr ] \\
+&=\sum_{g_t}\bigl [ g_t \cdot \frac {p(g_t, s)}{p(s)} \bigr ] \\
+&=\sum_{g_t}\bigl [ g_t \cdot \frac{ \sum_{a \in \mathcal A} p(g_t, s, a)}{p(s)} \bigr ] \\
+&=\sum_{g_t}\Bigl \{ g_t \cdot \frac{ \sum_{a \in \mathcal A} \bigl [p(g_t| s, a) \cdot p(s, a) \bigr ] }{p(s)} \Bigr \} \\
+&=\sum_{g_t}\Bigl \{ g_t \cdot \frac{ \sum_{a \in \mathcal A} \bigl [p(g_t| s, a) \cdot p(a | s) \cdot p(s) \bigr ]}{p(s) \bigr ] } \Bigr \} \\
+&=\sum_{g_t}\Bigl \{ g_t \cdot \sum_{a \in \mathcal A} \bigl [p(g_t| s, a) \cdot p(a | s) \bigr ] \Bigr \} \\
+&=\sum_{a \in \mathcal A} \Bigl \{ p(a|s) \sum_{g_t} \bigl [ g_t \cdot p(g_t | s, a) \bigr ] \Bigr \}
+\end{aligned}</script><p>According to definition, $p(a|s) = \pi(a|s)$, $\sum_{g_t} \bigl [ g_t \cdot p(g_t | s, a) \bigr ] = q_\pi(s,a)$, so there is:</p>
+<script type="math/tex; mode=display">
+v_\pi(s) = \sum_{a \in \mathcal A} \bigl [ \pi(a|s) \cdot q_\pi(s,a) \bigr ]</script>]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reinforcement Learning Exercise 3.11</title>
+    <url>/2019/06/08/Reinforcement-Learning-Exercise-3-11/</url>
+    <content><![CDATA[<p><strong>Exercise 3.11</strong> If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $p$(3.2)?</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Pr(S_t = s, A_t = a) &= p(a|s) \cdot Pr(S_t = s) \\
+&= \pi(a|s) \cdot Pr(S_t = s) \qquad{(1)}
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}
+\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot Pr(R_{t+1} = r|S_t = s) \bigr ] \\
+&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s) \bigr ] \\
+&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{Pr (R_{t+1} = r, S_{t+1} = s', S_t = s)}{Pr(S_t = s)} \bigr ] \\
+&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s', S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ] \\
+&= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot Pr(S_t = s, A_t = a)}{Pr(S_t = s)} \bigr ]  \qquad{(2)} \\
+\end{aligned}</script><p>Substitute equation (1) into (2), there is :</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbb E(R_{t+1}|S_t = s) &= \sum_{r \in \mathbb R} \bigl [ r \cdot \sum_{s' \in S} \frac{\sum_{a \in \mathcal A}Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s)\cdot Pr(S_t=s)}{Pr(S_t = s)} \bigr ] \\
+&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ Pr (R_{t+1} = r, S_{t+1} = s' | S_t = s, A_t = a) \cdot \pi(a|s) \bigr ] \Bigr \} \\
+&= \sum_{r \in \mathbb R} \Bigl \{ r \cdot \sum_{s' \in S} \sum_{a \in \mathcal A} \bigl [ p(r, s' | s, a) \cdot \pi(a|s) \bigr ] \Bigr \} \qquad{(3)} \\
+\end{aligned}</script><p>Equation (3) is the result.</p>
+]]></content>
+      <tags>
+        <tag>Reinforcement Learning Exercise</tag>
+      </tags>
+  </entry>
+</search>
